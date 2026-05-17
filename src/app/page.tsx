@@ -382,6 +382,10 @@ export default function Home() {
                 Terms &amp; Conditions
               </Link>
               <span>&middot;</span>
+              <Link href="/delete-account" className="hover:text-white transition-colors">
+                Delete account
+              </Link>
+              <span>&middot;</span>
               <a
                 href="mailto:contact@slumbr.ai"
                 className="hover:text-white transition-colors"
