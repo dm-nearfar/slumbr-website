@@ -41,8 +41,8 @@ export default function DeleteAccount() {
             <h2 className="text-white text-lg font-semibold mb-2">If you cannot access the app</h2>
             <p>
               Email{" "}
-              <a href="mailto:delete@slumbr.ai" className="text-[#D4A843] hover:underline">
-                delete@slumbr.ai
+              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+                contact@slumbr.ai
               </a>{" "}
               from the address registered to your Slumbr account. Use &ldquo;Account deletion
               request&rdquo; as the subject line. We will confirm receipt within 5 business days and complete
