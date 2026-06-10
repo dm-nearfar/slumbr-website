@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Slumbr | AI Dream Journal App - Record, Analyse & Visualise Your Dreams",
   description:
-    "Slumbr is a free AI-powered dream journal app for iPhone. Record your dreams, get instant AI analysis, and watch them come to life as cinematic videos. Download free on the App Store.",
+    "Slumbr is a free AI-powered dream journal app for iPhone and Android. Record your dreams, get instant AI analysis, and watch them come to life as cinematic videos. Download free on the App Store and Google Play.",
   keywords:
     "dream journal, dream diary, dream app, dream meaning, dream interpretation, AI dream analysis, dream journal app, lucid dreaming, dream tracker, dream recorder, dream visualiser, dream video",
   icons: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Slumbr | AI Dream Journal - Record, Analyse & Visualise Your Dreams",
     description:
-      "Free AI-powered dream journal for iPhone. Record dreams, get AI analysis, and generate cinematic dream videos.",
+      "Free AI-powered dream journal for iPhone and Android. Record dreams, get AI analysis, and generate cinematic dream videos.",
     type: "website",
     url: "https://slumbr.ai",
     siteName: "Slumbr",
@@ -38,7 +38,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Slumbr: Dream Journal & AI",
-    operatingSystem: "iOS",
+    operatingSystem: "iOS, Android",
     applicationCategory: "LifestyleApplication",
     offers: [
       {
@@ -55,8 +55,10 @@ const jsonLd = [
       },
     ],
     url: "https://slumbr.ai",
-    downloadUrl:
+    downloadUrl: [
       "https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739",
+      "https://play.google.com/store/apps/details?id=com.slumbr.slumbr",
+    ],
     description:
       "AI-powered dream journal app that analyses your dreams and generates cinematic dream videos.",
     publisher: {

@@ -75,6 +75,63 @@ function AppStoreBadge() {
   );
 }
 
+function GooglePlayBadge() {
+  return (
+    <a
+      href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block"
+    >
+      <svg
+        viewBox="0 0 135 40"
+        className="h-[50px] w-auto"
+        role="img"
+        aria-label="Get it on Google Play"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="135" height="40" rx="6" fill="#000" />
+        <rect
+          width="134"
+          height="39"
+          x="0.5"
+          y="0.5"
+          rx="5.5"
+          stroke="#a6a6a6"
+          strokeWidth="1"
+          fill="none"
+        />
+        {/* Google Play triangle mark */}
+        <polygon points="13,9 13,20 21,20" fill="#00C853" />
+        <polygon points="13,31 13,20 21,20" fill="#00A0FF" />
+        <polygon points="13,9 30,20 21,20" fill="#FF3A2F" />
+        <polygon points="13,31 30,20 21,20" fill="#FFD400" />
+        <text
+          x="82"
+          y="15"
+          textAnchor="middle"
+          fill="#fff"
+          fontSize="6"
+          fontFamily="system-ui, sans-serif"
+        >
+          GET IT ON
+        </text>
+        <text
+          x="82"
+          y="28"
+          textAnchor="middle"
+          fill="#fff"
+          fontSize="12"
+          fontWeight="600"
+          fontFamily="system-ui, sans-serif"
+        >
+          Google Play
+        </text>
+      </svg>
+    </a>
+  );
+}
+
 function AuroraBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -165,8 +222,12 @@ export default function Home() {
             Dive deeper into your subconscious. AI-powered analysis reveals what
             your dreams really mean, then brings them to life as cinematic videos.
           </motion.p>
-          <motion.div variants={fadeUp}>
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-wrap items-center justify-center gap-4"
+          >
             <AppStoreBadge />
+            <GooglePlayBadge />
           </motion.div>
         </motion.div>
       </section>
@@ -282,14 +343,22 @@ export default function Home() {
                   <span className="text-[#9090A0] mt-0.5">&#10003;</span> Ad-supported
                 </li>
               </ul>
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col gap-3">
                 <a
                   href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full text-center border border-[#E5E9FF] text-[#E5E9FF] font-semibold py-3 px-6 rounded-xl hover:bg-[#E5E9FF] hover:text-[#0F0E1A] transition-colors"
                 >
-                  Download Free
+                  Download Free on iOS
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full text-center border border-[#E5E9FF] text-[#E5E9FF] font-semibold py-3 px-6 rounded-xl hover:bg-[#E5E9FF] hover:text-[#0F0E1A] transition-colors"
+                >
+                  Download Free on Android
                 </a>
               </div>
             </motion.div>
@@ -331,14 +400,22 @@ export default function Home() {
                   <span className="text-[#E5E9FF] mt-0.5">&#10003;</span> No ads
                 </li>
               </ul>
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col gap-3">
                 <a
                   href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full text-center bg-[#3D3B8E] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4D4B9E] transition-colors"
                 >
-                  Start Free Trial
+                  Start Free Trial on iOS
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full text-center bg-[#3D3B8E] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4D4B9E] transition-colors"
+                >
+                  Start Free Trial on Android
                 </a>
               </div>
             </motion.div>
@@ -362,8 +439,12 @@ export default function Home() {
           >
             What did you dream last night?
           </motion.h2>
-          <motion.div variants={fadeUp}>
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-wrap items-center justify-center gap-4"
+          >
             <AppStoreBadge />
+            <GooglePlayBadge />
           </motion.div>
         </motion.div>
       </section>
