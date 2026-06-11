@@ -38,6 +38,10 @@ background fill, ambient glow, or `overflow-hidden` that could slice a glow.
 Tight object halos (e.g. behind a phone mockup) are part of the component,
 not the atmosphere.
 
+**Texture:** a tiled SVG fractal-noise film grain (`.grain`, 5% opacity,
+`mix-blend-overlay`) sits on top of the atmosphere layer to take the gloss
+off the gradients. Keep it subtle — it should be felt, not seen.
+
 ## Typography
 
 - **Fraunces** (`--font-fraunces` / `font-display`) — display + headings, white,
@@ -57,6 +61,14 @@ not the atmosphere.
 | label | Outfit 600 | 14px / 1.2 | 0.05em |
 | eyebrow | Outfit 700 | 12px, uppercase | 0.18em |
 | caption | Outfit 400 | 14px | — |
+
+Italic accents: one emotionally loaded word per display headline may be set
+in Fraunces italic (e.g. "Unlock Your *Dreams*."). At most one per headline,
+never in section headings or body. Headlines use `text-balance`.
+
+Feature pills: each feature row carries an eyebrow pill — gold for the
+standout feature ("Watch your dreams back"), indigo/lavender for the rest
+("Understand your dreams").
 
 ## Spacing & Layout
 
