@@ -416,11 +416,15 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: s.number * 0.15 }}
                 >
-                  <div className="w-[56px] h-[56px] rounded-full bg-[#E5E9FF] flex items-center justify-center text-[#0F0E1A] text-xl font-bold mb-5 shadow-[0_0_20px_rgba(229,233,255,0.2)]">
+                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-display text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
                     {s.number}
                   </div>
-                  <p className="text-white font-semibold text-lg mb-2">{s.text}</p>
-                  <p className="text-[#9090A0] text-sm max-w-[220px]">{s.subtitle}</p>
+                  <p className="mb-2 text-[20px] font-semibold text-white">
+                    {s.text}
+                  </p>
+                  <p className="max-w-[240px] text-balance text-[15px] leading-[1.5] text-[#9090A0]">
+                    {s.subtitle}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -455,7 +459,7 @@ export default function Home() {
                 variants={fadeUp}
                 className="flex flex-col items-start rounded-[32px] border border-[#2A2940] bg-[#1A1929] p-10 transition-all duration-500 hover:border-[#3D3B8E]/40"
               >
-                <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1 text-[14px] font-semibold tracking-[0.05em] text-white">
+                <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-[#E5E9FF]">
                   Free
                 </span>
                 <h3 className="font-display mb-2 text-[40px] font-medium text-white">
@@ -508,16 +512,16 @@ export default function Home() {
                 className="group relative flex flex-col items-start overflow-hidden rounded-[32px] border border-[#3D3B8E] bg-[#1A1929] p-10 shadow-[0_0_40px_rgba(61,59,142,0.1)]"
               >
                 <div aria-hidden className="absolute right-0 top-0 p-8">
-                  <SparkleIcon className="h-[120px] w-[120px] rotate-12 text-[#3D3B8E]/40 transition-transform duration-1000 group-hover:rotate-45" />
+                  <SparkleIcon className="h-[96px] w-[96px] rotate-12 text-[#3D3B8E]/25 transition-transform duration-1000 group-hover:rotate-45" />
                 </div>
                 <div className="relative z-10 mb-6 flex flex-wrap gap-2">
-                  <span className="rounded-full bg-[#3D3B8E]/20 px-4 py-1 text-[14px] font-semibold tracking-[0.05em] text-[#E5E9FF]">
+                  <span className="rounded-full bg-[#3D3B8E]/25 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-[#C2C1FF]">
                     Pro
                   </span>
-                  <span className="rounded-full bg-[#3D3B8E] px-4 py-1 text-[12px] font-bold text-white">
-                    BEST VALUE
+                  <span className="rounded-full border border-[#3D3B8E]/60 bg-[#3D3B8E]/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#C2C1FF]">
+                    Best value
                   </span>
-                  <span className="rounded-full bg-[#3D3B8E] px-4 py-1 text-[12px] font-bold text-white">
+                  <span className="rounded-full border border-[#3D3B8E]/60 bg-[#3D3B8E]/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#C2C1FF]">
                     7-day free trial
                   </span>
                 </div>
@@ -573,10 +577,10 @@ export default function Home() {
 
         {/* Final CTA */}
         <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[48px] border border-[#2A2940] bg-[#1A1929] p-12 text-center md:p-24">
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[48px] border border-[#2A2940] bg-[#1A1929] p-12 text-center md:p-20">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3D3B8E]/20 via-transparent to-[#3D3B8E]/10"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3D3B8E]/15 via-transparent to-[#3D3B8E]/10"
             />
             <motion.div
               className="relative z-10"
