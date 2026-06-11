@@ -319,7 +319,7 @@ export default function Home() {
         <section className="px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
-              className="order-2 flex-1 text-center md:order-1 md:text-left"
+              className="flex-1 text-center md:order-1 md:text-left"
               {...reveal}
             >
               <div className="mb-6 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
@@ -339,7 +339,7 @@ export default function Home() {
               </p>
             </motion.div>
             <motion.div
-              className="relative order-1 flex flex-1 justify-center md:order-2"
+              className="relative order-last flex flex-1 justify-center md:order-2"
               {...reveal}
             >
               <div className="relative w-[280px] md:w-[320px]">
@@ -356,7 +356,7 @@ export default function Home() {
         <section className="px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
-              className="relative order-1 flex flex-1 justify-center"
+              className="relative order-last flex flex-1 justify-center md:order-1"
               {...reveal}
             >
               <motion.div
@@ -371,7 +371,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
             <motion.div
-              className="order-2 flex-1 text-center md:text-left"
+              className="order-first flex-1 text-center md:order-2 md:text-left"
               {...reveal}
             >
               <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
