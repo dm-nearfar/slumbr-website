@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* Nocturne Cinematic tokens — see DESIGN.md. Values sourced from the Stitch
+   export's code.html Tailwind config. */
 @theme inline {
   --color-navy: #0F0E1A;
   --color-surface: #1A1929;
@@ -7,8 +9,10 @@
   --color-indigo: #3D3B8E;
   --color-gold: #D4A843;
   --color-grey: #9090A0;
+  --color-lavender: #E5E9FF;
   --color-footer: #6B6B7B;
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-playfair);
 }
 
 body {
@@ -19,4 +23,16 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Visible focus for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #e5e9ff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
