@@ -161,33 +161,6 @@ function AuroraBackground() {
   );
 }
 
-const features = [
-  {
-    icon: "📖",
-    title: "Dream Journal",
-    description:
-      "Capture every detail with text or voice notes. Your private dream diary, beautifully organised.",
-  },
-  {
-    icon: "🧠",
-    title: "AI Analysis",
-    description:
-      "Uncover patterns, themes, and meaning in your dreams with AI-powered interpretations.",
-  },
-  {
-    icon: "🎬",
-    title: "Dream Videos",
-    description:
-      "Turn your dreams into cinematic AI-generated videos you can watch, save, and share.",
-  },
-  {
-    icon: "📊",
-    title: "Dream Patterns",
-    description:
-      "Track recurring themes, symbols, and emotions across your dreams. Spot patterns your waking mind misses.",
-  },
-];
-
 const steps = [
   {
     number: 1,
@@ -310,49 +283,57 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features */}
-        <section className="relative py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold text-center mb-16"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Why <span className="text-[#D4A843]">Slumbr</span>?
-            </motion.h2>
+        {/* Cinematic Dream Videos */}
+        <section className="overflow-hidden px-6 py-20 md:px-16">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row md:gap-24">
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-              initial="hidden"
-              whileInView="visible"
+              className="relative order-1 flex flex-1 justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              variants={stagger}
+              transition={{ duration: 0.6 }}
             >
-              {features.map((f) => (
-                <motion.div
-                  key={f.title}
-                  variants={fadeUp}
-                  className="group relative rounded-2xl border border-[#2A2940] bg-[#1A1929] p-8 text-center transition-all hover:border-[#3D3B8E]/60 hover:shadow-[0_0_30px_rgba(61,59,142,0.15)]"
-                >
-                  <div className="text-4xl mb-4">{f.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3">{f.title}</h3>
-                  <p className="text-[#9090A0] text-sm leading-relaxed">
-                    {f.description}
-                  </p>
-                </motion.div>
-              ))}
+              <div
+                aria-hidden
+                className="absolute inset-0 m-auto rounded-full bg-[#3D3B8E]/50 blur-[100px]"
+              />
+              <motion.div
+                className="relative w-[320px] md:w-[400px]"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.5 }}
+              >
+                <PhoneFrame
+                  src="/screenshots/placeholder-dream-video.svg"
+                  alt="Slumbr app cinematic dream video screen"
+                />
+              </motion.div>
+            </motion.div>
+            <motion.div
+              className="order-2 flex-1 text-center md:text-left"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-sm font-bold tracking-wide text-[#D4A843]">
+                STANDOUT FEATURE
+              </div>
+              <h2 className="font-display mb-6 text-[32px] font-semibold leading-tight text-white md:text-[56px]">
+                Cinematic Dream Videos
+              </h2>
+              <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0] md:text-xl">
+                Watch your dreams come alive. Experience your subconscious
+                narratives as cinematic AI-generated videos.
+              </p>
             </motion.div>
           </div>
         </section>
 
         {/* How It Works */}
-        <section
-          id="how-it-works"
-          className="relative py-24 px-6 bg-gradient-to-b from-transparent to-[#1A1929]/40"
-        >
+        <section id="how-it-works" className="relative px-6 py-20 md:px-16">
           <div className="max-w-4xl mx-auto">
             <motion.h2
-              className="text-3xl md:text-4xl font-bold text-center mb-16"
+              className="font-display mb-16 text-center text-[32px] font-semibold leading-[1.2] text-white md:text-[48px]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
