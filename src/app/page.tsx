@@ -246,7 +246,7 @@ export default function Home() {
         {/* Hero */}
         <section
           id="top"
-          className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-20 pt-36 text-center md:px-16"
+          className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-16 pt-36 text-center md:px-16"
         >
           <motion.div
             className="relative z-10 w-full max-w-5xl"
@@ -273,7 +273,7 @@ export default function Home() {
             </motion.div>
             <motion.div
               variants={fadeUp}
-              className="relative mx-auto mt-20 w-full max-w-[320px] md:max-w-[400px]"
+              className="relative mx-auto mt-16 w-full max-w-[320px] md:max-w-[400px]"
             >
               <div
                 aria-hidden
@@ -295,8 +295,8 @@ export default function Home() {
         </section>
 
         {/* AI Dream Analysis */}
-        <section className="px-6 py-20 md:px-16">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row md:gap-24">
+        <section className="px-6 py-16 md:px-16 md:py-24">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
               className="order-2 flex-1 text-center md:order-1 md:text-left"
               initial={{ opacity: 0, y: 30 }}
@@ -308,8 +308,13 @@ export default function Home() {
                 AI Dream Analysis
               </h2>
               <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
-                Uncover the hidden meanings, themes, and emotions buried in
-                your subconscious with clinical precision.
+                Record a dream and Slumbr analyses it in seconds — surfacing
+                the themes, emotions, and symbols woven through it, and
+                explaining the psychology behind them. Over time, recurring
+                patterns your waking mind misses come into focus.
+              </p>
+              <p className="mt-6 text-[14px] text-[#6B6B7B]">
+                3 analyses a month free — unlimited on Pro.
               </p>
             </motion.div>
             <motion.div
@@ -334,8 +339,8 @@ export default function Home() {
         </section>
 
         {/* Cinematic Dream Videos */}
-        <section className="px-6 py-20 md:px-16">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row md:gap-24">
+        <section className="px-6 py-16 md:px-16 md:py-24">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
               className="relative order-1 flex flex-1 justify-center"
               initial={{ opacity: 0, y: 30 }}
@@ -372,15 +377,19 @@ export default function Home() {
                 Cinematic Dream Videos
               </h2>
               <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0] md:text-xl">
-                Watch your dreams come alive. Experience your subconscious
-                narratives as cinematic AI-generated videos.
+                Watch your dreams come alive. Slumbr turns a dream entry into
+                a ten-second cinematic, AI-generated video — a surreal moment
+                of your subconscious you can watch, save, and share.
+              </p>
+              <p className="mt-6 text-[14px] text-[#6B6B7B]">
+                Every video is generated from your own dream entry.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* How It Works */}
-        <section id="how-it-works" className="relative px-6 py-20 md:px-16">
+        <section id="how-it-works" className="relative px-6 py-16 md:px-16 md:py-24">
           <div className="max-w-4xl mx-auto">
             <motion.h2
               className="font-display mb-16 text-center text-[32px] font-medium leading-[1.15] text-white md:text-[48px]"
@@ -415,7 +424,7 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="relative px-6 py-20 md:px-16">
+        <section id="pricing" className="relative px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto max-w-5xl">
             <div className="mb-16 text-center">
               <motion.h2
@@ -559,7 +568,7 @@ export default function Home() {
         </section>
 
         {/* Final CTA */}
-        <section className="px-6 py-20 md:px-16">
+        <section className="px-6 py-16 md:px-16 md:py-24">
           <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[48px] border border-[#2A2940] bg-[#1A1929] p-12 text-center md:p-24">
             <div
               aria-hidden
@@ -592,7 +601,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="relative w-full px-6 py-20 md:px-16">
+        <footer className="relative w-full px-6 py-16 md:px-16 md:py-20">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 border-t border-[#2A2940] pt-12 md:flex-row">
             <div className="flex flex-col items-center gap-4 md:items-start">
               <div className="flex items-center gap-3">
