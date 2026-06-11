@@ -278,17 +278,17 @@ export default function Home() {
           >
             <motion.h1
               variants={fadeUp}
-              className="font-display mb-6 text-[48px] font-medium leading-[1.05] tracking-[-0.01em] text-white md:text-[80px]"
+              className="font-display mb-6 text-balance text-[48px] font-medium leading-[1.05] tracking-[-0.01em] text-white md:text-[80px]"
             >
-              Unlock Your Dreams.
+              Unlock Your <em className="italic">Dreams</em>.
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mx-auto mb-12 max-w-2xl text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
             >
-              Dive deeper into your subconscious. AI-powered analysis reveals
-              what your dreams really mean, then brings them to life as
-              cinematic videos.
+              Dive deeper into your subconscious. AI-powered analysis
+              reveals what your dreams really mean, then brings them to life
+              as cinematic videos.
             </motion.p>
             <motion.div variants={fadeUp} id="download">
               <StoreBadges />
@@ -374,7 +374,7 @@ export default function Home() {
               <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
                 Watch your dreams back
               </div>
-              <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
+              <h2 className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
                 Cinematic Dream Videos
               </h2>
               <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0] md:text-xl">
@@ -584,9 +584,9 @@ export default function Home() {
             >
               <motion.h2
                 variants={fadeUp}
-                className="font-display mb-6 text-[32px] font-medium leading-[1.1] text-white md:text-[56px]"
+                className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]"
               >
-                What did you dream last night?
+                What did you <em className="italic">dream</em> last night?
               </motion.h2>
               <motion.p
                 variants={fadeUp}
