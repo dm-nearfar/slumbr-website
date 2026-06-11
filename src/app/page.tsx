@@ -230,9 +230,8 @@ function PhoneFrame({
         <Image
           src={src}
           alt={alt}
-          width={1170}
-          height={2532}
-          unoptimized
+          width={1206}
+          height={2622}
           priority={priority}
           className="h-auto w-full rounded-[40px] object-cover"
         />
@@ -304,7 +303,7 @@ export default function Home() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <PhoneFrame
-                  src="/screenshots/placeholder-hero-app.svg"
+                  src="/screenshots/hero-app.png"
                   alt="Slumbr app dream journal screen"
                   priority
                 />
@@ -339,7 +338,7 @@ export default function Home() {
             >
               <div className="relative w-[280px] md:w-[320px]">
                 <PhoneFrame
-                  src="/screenshots/placeholder-ai-analysis.svg"
+                  src="/screenshots/ai-analysis.png"
                   alt="Slumbr app AI dream analysis screen"
                 />
               </div>
@@ -360,7 +359,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
               >
                 <PhoneFrame
-                  src="/screenshots/placeholder-dream-video.svg"
+                  src="/screenshots/dream-video.png"
                   alt="Slumbr app cinematic dream video screen"
                 />
               </motion.div>
