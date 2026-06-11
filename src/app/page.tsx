@@ -319,7 +319,7 @@ export default function Home() {
         <section className="px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
-              className="order-2 flex-1 text-center md:order-1 md:text-left"
+              className="flex-1 text-center md:order-1 md:text-left"
               {...reveal}
             >
               <div className="mb-6 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
@@ -339,7 +339,7 @@ export default function Home() {
               </p>
             </motion.div>
             <motion.div
-              className="relative order-1 flex flex-1 justify-center md:order-2"
+              className="relative order-last flex flex-1 justify-center md:order-2"
               {...reveal}
             >
               <div className="relative w-[280px] md:w-[320px]">
@@ -356,7 +356,7 @@ export default function Home() {
         <section className="px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
-              className="relative order-1 flex flex-1 justify-center"
+              className="relative order-last flex flex-1 justify-center md:order-1"
               {...reveal}
             >
               <motion.div
@@ -371,7 +371,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
             <motion.div
-              className="order-2 flex-1 text-center md:text-left"
+              className="order-first flex-1 text-center md:order-2 md:text-left"
               {...reveal}
             >
               <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
@@ -382,7 +382,7 @@ export default function Home() {
               </h2>
               <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
                 Watch your dreams come alive. Slumbr turns a dream entry into
-                a ten-second cinematic, AI-generated video — a surreal moment
+                a cinematic, AI-generated video — a surreal moment
                 of your subconscious you can watch, save, and share.
               </p>
               <p className="mt-6 text-[15px] text-[#6B6B7B]">
@@ -416,7 +416,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: s.number * 0.15 }}
                 >
-                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-display text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
+                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-sans text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
                     {s.number}
                   </div>
                   <p className="mb-2 text-[20px] font-semibold text-white">
@@ -462,7 +462,7 @@ export default function Home() {
                 <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-[#E5E9FF]">
                   Free
                 </span>
-                <h3 className="font-display mb-2 text-[40px] font-medium text-white">
+                <h3 className="font-sans mb-2 text-[40px] font-medium text-white">
                   £0
                 </h3>
                 <p className="mb-8 text-[17px] text-[#9090A0]">
@@ -479,7 +479,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
-                    10-second cinematic dream videos
+                    5-second cinematic dream videos
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
@@ -525,7 +525,7 @@ export default function Home() {
                     7-day free trial
                   </span>
                 </div>
-                <h3 className="font-display relative z-10 mb-2 text-[40px] font-medium text-white">
+                <h3 className="font-sans relative z-10 mb-2 text-[40px] font-medium text-white">
                   £5.99
                   <span className="text-[24px] font-medium text-[#9090A0]">
                     /mo
