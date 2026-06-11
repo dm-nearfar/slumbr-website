@@ -32,18 +32,23 @@ indigo circles at 10–25% opacity with 80–200px blur, `mix-blend-screen`.
 
 ## Typography
 
-- **Playfair Display** (`--font-playfair` / `font-display`) — headlines, white.
-- **Manrope** (`--font-manrope` / `font-sans`) — body, labels, UI.
+- **Fraunces** (`--font-fraunces` / `font-display`) — display + headings, white,
+  weight 500. Soft "wonky" old-style serif; chosen over the Stitch export's
+  Playfair Display (too generic dark-site serif) after a 3-way comparison
+  (vs Cormorant Garamond, Marcellus) on 2026-06-11.
+- **Outfit** (`--font-outfit` / `font-sans`) — body, labels, UI.
 
-| Style | Size / line-height | Weight | Tracking |
+| Role | Face / weight | Size / line-height | Tracking |
 |---|---|---|---|
-| display-lg | 48px / 1.1 (md: 80px hero) | 700 | -0.02em |
-| headline-lg | 32px / 1.2 (md: 48–56px in feature rows) | 600 | — |
-| headline-lg-mobile | 28px / 1.2 | 600 | — |
-| headline-md | 24px / 1.3 | 500 | — |
-| body-lg | 18px / 1.6 | 400 | 0.01em |
-| body-md | 16px / 1.5 | 400 | — |
-| label-md | 14px / 1.2 | 600 | 0.05em (labels uppercase) |
+| display | Fraunces 500 | 48px / 1.05 (md: 80px hero) | -0.01em |
+| heading-lg | Fraunces 500 | 32px / 1.15 (md: 48px) | — |
+| heading-xl (video/CTA) | Fraunces 500 | 32px / 1.1 (md: 56px) | — |
+| price / wordmark | Fraunces 500 | 40px / 24px | — |
+| body-lg | Outfit 400 | 18px / 1.6 | 0.01em |
+| body-md | Outfit 400 | 16px / 1.5 | — |
+| label | Outfit 600 | 14px / 1.2 | 0.05em |
+| eyebrow | Outfit 700 | 12px, uppercase | 0.18em |
+| caption | Outfit 400 | 14px | — |
 
 ## Spacing & Layout
 

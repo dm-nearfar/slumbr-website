@@ -122,7 +122,7 @@ function Nav() {
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-16">
         <a href="#top" className="flex items-center gap-3">
           <Image src="/logo.png" alt="Slumbr logo" width={32} height={32} />
-          <span className="font-display text-[24px] font-semibold tracking-tight text-white">
+          <span className="font-display text-[24px] font-medium tracking-tight text-white">
             Slumbr
           </span>
         </a>
@@ -232,7 +232,7 @@ export default function Home() {
           >
             <motion.h1
               variants={fadeUp}
-              className="font-display mb-6 text-[48px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-[80px]"
+              className="font-display mb-6 text-[48px] font-medium leading-[1.05] tracking-[-0.01em] text-white md:text-[80px]"
             >
               Unlock Your Dreams.
             </motion.h1>
@@ -280,7 +280,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-display mb-6 text-[32px] font-semibold leading-[1.2] text-white md:text-[48px]">
+              <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
                 AI Dream Analysis
               </h2>
               <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
@@ -341,10 +341,10 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-sm font-bold tracking-wide text-[#D4A843]">
-                STANDOUT FEATURE
+              <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
+                Standout Feature
               </div>
-              <h2 className="font-display mb-6 text-[32px] font-semibold leading-tight text-white md:text-[56px]">
+              <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
                 Cinematic Dream Videos
               </h2>
               <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0] md:text-xl">
@@ -359,7 +359,7 @@ export default function Home() {
         <section id="how-it-works" className="relative px-6 py-20 md:px-16">
           <div className="max-w-4xl mx-auto">
             <motion.h2
-              className="font-display mb-16 text-center text-[32px] font-semibold leading-[1.2] text-white md:text-[48px]"
+              className="font-display mb-16 text-center text-[32px] font-medium leading-[1.15] text-white md:text-[48px]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -395,7 +395,7 @@ export default function Home() {
           <div className="mx-auto max-w-5xl">
             <div className="mb-16 text-center">
               <motion.h2
-                className="font-display mb-4 text-[32px] font-semibold leading-[1.2] text-white md:text-[48px]"
+                className="font-display mb-4 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -421,7 +421,7 @@ export default function Home() {
                 <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1 text-[14px] font-semibold tracking-[0.05em] text-white">
                   Free
                 </span>
-                <h3 className="font-display mb-2 text-[40px] font-bold text-white">
+                <h3 className="font-display mb-2 text-[40px] font-medium text-white">
                   £0
                 </h3>
                 <p className="mb-8 text-[#9090A0]">
@@ -484,7 +484,7 @@ export default function Home() {
                     7-day free trial
                   </span>
                 </div>
-                <h3 className="font-display relative z-10 mb-2 text-[40px] font-bold text-white">
+                <h3 className="font-display relative z-10 mb-2 text-[40px] font-medium text-white">
                   £5.99
                   <span className="text-[24px] font-medium text-[#9090A0]">
                     /mo
@@ -550,7 +550,7 @@ export default function Home() {
             >
               <motion.h2
                 variants={fadeUp}
-                className="font-display mb-6 text-[32px] font-semibold leading-[1.2] text-white md:text-[56px]"
+                className="font-display mb-6 text-[32px] font-medium leading-[1.1] text-white md:text-[56px]"
               >
                 What did you dream last night?
               </motion.h2>

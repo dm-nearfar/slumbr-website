@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
 });
@@ -93,7 +93,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${manrope.variable} ${playfair.variable} antialiased`}
+      className={`${outfit.variable} ${fraunces.variable} antialiased`}
     >
       <head>
         {jsonLd.map((schema, i) => (
