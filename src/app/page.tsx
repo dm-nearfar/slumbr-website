@@ -319,6 +319,9 @@ export default function Home() {
               className="order-2 flex-1 text-center md:order-1 md:text-left"
               {...reveal}
             >
+              <div className="mb-6 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
+                Understand your dreams
+              </div>
               <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
                 AI Dream Analysis
               </h2>
@@ -369,7 +372,7 @@ export default function Home() {
               {...reveal}
             >
               <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
-                Standout Feature
+                Watch your dreams back
               </div>
               <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
                 Cinematic Dream Videos
