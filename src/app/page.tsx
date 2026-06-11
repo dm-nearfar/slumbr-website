@@ -416,7 +416,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: s.number * 0.15 }}
                 >
-                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-display text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
+                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-sans text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
                     {s.number}
                   </div>
                   <p className="mb-2 text-[20px] font-semibold text-white">
@@ -462,7 +462,7 @@ export default function Home() {
                 <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-[#E5E9FF]">
                   Free
                 </span>
-                <h3 className="font-display mb-2 text-[40px] font-medium text-white">
+                <h3 className="font-sans mb-2 text-[40px] font-medium text-white">
                   £0
                 </h3>
                 <p className="mb-8 text-[17px] text-[#9090A0]">
@@ -525,7 +525,7 @@ export default function Home() {
                     7-day free trial
                   </span>
                 </div>
-                <h3 className="font-display relative z-10 mb-2 text-[40px] font-medium text-white">
+                <h3 className="font-sans relative z-10 mb-2 text-[40px] font-medium text-white">
                   £5.99
                   <span className="text-[24px] font-medium text-[#9090A0]">
                     /mo
