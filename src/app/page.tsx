@@ -201,6 +201,9 @@ function PageAtmosphere() {
         <div className="absolute right-[15%] top-[92%] h-1 w-1 rounded-full bg-white opacity-40" />
         <div className="absolute left-[40%] top-[98%] h-0.5 w-0.5 rounded-full bg-white opacity-20" />
       </div>
+
+      {/* Film grain over everything — kills the glossy gradient look */}
+      <div className="grain absolute inset-0 opacity-[0.05] mix-blend-overlay" />
     </div>
   );
 }
