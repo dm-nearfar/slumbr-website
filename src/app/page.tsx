@@ -80,6 +80,42 @@ function StoreBadges() {
   );
 }
 
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8.5 12.5 2.5 2.5 4.5-5" />
+    </svg>
+  );
+}
+
+function SparkleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12 2c.7 5.5 4.5 9.3 10 10-5.5.7-9.3 4.5-10 10-.7-5.5-4.5-9.3-10-10 5.5-.7 9.3-4.5 10-10z" />
+    </svg>
+  );
+}
+
 function Nav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-[#2A2940] bg-[#0F0E1A]/60 backdrop-blur-xl">
@@ -365,18 +401,23 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="relative py-24 px-6">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold text-center mb-16"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Simple <span className="text-[#D4A843]">Pricing</span>
-            </motion.h2>
+        <section id="pricing" className="relative px-6 py-20 md:px-16">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-16 text-center">
+              <motion.h2
+                className="font-display mb-4 text-[32px] font-semibold leading-[1.2] text-white md:text-[48px]"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                Choose Your Path
+              </motion.h2>
+              <p className="text-[16px] leading-[1.5] text-[#9090A0]">
+                Start free. Go Pro for the full dreamscape.
+              </p>
+            </div>
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              className="grid grid-cols-1 gap-8 md:grid-cols-2"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -385,32 +426,41 @@ export default function Home() {
               {/* Free */}
               <motion.div
                 variants={fadeUp}
-                className="rounded-2xl border border-[#2A2940] bg-[#1A1929] p-8 flex flex-col"
+                className="flex flex-col items-start rounded-[32px] border border-[#2A2940] bg-[#1A1929] p-10 transition-all duration-500 hover:border-[#3D3B8E]/40"
               >
-                <h3 className="text-2xl font-bold mb-2">Free</h3>
-                <p className="text-[#9090A0] text-sm mb-6">
-                  Everything you need to start
+                <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1 text-[14px] font-semibold tracking-[0.05em] text-white">
+                  Free
+                </span>
+                <h3 className="font-display mb-2 text-[40px] font-bold text-white">
+                  £0
+                </h3>
+                <p className="mb-8 text-[#9090A0]">
+                  Everything you need to start.
                 </p>
-                <ul className="space-y-3 text-[#9090A0] text-sm mb-8">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#9090A0] mt-0.5">&#10003;</span> 3 AI dream analyses per month
+                <ul className="mb-12 space-y-4">
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 3
+                    AI dream analyses per month
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#9090A0] mt-0.5">&#10003;</span> Purchase video tokens from £1.49
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                    Purchase video tokens from £1.49
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#9090A0] mt-0.5">&#10003;</span> 10-second cinematic dream videos
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                    10-second cinematic dream videos
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#9090A0] mt-0.5">&#10003;</span> Ad-supported
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                    Ad-supported
                   </li>
                 </ul>
-                <div className="mt-auto flex flex-col gap-3">
+                <div className="mt-auto flex w-full flex-col gap-3">
                   <a
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-full text-center border border-[#E5E9FF] text-[#E5E9FF] font-semibold py-3 px-6 rounded-xl hover:bg-[#E5E9FF] hover:text-[#0F0E1A] transition-colors"
+                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-bold text-white transition-colors hover:bg-white/5"
                   >
                     Download Free on iOS
                   </a>
@@ -418,7 +468,7 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-full text-center border border-[#E5E9FF] text-[#E5E9FF] font-semibold py-3 px-6 rounded-xl hover:bg-[#E5E9FF] hover:text-[#0F0E1A] transition-colors"
+                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-bold text-white transition-colors hover:bg-white/5"
                   >
                     Download Free on Android
                   </a>
@@ -428,46 +478,55 @@ export default function Home() {
               {/* Pro */}
               <motion.div
                 variants={fadeUp}
-                className="relative rounded-2xl border border-[#3D3B8E]/50 bg-[#1A1929] p-8 shadow-[0_0_40px_rgba(61,59,142,0.1)] flex flex-col"
+                className="group relative flex flex-col items-start overflow-hidden rounded-[32px] border border-[#3D3B8E] bg-[#1A1929] p-10 shadow-[0_0_40px_rgba(61,59,142,0.1)]"
               >
-                <div className="absolute -top-3 right-6 flex gap-2">
-                  <span className="bg-[#3D3B8E] text-white text-xs font-bold px-3 py-1 rounded-full">
+                <div aria-hidden className="absolute right-0 top-0 p-8">
+                  <SparkleIcon className="h-[120px] w-[120px] rotate-12 text-[#3D3B8E]/40 transition-transform duration-1000 group-hover:rotate-45" />
+                </div>
+                <div className="relative z-10 mb-6 flex flex-wrap gap-2">
+                  <span className="rounded-full bg-[#3D3B8E]/20 px-4 py-1 text-[14px] font-semibold tracking-[0.05em] text-[#E5E9FF]">
+                    Pro
+                  </span>
+                  <span className="rounded-full bg-[#3D3B8E] px-4 py-1 text-[12px] font-bold text-white">
                     BEST VALUE
                   </span>
-                  <span className="bg-[#3D3B8E] text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="rounded-full bg-[#3D3B8E] px-4 py-1 text-[12px] font-bold text-white">
                     7-day free trial
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold mb-1">Pro</h3>
-                <p className="text-[#E5E9FF] text-lg font-semibold mb-1">
-                  £5.99/mo{" "}
-                  <span className="text-[#9090A0] text-sm font-normal">
-                    or £39.99/yr
+                <h3 className="font-display relative z-10 mb-2 text-[40px] font-bold text-white">
+                  £5.99
+                  <span className="text-[24px] font-medium text-[#9090A0]">
+                    /mo
                   </span>
+                </h3>
+                <p className="relative z-10 mb-8 text-[#9090A0]">
+                  or £39.99/yr. For the serious dreamer.
                 </p>
-                <p className="text-[#9090A0] text-sm mb-6">
-                  For the serious dreamer
-                </p>
-                <ul className="space-y-3 text-[#9090A0] text-sm mb-8">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#E5E9FF] mt-0.5">&#10003;</span> Unlimited AI dream analysis
+                <ul className="relative z-10 mb-12 space-y-4">
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                    Unlimited AI dream analysis
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#E5E9FF] mt-0.5">&#10003;</span> 2 video tokens included every month
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 2
+                    video tokens included every month
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#E5E9FF] mt-0.5">&#10003;</span> 10-second cinematic dream videos
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                    10-second cinematic dream videos
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#E5E9FF] mt-0.5">&#10003;</span> No ads
+                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> No
+                    ads
                   </li>
                 </ul>
-                <div className="mt-auto flex flex-col gap-3">
+                <div className="relative z-10 mt-auto flex w-full flex-col gap-3">
                   <a
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-full text-center bg-[#3D3B8E] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4D4B9E] transition-colors"
+                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-bold text-[#E5E9FF] transition-opacity hover:opacity-90"
                   >
                     Start Free Trial on iOS
                   </a>
@@ -475,7 +534,7 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block w-full text-center bg-[#3D3B8E] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4D4B9E] transition-colors"
+                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-bold text-[#E5E9FF] transition-opacity hover:opacity-90"
                   >
                     Start Free Trial on Android
                   </a>
