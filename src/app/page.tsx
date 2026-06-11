@@ -382,7 +382,7 @@ export default function Home() {
               </h2>
               <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
                 Watch your dreams come alive. Slumbr turns a dream entry into
-                a ten-second cinematic, AI-generated video — a surreal moment
+                a cinematic, AI-generated video — a surreal moment
                 of your subconscious you can watch, save, and share.
               </p>
               <p className="mt-6 text-[15px] text-[#6B6B7B]">
@@ -479,7 +479,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
-                    10-second cinematic dream videos
+                    5-second cinematic dream videos
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
