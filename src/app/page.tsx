@@ -137,7 +137,7 @@ function Nav() {
             Slumbr
           </span>
         </a>
-        <div className="hidden items-center gap-8 text-[14px] font-semibold tracking-[0.05em] md:flex">
+        <div className="hidden items-center gap-8 text-[15px] font-semibold tracking-[0.05em] md:flex">
           <a
             href="#how-it-works"
             className="text-[#9090A0] transition-colors hover:text-white"
@@ -153,7 +153,7 @@ function Nav() {
         </div>
         <a
           href="#download"
-          className="rounded-full bg-[#3D3B8E] px-6 py-2.5 text-[14px] font-semibold tracking-[0.05em] text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(61,59,142,0.5)] active:scale-95"
+          className="rounded-full bg-[#3D3B8E] px-6 py-2.5 text-[15px] font-semibold tracking-[0.05em] text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(61,59,142,0.5)] active:scale-95"
         >
           Get the App
         </a>
@@ -287,7 +287,7 @@ export default function Home() {
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mx-auto mb-12 max-w-2xl text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
+              className="mx-auto mb-12 max-w-2xl text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
             >
               Dive deeper into your subconscious. AI-powered analysis
               reveals what your dreams really mean, then brings them to life
@@ -328,13 +328,13 @@ export default function Home() {
               <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
                 AI Dream Analysis
               </h2>
-              <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
+              <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
                 Record a dream and Slumbr analyses it in seconds — surfacing
                 the themes, emotions, and symbols woven through it, and
                 explaining the psychology behind them. Over time, recurring
                 patterns your waking mind misses come into focus.
               </p>
-              <p className="mt-6 text-[14px] text-[#6B6B7B]">
+              <p className="mt-6 text-[15px] text-[#6B6B7B]">
                 3 analyses a month free — unlimited on Pro.
               </p>
             </motion.div>
@@ -380,12 +380,12 @@ export default function Home() {
               <h2 className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
                 Cinematic Dream Videos
               </h2>
-              <p className="text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0] md:text-xl">
+              <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
                 Watch your dreams come alive. Slumbr turns a dream entry into
                 a ten-second cinematic, AI-generated video — a surreal moment
                 of your subconscious you can watch, save, and share.
               </p>
-              <p className="mt-6 text-[14px] text-[#6B6B7B]">
+              <p className="mt-6 text-[15px] text-[#6B6B7B]">
                 Every video is generated from your own dream entry.
               </p>
             </motion.div>
@@ -422,7 +422,7 @@ export default function Home() {
                   <p className="mb-2 text-[20px] font-semibold text-white">
                     {s.text}
                   </p>
-                  <p className="max-w-[240px] text-balance text-[15px] leading-[1.5] text-[#9090A0]">
+                  <p className="max-w-[260px] text-balance text-[16px] leading-[1.5] text-[#9090A0]">
                     {s.subtitle}
                   </p>
                 </motion.div>
@@ -443,7 +443,7 @@ export default function Home() {
               >
                 Choose Your Path
               </motion.h2>
-              <p className="text-[16px] leading-[1.5] text-[#9090A0]">
+              <p className="text-[18px] leading-[1.5] text-[#9090A0]">
                 Start free. Go Pro for the full dreamscape.
               </p>
             </div>
@@ -465,23 +465,23 @@ export default function Home() {
                 <h3 className="font-display mb-2 text-[40px] font-medium text-white">
                   £0
                 </h3>
-                <p className="mb-8 text-[#9090A0]">
+                <p className="mb-8 text-[17px] text-[#9090A0]">
                   Everything you need to start.
                 </p>
                 <ul className="mb-12 space-y-4">
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 3
                     AI dream analyses per month
                   </li>
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
                     Purchase video tokens from £1.49
                   </li>
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
                     10-second cinematic dream videos
                   </li>
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
                     Ad-supported
                   </li>
@@ -531,23 +531,23 @@ export default function Home() {
                     /mo
                   </span>
                 </h3>
-                <p className="relative z-10 mb-8 text-[#9090A0]">
+                <p className="relative z-10 mb-8 text-[17px] text-[#9090A0]">
                   or £39.99/yr. For the serious dreamer.
                 </p>
                 <ul className="relative z-10 mb-12 space-y-4">
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
                     Unlimited AI dream analysis
                   </li>
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 2
                     video tokens included every month
                   </li>
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
                     10-second cinematic dream videos
                   </li>
-                  <li className="flex items-center gap-3 text-[16px] text-[#E5E9FF]">
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> No
                     ads
                   </li>
@@ -597,7 +597,7 @@ export default function Home() {
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                className="mx-auto mb-10 max-w-xl text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
+                className="mx-auto mb-10 max-w-xl text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
               >
                 Your subconscious has stories to tell. Listen to them tonight.
               </motion.p>
@@ -624,11 +624,11 @@ export default function Home() {
                   Slumbr
                 </span>
               </div>
-              <p className="text-[14px] font-semibold tracking-[0.05em] text-[#6B6B7B]">
+              <p className="text-[15px] font-semibold tracking-[0.05em] text-[#6B6B7B]">
                 &copy; 2026 Slumbr LTD. All rights reserved.
               </p>
             </div>
-            <div className="flex flex-wrap justify-center gap-8 text-[14px] font-semibold tracking-[0.05em]">
+            <div className="flex flex-wrap justify-center gap-8 text-[15px] font-semibold tracking-[0.05em]">
               <Link
                 href="/privacy-policy"
                 className="text-[#9090A0] transition-colors hover:text-white"

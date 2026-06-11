@@ -56,11 +56,11 @@ off the gradients. Keep it subtle — it should be felt, not seen.
 | heading-lg | Fraunces 500 | 32px / 1.15 (md: 48px) | — |
 | heading-xl (video/CTA) | Fraunces 500 | 32px / 1.1 (md: 56px) | — |
 | price / wordmark | Fraunces 500 | 40px / 24px | — |
-| body-lg | Outfit 400 | 18px / 1.6 | 0.01em |
-| body-md | Outfit 400 | 16px / 1.5 | — |
-| label | Outfit 600 | 14px / 1.2 | 0.05em |
+| body-lg | Outfit 400 | 20px / 1.6 | 0.01em |
+| body-md | Outfit 400 | 17–18px / 1.5 | — |
+| label | Outfit 600 | 15px / 1.2 | 0.05em |
 | eyebrow | Outfit 700 | 12px, uppercase | 0.18em |
-| caption | Outfit 400 | 14px | — |
+| caption | Outfit 400 | 15px | — |
 
 Italic accents: one emotionally loaded word per display headline may be set
 in Fraunces italic (e.g. "Unlock Your *Dreams*."). At most one per headline,
