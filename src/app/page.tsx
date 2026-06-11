@@ -187,16 +187,6 @@ function PhoneFrame({
   );
 }
 
-function AuroraBackground() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-[#3D3B8E]/30 blur-[120px] motion-safe:animate-pulse" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-[#3D3B8E]/15 blur-[100px] motion-safe:animate-pulse [animation-delay:2s]" />
-      <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-[#D4A843]/8 blur-[80px] motion-safe:animate-pulse [animation-delay:4s]" />
-    </div>
-  );
-}
-
 const steps = [
   {
     number: 1,
@@ -545,54 +535,92 @@ export default function Home() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative py-24 px-6 text-center">
-          <AuroraBackground />
-          <motion.div
-            className="relative z-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            <motion.h2
-              variants={fadeUp}
-              className="text-3xl md:text-5xl font-bold mb-8"
+        <section className="px-6 py-20 md:px-16">
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[48px] border border-[#2A2940] bg-[#1A1929] p-12 text-center md:p-24">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3D3B8E]/20 via-transparent to-[#3D3B8E]/10"
+            />
+            <motion.div
+              className="relative z-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={stagger}
             >
-              What did you dream last night?
-            </motion.h2>
-            <motion.div variants={fadeUp}>
-              <StoreBadges />
+              <motion.h2
+                variants={fadeUp}
+                className="font-display mb-6 text-[32px] font-semibold leading-[1.2] text-white md:text-[56px]"
+              >
+                What did you dream last night?
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="mx-auto mb-10 max-w-xl text-[18px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
+              >
+                Your subconscious has stories to tell. Listen to them tonight.
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <StoreBadges />
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-[#2A2940] py-8 px-6">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#6B6B7B]">
-            <div className="flex items-center gap-3">
-              <Image src="/logo.png" alt="Slumbr logo" width={24} height={24} />
-              <div className="flex gap-4">
-                <Link href="/privacy-policy" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-                <span>&middot;</span>
-                <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
-                  Terms &amp; Conditions
-                </Link>
-                <span>&middot;</span>
-                <Link href="/delete-account" className="hover:text-white transition-colors">
-                  Delete account
-                </Link>
-                <span>&middot;</span>
-                <a
-                  href="mailto:contact@slumbr.ai"
-                  className="hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
+        <footer className="relative w-full px-6 py-20 md:px-16">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-30"
+          >
+            <div className="absolute left-[10%] top-10 h-0.5 w-0.5 rounded-full bg-white" />
+            <div className="absolute right-[15%] top-20 h-1 w-1 rounded-full bg-white opacity-40" />
+            <div className="absolute bottom-10 left-[40%] h-0.5 w-0.5 rounded-full bg-white opacity-20" />
+          </div>
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 border-t border-[#2A2940] pt-12 md:flex-row">
+            <div className="flex flex-col items-center gap-4 md:items-start">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/logo.png"
+                  alt="Slumbr logo"
+                  width={24}
+                  height={24}
+                  className="opacity-80"
+                />
+                <span className="font-display text-[24px] font-medium text-white">
+                  Slumbr
+                </span>
               </div>
+              <p className="text-[14px] font-semibold tracking-[0.05em] text-[#6B6B7B]">
+                &copy; 2026 Slumbr LTD. All rights reserved.
+              </p>
             </div>
-            <p>&copy; 2026 Slumbr LTD. All rights reserved.</p>
+            <div className="flex flex-wrap justify-center gap-8 text-[14px] font-semibold tracking-[0.05em]">
+              <Link
+                href="/privacy-policy"
+                className="text-[#9090A0] transition-colors hover:text-white"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms-and-conditions"
+                className="text-[#9090A0] transition-colors hover:text-white"
+              >
+                Terms &amp; Conditions
+              </Link>
+              <Link
+                href="/delete-account"
+                className="text-[#9090A0] transition-colors hover:text-white"
+              >
+                Delete account
+              </Link>
+              <a
+                href="mailto:contact@slumbr.ai"
+                className="text-[#9090A0] transition-colors hover:text-white"
+              >
+                Contact
+              </a>
+            </div>
           </div>
         </footer>
       </main>
