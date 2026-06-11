@@ -470,6 +470,10 @@ export default function Home() {
                 </p>
                 <ul className="mb-12 space-y-4">
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                    1 free video token on sign-up
+                  </li>
+                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 3
                     AI dream analyses per month
                   </li>
