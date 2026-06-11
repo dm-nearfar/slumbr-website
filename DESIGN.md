@@ -27,8 +27,16 @@ Borders and typography stay sharp and refined ("Literary Noir").
 | white | `#FFFFFF` | Headings only |
 
 Glow recipe: primary buttons/active states get a soft outer glow of indigo at
-10–20% opacity extending 24–32px. Ambient page glows: large (700–1200px)
-indigo circles at 10–25% opacity with 80–200px blur, `mix-blend-screen`.
+10–20% opacity extending 24–32px. Ambient page glows: large (600–900px)
+indigo circles at 10–25% opacity with 140–180px blur, `mix-blend-screen`.
+
+**Atmosphere rule:** all ambient glows, mist, and stars live in ONE page-level
+layer (`PageAtmosphere`, absolute over the whole document, positioned by % of
+page height) so the night scene flows continuously behind every section.
+Sections are transparent content layers — never give a section its own
+background fill, ambient glow, or `overflow-hidden` that could slice a glow.
+Tight object halos (e.g. behind a phone mockup) are part of the component,
+not the atmosphere.
 
 ## Typography
 

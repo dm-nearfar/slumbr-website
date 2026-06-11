@@ -151,14 +151,45 @@ function Nav() {
   );
 }
 
-function Starfield() {
+/* Single page-level atmosphere layer — all ambient glows and stars live here
+   so nothing is clipped at section boundaries. Positions are % of total page
+   height, composed to deepen at the hero, pool behind the phone mockups, and
+   settle softly at the CTA/footer. */
+function PageAtmosphere() {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 opacity-40">
-      <div className="absolute left-[15%] top-20 h-0.5 w-0.5 rounded-full bg-white" />
-      <div className="absolute left-[45%] top-40 h-1 w-1 rounded-full bg-white opacity-60" />
-      <div className="absolute right-[20%] top-60 h-0.5 w-0.5 rounded-full bg-white opacity-30" />
-      <div className="absolute bottom-40 left-[30%] h-1 w-1 rounded-full bg-white opacity-50" />
-      <div className="absolute right-[10%] top-[15%] h-0.5 w-0.5 rounded-full bg-white" />
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {/* Hero — deepest part of the night */}
+      <div className="absolute -top-[2%] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-[#3D3B8E]/25 mix-blend-screen blur-[160px]" />
+      <div className="absolute right-[-12%] top-[3%] h-[600px] w-[600px] rounded-full bg-[#3D3B8E]/15 mix-blend-screen blur-[140px]" />
+      {/* Moonlit pool behind the AI analysis mockup (right) */}
+      <div className="absolute right-[2%] top-[24%] h-[700px] w-[700px] rounded-full bg-[#3D3B8E]/20 mix-blend-screen blur-[160px]" />
+      {/* Pool behind the dream-video mockup (left) */}
+      <div className="absolute left-[-8%] top-[40%] h-[800px] w-[800px] rounded-full bg-[#3D3B8E]/20 mix-blend-screen blur-[180px]" />
+      {/* Faint drift through pricing */}
+      <div className="absolute right-[12%] top-[62%] h-[600px] w-[600px] rounded-full bg-[#3D3B8E]/10 mix-blend-screen blur-[160px]" />
+      {/* Soft settle at the CTA and footer */}
+      <div className="absolute bottom-[1%] left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#3D3B8E]/12 mix-blend-screen blur-[180px]" />
+
+      {/* Stars, scattered down the whole night */}
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute left-[15%] top-[3%] h-0.5 w-0.5 rounded-full bg-white" />
+        <div className="absolute left-[45%] top-[6%] h-1 w-1 rounded-full bg-white opacity-60" />
+        <div className="absolute right-[20%] top-[9%] h-0.5 w-0.5 rounded-full bg-white opacity-30" />
+        <div className="absolute left-[30%] top-[13%] h-1 w-1 rounded-full bg-white opacity-50" />
+        <div className="absolute right-[10%] top-[2%] h-0.5 w-0.5 rounded-full bg-white" />
+        <div className="absolute left-[8%] top-[28%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
+        <div className="absolute right-[28%] top-[35%] h-1 w-1 rounded-full bg-white opacity-30" />
+        <div className="absolute left-[55%] top-[46%] h-0.5 w-0.5 rounded-full bg-white opacity-40" />
+        <div className="absolute right-[8%] top-[55%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
+        <div className="absolute left-[18%] top-[68%] h-1 w-1 rounded-full bg-white opacity-30" />
+        <div className="absolute right-[40%] top-[78%] h-0.5 w-0.5 rounded-full bg-white opacity-40" />
+        <div className="absolute left-[10%] top-[94%] h-0.5 w-0.5 rounded-full bg-white" />
+        <div className="absolute right-[15%] top-[92%] h-1 w-1 rounded-full bg-white opacity-40" />
+        <div className="absolute left-[40%] top-[98%] h-0.5 w-0.5 rounded-full bg-white opacity-20" />
+      </div>
     </div>
   );
 }
@@ -208,22 +239,15 @@ const steps = [
 export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
-      <Nav />
-      <main>
+      <div className="relative">
+        <PageAtmosphere />
+        <Nav />
+        <main className="relative">
         {/* Hero */}
         <section
           id="top"
-          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-36 text-center md:px-16"
+          className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-20 pt-36 text-center md:px-16"
         >
-          <Starfield />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-[#3D3B8E] opacity-25 blur-[80px]"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute bottom-1/4 right-1/4 h-[600px] w-[600px] rounded-full bg-[#3D3B8E] opacity-25 blur-[80px]"
-          />
           <motion.div
             className="relative z-10 w-full max-w-5xl"
             initial="hidden"
@@ -271,7 +295,7 @@ export default function Home() {
         </section>
 
         {/* AI Dream Analysis */}
-        <section className="overflow-hidden px-6 py-20 md:px-16">
+        <section className="px-6 py-20 md:px-16">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row md:gap-24">
             <motion.div
               className="order-2 flex-1 text-center md:order-1 md:text-left"
@@ -310,7 +334,7 @@ export default function Home() {
         </section>
 
         {/* Cinematic Dream Videos */}
-        <section className="overflow-hidden px-6 py-20 md:px-16">
+        <section className="px-6 py-20 md:px-16">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row md:gap-24">
             <motion.div
               className="relative order-1 flex flex-1 justify-center"
@@ -569,14 +593,6 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="relative w-full px-6 py-20 md:px-16">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-30"
-          >
-            <div className="absolute left-[10%] top-10 h-0.5 w-0.5 rounded-full bg-white" />
-            <div className="absolute right-[15%] top-20 h-1 w-1 rounded-full bg-white opacity-40" />
-            <div className="absolute bottom-10 left-[40%] h-0.5 w-0.5 rounded-full bg-white opacity-20" />
-          </div>
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 border-t border-[#2A2940] pt-12 md:flex-row">
             <div className="flex flex-col items-center gap-4 md:items-start">
               <div className="flex items-center gap-3">
@@ -623,7 +639,8 @@ export default function Home() {
             </div>
           </div>
         </footer>
-      </main>
+        </main>
+      </div>
     </MotionConfig>
   );
 }
