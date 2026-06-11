@@ -6,7 +6,18 @@ import Link from "next/link";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const reveal = {
+  initial: "hidden" as const,
+  whileInView: "visible" as const,
+  viewport: { once: true, margin: "-80px" },
+  variants: fadeUp,
 };
 
 const stagger = {
@@ -51,7 +62,7 @@ function StoreBadges() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Download on the App Store"
-        className="flex items-center gap-3 rounded-xl bg-white px-8 py-3 text-black transition-all hover:bg-white/90 active:scale-95"
+        className="flex items-center gap-3 rounded-xl bg-white px-8 py-3 text-black transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(229,233,255,0.25)] active:scale-95"
       >
         <AppleLogo className="h-7 w-7" />
         <span className="text-left leading-tight">
@@ -66,7 +77,7 @@ function StoreBadges() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Get it on Google Play"
-        className="flex items-center gap-3 rounded-xl border border-[#2A2940] bg-[#1A1929] px-8 py-3 text-white transition-all hover:bg-[#232238] active:scale-95"
+        className="flex items-center gap-3 rounded-xl border border-[#2A2940] bg-[#1A1929] px-8 py-3 text-white transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-[#232238] hover:shadow-[0_8px_32px_rgba(61,59,142,0.45)] active:scale-95"
       >
         <PlayMark className="h-7 w-7" />
         <span className="text-left leading-tight">
@@ -142,7 +153,7 @@ function Nav() {
         </div>
         <a
           href="#download"
-          className="rounded-full bg-[#3D3B8E] px-6 py-2.5 text-[14px] font-semibold tracking-[0.05em] text-[#E5E9FF] transition hover:opacity-85 active:scale-95"
+          className="rounded-full bg-[#3D3B8E] px-6 py-2.5 text-[14px] font-semibold tracking-[0.05em] text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(61,59,142,0.5)] active:scale-95"
         >
           Get the App
         </a>
@@ -194,6 +205,8 @@ function PageAtmosphere() {
   );
 }
 
+/* Final mockup treatment — dark bezel, soft indigo halo with a lavender rim,
+   deep drop shadow. Real screenshots drop into `src` with no further styling. */
 function PhoneFrame({
   src,
   alt,
@@ -204,16 +217,26 @@ function PhoneFrame({
   priority?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-[48px] border-8 border-[#1A1929] bg-[#1A1929] shadow-2xl shadow-[#3D3B8E]/20 ring-1 ring-white/10">
-      <Image
-        src={src}
-        alt={alt}
-        width={1170}
-        height={2532}
-        unoptimized
-        priority={priority}
-        className="h-auto w-full rounded-[40px] object-cover"
+    <div className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-10 rounded-full bg-[#3D3B8E]/35 blur-[90px]"
       />
+      <div
+        aria-hidden
+        className="absolute -inset-1 rounded-[52px] bg-[#E5E9FF]/10 blur-[18px]"
+      />
+      <div className="relative overflow-hidden rounded-[48px] border-8 border-[#1A1929] bg-[#1A1929] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10">
+        <Image
+          src={src}
+          alt={alt}
+          width={1170}
+          height={2532}
+          unoptimized
+          priority={priority}
+          className="h-auto w-full rounded-[40px] object-cover"
+        />
+      </div>
     </div>
   );
 }
@@ -275,10 +298,6 @@ export default function Home() {
               variants={fadeUp}
               className="relative mx-auto mt-16 w-full max-w-[320px] md:max-w-[400px]"
             >
-              <div
-                aria-hidden
-                className="absolute inset-0 rounded-full bg-[#3D3B8E]/40 blur-[100px]"
-              />
               <motion.div
                 className="relative z-20"
                 animate={{ y: [0, -20, 0] }}
@@ -299,10 +318,7 @@ export default function Home() {
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
               className="order-2 flex-1 text-center md:order-1 md:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              {...reveal}
             >
               <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
                 AI Dream Analysis
@@ -319,15 +335,8 @@ export default function Home() {
             </motion.div>
             <motion.div
               className="relative order-1 flex flex-1 justify-center md:order-2"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              {...reveal}
             >
-              <div
-                aria-hidden
-                className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-[#3D3B8E]/40 blur-[80px]"
-              />
               <div className="relative w-[280px] md:w-[320px]">
                 <PhoneFrame
                   src="/screenshots/placeholder-ai-analysis.svg"
@@ -343,15 +352,8 @@ export default function Home() {
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
             <motion.div
               className="relative order-1 flex flex-1 justify-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              {...reveal}
             >
-              <div
-                aria-hidden
-                className="absolute inset-0 m-auto rounded-full bg-[#3D3B8E]/50 blur-[100px]"
-              />
               <motion.div
                 className="relative w-[320px] md:w-[400px]"
                 whileHover={{ scale: 1.02 }}
@@ -365,10 +367,7 @@ export default function Home() {
             </motion.div>
             <motion.div
               className="order-2 flex-1 text-center md:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              {...reveal}
             >
               <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
                 Standout Feature
@@ -483,7 +482,7 @@ export default function Home() {
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-bold text-white transition-colors hover:bg-white/5"
+                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-semibold text-white transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-white/5"
                   >
                     Download Free on iOS
                   </a>
@@ -491,7 +490,7 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-bold text-white transition-colors hover:bg-white/5"
+                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-semibold text-white transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-white/5"
                   >
                     Download Free on Android
                   </a>
@@ -549,7 +548,7 @@ export default function Home() {
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-bold text-[#E5E9FF] transition-opacity hover:opacity-90"
+                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-semibold text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(61,59,142,0.5)]"
                   >
                     Start Free Trial on iOS
                   </a>
@@ -557,7 +556,7 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-bold text-[#E5E9FF] transition-opacity hover:opacity-90"
+                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-semibold text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(61,59,142,0.5)]"
                   >
                     Start Free Trial on Android
                   </a>
