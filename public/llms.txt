@@ -1,0 +1,20 @@
+# Slumbr
+
+> Slumbr is a dream journal app for iPhone and Android that records dreams by voice or
+> text, analyses them with AI, and turns them into short AI-generated videos. New
+> accounts get a free video on sign-up. Slogan: "Unlock your dreams."
+
+Note: llms.txt is an emerging convention with little proven effect on AI retrieval as of
+2026. The real citation levers are crawlable content, structured data, and third-party
+authority. This file is low-cost insurance, not a primary lever.
+
+## Key pages
+- [We Turned Real Dreams Into AI Videos](https://slumbr.ai/blog/we-turned-real-dreams-into-ai-videos): real dream journal entries run through Slumbr's AI video pipeline, with results and takeaways.
+- [Download on the App Store](https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739)
+- [Get it on Google Play](https://play.google.com/store/apps/details?id=com.slumbr.slumbr)
+
+## Dream meaning guides
+- [Flying dreams](https://slumbr.ai/dream-meanings/flying-dreams)
+- [Water dreams](https://slumbr.ai/dream-meanings/water-dreams)
+- [Being chased dreams](https://slumbr.ai/dream-meanings/being-chased)
+- [Recurring dreams](https://slumbr.ai/dream-meanings/recurring-dreams)

@@ -1,0 +1,152 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://slumbr.ai/#organization",
+      "name": "Slumbr",
+      "url": "https://slumbr.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://slumbr.ai/logo.png"
+      },
+      "slogan": "Unlock your dreams.",
+      "sameAs": [
+        "https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739",
+        "https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://slumbr.ai/#website",
+      "url": "https://slumbr.ai/",
+      "name": "Slumbr",
+      "publisher": {
+        "@id": "https://slumbr.ai/#organization"
+      },
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://slumbr.ai/#app",
+      "name": "Slumbr - Dream Journal AI",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "LifestyleApplication",
+      "url": "https://slumbr.ai/",
+      "description": "Slumbr is a dream journal app for iPhone and Android that records your dreams by voice or text, analyses them with AI, and turns them into short AI-generated videos.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP",
+        "description": "Free to download with a free video token on sign-up. Optional subscription for unlimited videos."
+      },
+      "downloadUrl": [
+        "https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739",
+        "https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
+      ],
+      "publisher": {
+        "@id": "https://slumbr.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://slumbr.ai/blog/we-turned-real-dreams-into-ai-videos#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://slumbr.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://slumbr.ai/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "We Turned Real Dreams Into AI Videos: Here's What Happened"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://slumbr.ai/blog/we-turned-real-dreams-into-ai-videos#article",
+      "isPartOf": {
+        "@id": "https://slumbr.ai/#website"
+      },
+      "mainEntityOfPage": "https://slumbr.ai/blog/we-turned-real-dreams-into-ai-videos",
+      "url": "https://slumbr.ai/blog/we-turned-real-dreams-into-ai-videos",
+      "headline": "We Turned Real Dreams Into AI Videos: Here's What Happened",
+      "description": "We ran real dream journal entries through Slumbr's AI video generator, no cherry-picking. Funny, beautiful, sometimes unsettling. Here's what we learned.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://slumbr.ai/images/slumbr-hero-dream-portal.webp",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "2026-06-14",
+      "dateModified": "2026-06-15",
+      "author": {
+        "@id": "https://slumbr.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://slumbr.ai/#organization"
+      },
+      "about": {
+        "@id": "https://slumbr.ai/#app"
+      },
+      "articleSection": "Behind the Dream",
+      "keywords": "AI dream video, dream journal app, AI dream analysis, dream to video, cinematic dream video",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://slumbr.ai/blog/we-turned-real-dreams-into-ai-videos#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can AI turn my dreams into videos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Slumbr records a dream by voice or text, analyses it with AI, and generates a short AI video based on the entry, usually five to ten seconds long."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What app turns dreams into AI videos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slumbr is a dream journal app for iPhone and Android that turns written or spoken dream entries into short AI-generated videos, alongside AI dream analysis and recurring-dream tracking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Slumbr turn a dream into a video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You record your dream in the app. Slumbr's AI analyses the entry for emotion, theme, and detail, then feeds that into a video generator. The clip it renders is shaped by the tone of the dream as much as the objects in it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a free way to try it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every new Slumbr account gets a free video token on sign-up, so your first dream-to-video is on us."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Slumbr tell me what my dreams mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slumbr shows you emotional themes and patterns, including recurring dreams, and gives you a video to look back on. It won't hand you a one-line 'this means X,' because no app really can. It just helps you notice things in your own dreams you'd otherwise miss."
+          }
+        }
+      ]
+    }
+  ]
+}
