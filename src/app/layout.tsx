@@ -16,6 +16,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://slumbr.ai"),
   title: "Slumbr | AI Dream Journal App - Record, Analyse & Visualise Your Dreams",
   description:
     "Slumbr is a free AI-powered dream journal app for iPhone and Android. Record your dreams, get instant AI analysis, and watch them come to life as cinematic videos. Download free on the App Store and Google Play.",
