@@ -65,7 +65,8 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-[1088px] px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-[720px]">
         <nav
           aria-label="Breadcrumb"
           className="mb-10 text-[13px] tracking-[0.04em] text-footer"
@@ -98,12 +99,13 @@ export default function Page() {
           </span>
           <span className="text-footer">Slumbr Team</span>
         </p>
+        </div>
 
         <article>
           <PostBody content={body} />
         </article>
 
-        <div className="mt-16 border-t border-border pt-8">
+        <div className="mx-auto mt-16 max-w-[720px] border-t border-border pt-8">
           <Link
             href="/blog"
             className="text-[15px] text-lavender underline decoration-indigo/60 underline-offset-4 hover:decoration-lavender"

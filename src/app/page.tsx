@@ -3,6 +3,8 @@
 import { motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import PostCard from "@/components/PostCard";
+import { latestPost } from "@/content/blog/posts";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -150,6 +152,12 @@ function Nav() {
           >
             Pricing
           </a>
+          <Link
+            href="/blog"
+            className="text-[#9090A0] transition-colors hover:text-white"
+          >
+            Blog
+          </Link>
         </div>
         <a
           href="#download"
@@ -612,6 +620,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* From the blog */}
+        <section className="relative px-6 py-16 md:px-16 md:py-24">
+          <div className="mx-auto max-w-3xl">
+            <motion.div className="mb-10 text-center" {...reveal}>
+              <div className="mb-4 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
+                Behind the Dream
+              </div>
+              <h2 className="font-display text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
+                From the Blog
+              </h2>
+            </motion.div>
+            <motion.div {...reveal}>
+              <PostCard post={latestPost} />
+            </motion.div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="relative w-full px-6 py-16 md:px-16 md:py-20">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 border-t border-[#2A2940] pt-12 md:flex-row">
@@ -633,6 +658,12 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-8 text-[15px] font-semibold tracking-[0.05em]">
+              <Link
+                href="/blog"
+                className="text-[#9090A0] transition-colors hover:text-white"
+              >
+                Blog
+              </Link>
               <Link
                 href="/privacy-policy"
                 className="text-[#9090A0] transition-colors hover:text-white"
