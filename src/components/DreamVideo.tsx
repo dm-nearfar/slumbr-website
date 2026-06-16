@@ -28,8 +28,9 @@ export default function DreamVideo({ poster, label }: DreamVideoProps) {
   const webm = poster.replace(/\.webp$/, ".webm");
   const mp4 = poster.replace(/\.webp$/, ".mp4");
   const html =
-    `<video class="aspect-video w-full rounded-2xl border border-border bg-surface object-cover"` +
+    `<video class="pointer-events-none aspect-video w-full rounded-2xl border border-border bg-surface object-cover"` +
     ` autoplay loop muted playsinline preload="metadata" width="1280" height="720"` +
+    ` tabindex="-1" disablepictureinpicture disableremoteplayback` +
     ` poster="${escapeAttr(poster)}" aria-label="${escapeAttr(label)}">` +
     `<source src="${escapeAttr(webm)}" type="video/webm">` +
     `<source src="${escapeAttr(mp4)}" type="video/mp4">` +
