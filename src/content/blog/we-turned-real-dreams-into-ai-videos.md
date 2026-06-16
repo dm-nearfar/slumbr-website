@@ -30,15 +30,15 @@ Here's what came out the other side.
 
 ## Case 1: "I was flying, but only just above the ground"
 
-**The journal entry:** *"Dream I was flying again but low, like a foot off the ground, gliding over my street. Streetlights were orange, everything felt really calm. Not scared of falling or anything, just felt light."*
+**The journal entry:** *"Dream I was flying again but low, like a foot off the ground, gliding over my street. It had just rained so everything was wet and shiny, warm yellow light coming from the houses. Everything felt really calm. Not scared of falling or anything, just felt light."*
 
 <!-- CASE 1 MEDIA: 16:9 muted autoplay loop <video> once ready; use this still as the poster. -->
-![A dreamer in pyjamas gliding a foot above a wet, orange-lit suburban street at night.](/images/slumbr-flying-dream-ai-video.webp)
-*Slumbr's clip for this dream: a slow, low glide under orange streetlights, calm and weightless.*
+![A dreamer in pyjamas gliding a foot above a wet suburban street at dusk, lit by the warm glow from nearby houses.](/images/slumbr-flying-dream-ai-video.webp)
+*Slumbr's clip for this dream: a slow, low glide over a wet street, warm light from the houses, calm and weightless.*
 
-[Flying dreams](/dream-meanings/flying-dreams) are one of the most common dream themes there is, and one of the hardest to render, because "flying" means something different in almost every dream. Some people soar over oceans. This dreamer was hovering a foot off the pavement, past their own front door, under orange streetlights.
+[Flying dreams](/dream-meanings/flying-dreams) are one of the most common dream themes there is, and one of the hardest to render, because "flying" means something different in almost every dream. Some people soar over oceans. This dreamer was hovering a foot off the pavement, past their own front door, the wet road catching the warm light spilling from the windows.
 
-Slumbr's AI analysis read the dominant emotion as calm. That lines up with dream research: low, gentle flying dreams often show up in periods of relief rather than ambition or escape. The video followed the entry's mood, a slow, low glide down a quiet street, warm orange light, almost no motion blur.
+Slumbr's AI analysis read the dominant emotion as calm. That lines up with dream research: low, gentle flying dreams often show up in periods of relief rather than ambition or escape. The video followed the entry's mood, a slow, low glide down a quiet, rain-wet street, warm light from the houses, almost no motion blur.
 
 The dreamer's reaction: *"That's exactly the vibe. I figured it'd look like Superman flying around. Didn't think it'd come out this calm."*
 
@@ -91,7 +91,7 @@ This is the kind of dream that's almost impossible to describe to another person
 ## What we learned
 
 - **Mood matters more than objects.** "Ocean" doesn't automatically mean "flood." A dream described as calm tends to render as calm, even when the imagery (water in your home, a shadow in a hallway, a dissolving room) sounds dramatic on paper.
-- **Short, specific details beat long descriptions.** The dreams with one or two vivid specifics ("orange streetlights," "humming a song," "the shadow stopped too") produced the sharpest videos. Longer, more general entries gave the AI less to hold onto.
+- **Short, specific details beat long descriptions.** The dreams with one or two vivid specifics ("wet and shiny," "humming a song," "the shadow stopped too") produced the sharpest videos. Longer, more general entries gave the AI less to hold onto.
 - **Recurring dreams are where this earns its keep.** Watching a chase dream back is interesting on its own. Watching it back once Slumbr has told you it's the third time this month is something else.
 - **Not every dream needs to be "figured out" to be worth keeping.** The static-kitchen dream never got a tidy interpretation, and that was fine. Sometimes a dream is just worth having a record of.
 
