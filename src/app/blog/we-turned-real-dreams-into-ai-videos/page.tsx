@@ -3,6 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import PostBody from "@/components/PostBody";
+import BlogMedia from "@/components/BlogMedia";
+import { posts } from "@/content/blog/posts";
 import schema from "@/content/blog/we-turned-real-dreams-into-ai-videos.schema.json";
 
 // Fully static page: the markdown is read at build time and prerendered.
@@ -15,6 +17,10 @@ const TITLE = "We Turned Real Dreams Into AI Videos: Here's What Happened";
 const HERO = `${SITE}/images/slumbr-hero-dream-portal.webp`;
 const HERO_ALT =
   "A glowing spiral dream portal opening in the night sky above a sleeping town.";
+
+const post = posts.find((p) => p.slug === SLUG);
+const heroImage = post?.hero ?? "/images/slumbr-hero-dream-portal.webp";
+const heroImageAlt = post?.heroAlt ?? HERO_ALT;
 
 // Head meta mapped to the Next Metadata API from head-and-schema.html. The meta,
 // og and twitter descriptions are intentionally worded differently there.
@@ -99,6 +105,10 @@ export default function Page() {
           </span>
           <span className="text-footer">Slumbr Team</span>
         </p>
+        </div>
+
+        <div className="mx-auto mb-12 mt-4 w-full max-w-[1040px]">
+          <BlogMedia src={heroImage} alt={heroImageAlt} priority />
         </div>
 
         <article>

@@ -1,29 +1,15 @@
 import ReactMarkdown, { type Components } from "react-markdown";
 import Link from "next/link";
-import Image from "next/image";
-import fs from "node:fs";
-import path from "node:path";
-import DreamVideo from "./DreamVideo";
-import MediaPlaceholder from "./MediaPlaceholder";
+import BlogMedia from "./BlogMedia";
+import StoreBadges from "./StoreBadges";
 
-// Filename markers: the four case clips -> <video>; the hero -> priority image.
+// Filename markers: the four case clips -> <video>; the hero -> top banner.
 const VIDEO_MARKER = "-ai-video";
 const HERO_MARKER = "-dream-portal";
 
 // Editorial measures: prose reads at a comfortable column; media breaks out wider.
 const PROSE = "mx-auto w-full max-w-[720px]";
 const MEDIA = "mx-auto w-full max-w-[1040px]";
-
-// Build-time check: has the referenced public asset been added yet? Missing is
-// the default state — when the file lands in public/ a rebuild renders it for real.
-function hasPublicAsset(src: string): boolean {
-  if (!src.startsWith("/")) return false;
-  try {
-    return fs.existsSync(path.join(process.cwd(), "public", src));
-  } catch {
-    return false;
-  }
-}
 
 const components: Components = {
   h1: ({ children }) => (
@@ -66,6 +52,18 @@ const components: Components = {
         </p>
       );
     }
+    // CTA app-store links -> official badge row. The badge for the App Store link
+    // renders both badges; the Google Play paragraph is then dropped (de-dupe).
+    // This also drops the raw URL text and bold lead-in at the render layer.
+    const appLink = kids.find((k) => k.type === "element" && k.tagName === "a");
+    const appHref =
+      appLink && appLink.type === "element" ? String(appLink.properties?.href ?? "") : "";
+    if (appHref.includes("apps.apple.com")) {
+      return <StoreBadges className={`${PROSE} my-10`} />;
+    }
+    if (appHref.includes("play.google.com")) {
+      return null;
+    }
     // Journal entry: paragraph led by a <strong> "The journal entry:" label.
     const first = kids[0];
     const isJournalEntry =
@@ -76,14 +74,14 @@ const components: Components = {
     if (isJournalEntry) {
       return (
         <blockquote
-          className={`${PROSE} my-8 rounded-r-lg border-l-2 border-indigo/70 bg-surface/40 py-5 pr-5 pl-6 text-[18px] italic leading-[1.7] text-grey md:text-[19px]`}
+          className={`${PROSE} my-8 rounded-r-lg border-l-2 border-indigo/70 bg-surface/40 py-5 pr-5 pl-6 text-[18px] italic leading-[1.7] text-white/90 md:text-[19px]`}
         >
           {children}
         </blockquote>
       );
     }
     return (
-      <p className={`${PROSE} mb-7 text-[18px] leading-[1.7] text-grey md:text-[19px]`}>
+      <p className={`${PROSE} mb-7 text-[18px] leading-[1.7] text-white/90 md:text-[19px]`}>
         {children}
       </p>
     );
@@ -107,7 +105,7 @@ const components: Components = {
   },
   ul: ({ children }) => (
     <ul
-      className={`${PROSE} mb-7 list-disc space-y-4 pl-6 text-[18px] leading-[1.7] text-grey marker:text-indigo md:text-[19px]`}
+      className={`${PROSE} mb-7 list-disc space-y-4 pl-6 text-[18px] leading-[1.7] text-white/90 marker:text-indigo md:text-[19px]`}
     >
       {children}
     </ul>
@@ -118,38 +116,14 @@ const components: Components = {
   img: ({ src, alt }) => {
     const source = typeof src === "string" ? src : "";
     const description = typeof alt === "string" ? alt : "";
-
-    // The four case clips -> looping <video> when present, else placeholder.
-    if (source.includes(VIDEO_MARKER)) {
-      const mp4 = source.replace(/\.webp$/, ".mp4");
-      return (
-        <div className={`${MEDIA} mt-12 mb-3`}>
-          {hasPublicAsset(mp4) ? (
-            <DreamVideo poster={source} label={description} />
-          ) : (
-            <MediaPlaceholder kind="video" label={description} />
-          )}
-        </div>
-      );
+    // The hero renders as a top banner on the page; suppress the inline duplicate.
+    if (source.includes(HERO_MARKER)) {
+      return null;
     }
-
-    // Hero / CTA images -> optimised <Image> when present, else placeholder.
-    const isHero = source.includes(HERO_MARKER);
+    const isVideo = source.includes(VIDEO_MARKER);
     return (
-      <div className={`${MEDIA} ${isHero ? "mt-2 mb-3" : "my-12"}`}>
-        {hasPublicAsset(source) ? (
-          <Image
-            src={source}
-            alt={description}
-            width={1200}
-            height={isHero ? 630 : 675}
-            priority={isHero}
-            sizes="(max-width: 1040px) 100vw, 1040px"
-            className="aspect-video w-full rounded-2xl border border-border bg-surface object-cover"
-          />
-        ) : (
-          <MediaPlaceholder kind="image" label={description} />
-        )}
+      <div className={`${MEDIA} ${isVideo ? "mt-12 mb-3" : "my-12"}`}>
+        <BlogMedia src={source} alt={description} />
       </div>
     );
   },
