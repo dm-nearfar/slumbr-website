@@ -63,12 +63,12 @@ Tone matters as much as content. Two dreams about "water filling a room" can mea
 **The journal entry:** *"The chase dream again. Down the same hallway, same shadow behind me. But this time I stopped and looked back at it and it sort of... stopped too. Didn't see what it was before I woke up."*
 
 <!-- CASE 3 MEDIA -->
-![A figure in a long, dark pillared hallway turning to face a shadowy figure that has stopped behind them.](/images/slumbr-chase-dream-ai-video.webp)
-*Slumbr's clip: the sprint slows at the exact moment the dreamer turns to face the shadow.*
+![A lone figure in a long, dark pillared hallway, turning to look back over their shoulder at the empty hall behind them.](/images/slumbr-chase-dream-ai-video.webp)
+*Slumbr's clip: the motion slows at the exact moment the dreamer stops and turns to look back down the empty hallway.*
 
 This entry came from someone who'd logged a near-identical "[being chased](/dream-meanings/being-chased) down a hallway" dream three times in the previous month, which Slumbr's pattern tracking flagged automatically. [Recurring dreams](/dream-meanings/recurring-dreams) are common, and they're one of the most useful things a dream journal can catch, because it's hard to spot a pattern from inside your own head. Your journal keeps the count.
 
-The interesting part was the turn. The dreamer stopped and faced the shadow for the first time, and the video caught that shift. Most "chase dream" prompts produce a frantic, blurred sprint. This clip slows right at the moment the figure turns to look. That small change matters: stopping to look at the thing chasing you is a different kind of dream, and the video gave the dreamer a way to see it.
+The interesting part was the turn. The dreamer stopped and looked back for the first time, and the video caught that shift. Most "chase dream" prompts produce a frantic, blurred sprint. This clip slows right at the moment the figure turns. And like the dream itself, there's nothing clearly there when they do; the entry ended "didn't see what it was." That small change matters: stopping to look back at the thing chasing you is a different kind of dream, and the video gave the dreamer a way to sit with that moment.
 
 We can't tell you what the shadow "means," and neither can any app. But seeing that pause played back made the dreamer notice something the written entry alone hadn't.
 
