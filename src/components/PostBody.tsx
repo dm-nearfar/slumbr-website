@@ -7,8 +7,10 @@ import StoreBadges from "./StoreBadges";
 const VIDEO_MARKER = "-ai-video";
 const HERO_MARKER = "-dream-portal";
 
-// Editorial measures: prose reads at a comfortable column; media breaks out wider.
-const PROSE = "mx-auto w-full max-w-[720px]";
+// Unified content measure: text and media share the hero-banner width (~1040px),
+// so every element's left/right edges align. Body type is bumped up to stay
+// readable at the wider column.
+const PROSE = "mx-auto w-full max-w-[1040px]";
 const MEDIA = "mx-auto w-full max-w-[1040px]";
 
 const components: Components = {
@@ -46,7 +48,7 @@ const components: Components = {
     if (lone && lone.type === "element" && lone.tagName === "em") {
       return (
         <p
-          className={`${PROSE} -mt-1 mb-12 text-center text-[14px] italic leading-[1.6] text-footer`}
+          className={`${PROSE} -mt-1 mb-12 text-center text-[15px] italic leading-[1.6] text-grey`}
         >
           {children}
         </p>
@@ -74,14 +76,14 @@ const components: Components = {
     if (isJournalEntry) {
       return (
         <blockquote
-          className={`${PROSE} my-8 rounded-r-lg border-l-2 border-indigo/70 bg-surface/40 py-5 pr-5 pl-6 text-[18px] italic leading-[1.7] text-white/90 md:text-[19px]`}
+          className={`${PROSE} my-8 rounded-r-lg border-l-2 border-indigo/70 bg-surface/40 py-6 pr-6 pl-7 text-[20px] italic leading-[1.75] text-white/90 md:text-[22px]`}
         >
           {children}
         </blockquote>
       );
     }
     return (
-      <p className={`${PROSE} mb-7 text-[18px] leading-[1.7] text-white/90 md:text-[19px]`}>
+      <p className={`${PROSE} mb-7 text-[20px] leading-[1.75] text-white/90 md:text-[22px]`}>
         {children}
       </p>
     );
@@ -105,7 +107,7 @@ const components: Components = {
   },
   ul: ({ children }) => (
     <ul
-      className={`${PROSE} mb-7 list-disc space-y-4 pl-6 text-[18px] leading-[1.7] text-white/90 marker:text-indigo md:text-[19px]`}
+      className={`${PROSE} mb-7 list-disc space-y-4 pl-6 text-[20px] leading-[1.75] text-white/90 marker:text-indigo md:text-[22px]`}
     >
       {children}
     </ul>

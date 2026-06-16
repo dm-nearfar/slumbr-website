@@ -72,18 +72,18 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <div className="mx-auto max-w-[1088px] px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-[720px]">
+        <div className="mx-auto max-w-[1040px]">
         <nav
           aria-label="Breadcrumb"
-          className="mb-10 text-[13px] tracking-[0.04em] text-footer"
+          className="mb-10 text-[13px] tracking-[0.04em] text-grey"
         >
-          <Link href="/" className="transition-colors hover:text-grey">
+          <Link href="/" className="transition-colors hover:text-white">
             Home
           </Link>
           <span className="mx-2" aria-hidden="true">
             /
           </span>
-          <Link href="/blog" className="transition-colors hover:text-grey">
+          <Link href="/blog" className="transition-colors hover:text-white">
             Blog
           </Link>
           <span className="mx-2" aria-hidden="true">
@@ -92,18 +92,18 @@ export default function Page() {
           <span className="text-grey">{TITLE}</span>
         </nav>
 
-        <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.18em] text-indigo">
+        <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
           Behind the Dream
-          <span className="mx-2 text-footer" aria-hidden="true">
+          <span className="mx-2 text-grey" aria-hidden="true">
             ·
           </span>
-          <time dateTime="2026-06-14" className="text-footer">
+          <time dateTime="2026-06-14" className="text-grey">
             14 June 2026
           </time>
-          <span className="mx-2 text-footer" aria-hidden="true">
+          <span className="mx-2 text-grey" aria-hidden="true">
             ·
           </span>
-          <span className="text-footer">Slumbr Team</span>
+          <span className="text-grey">Slumbr Team</span>
         </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function Page() {
           <PostBody content={body} />
         </article>
 
-        <div className="mx-auto mt-16 max-w-[720px] border-t border-border pt-8">
+        <div className="mx-auto mt-16 max-w-[1040px] border-t border-border pt-8">
           <Link
             href="/blog"
             className="text-[15px] text-lavender underline decoration-indigo/60 underline-offset-4 hover:decoration-lavender"
