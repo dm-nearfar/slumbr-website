@@ -483,11 +483,11 @@ export default function Home() {
                 <ul className="relative z-10 mb-12 space-y-4">
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
-                    Unlimited AI dream analysis
+                    Up to 10 AI dream analyses per day
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 2
-                    video tokens included every month
+                    video tokens with every renewal
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
                     <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}

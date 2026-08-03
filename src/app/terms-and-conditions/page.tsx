@@ -21,7 +21,7 @@ export default function Terms() {
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Terms and Conditions</h1>
-        <p className="text-[#9090A0] mb-10">Last updated: April 2026</p>
+        <p className="text-[#9090A0] mb-10">Last updated: 3 August 2026</p>
 
         <div className="text-[#C8C8D0] leading-relaxed space-y-8">
           <p>
@@ -49,8 +49,12 @@ export default function Terms() {
 
           <section>
             <h2 className="text-white text-lg font-semibold mb-2">3. Your account</h2>
-            <p>
+            <p className="mb-3">
               Provide accurate information and keep your login secure. You are responsible for activity under your account.
+            </p>
+            <p>
+              You must be at least 13 years old (or the minimum age of digital consent in your jurisdiction) to use
+              Slumbr.
             </p>
           </section>
 
@@ -82,22 +86,25 @@ export default function Terms() {
             <h2 className="text-white text-lg font-semibold mb-2">7. Subscriptions, tokens &amp; purchases</h2>
             <p className="mb-3">
               <span className="text-white font-medium">Subscriptions:</span> Auto-renewing until cancelled in your Apple
-              settings. Apple handles billing and refunds.
+              App Store or Google Play settings, depending on where you subscribed. Apple or Google handles billing and
+              refunds.
             </p>
             <p className="mb-3">
-              <span className="text-white font-medium">Pro membership:</span> Includes ad removal, unlimited dream
-              analysis (capped at 10 per day), and monthly video tokens.
+              <span className="text-white font-medium">Pro membership:</span> Includes ad removal, expanded dream
+              analysis (up to 10 analyses per day), longer dream videos, and 2 video tokens included with each
+              subscription renewal.
             </p>
             <p className="mb-3">
               <span className="text-white font-medium">Video tokens:</span> Consumable credits used to generate videos.
               Additional tokens can be purchased. No cash value, non-transferable.
             </p>
             <p className="mb-3">
-              <span className="text-white font-medium">Prices and taxes:</span> Displayed in the App Store and may change.
+              <span className="text-white font-medium">Prices and taxes:</span> Displayed in the App Store or Google
+              Play and may change.
             </p>
             <p>
-              <span className="text-white font-medium">Cancellations:</span> Manage in App Store settings; access
-              continues until the current period ends.
+              <span className="text-white font-medium">Cancellations:</span> Manage in your App Store or Google Play
+              settings; access continues until the current period ends.
             </p>
           </section>
 
