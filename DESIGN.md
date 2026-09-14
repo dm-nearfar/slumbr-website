@@ -44,31 +44,32 @@ off the gradients. Keep it subtle — it should be felt, not seen.
 
 ## Typography
 
-- **Fraunces** (`--font-fraunces` / `font-display`) — display + headings, white,
-  weight 500. Soft "wonky" old-style serif; chosen over the Stitch export's
-  Playfair Display (too generic dark-site serif) after a 3-way comparison
-  (vs Cormorant Garamond, Marcellus) on 2026-06-11.
-- **Outfit** (`--font-outfit` / `font-sans`) — body, labels, UI.
+- **Inter** (`--font-inter` / `font-sans`) carries everything: headlines,
+  body, labels, UI, prices, the wordmark.
+- **Playfair Display Italic** (`--font-playfair` / `font-display`) exists for
+  exactly one accent word per headline and nothing else. Only the italic face
+  is loaded (weights 400 and 500). Never SF Pro, never a system serif.
+- Both load through `next/font/google` in `src/app/layout.tsx`, which
+  self-hosts the files at build time with `font-display: swap`. No runtime
+  Google Fonts request is made, so no preconnect is needed.
 
-| Role | Face / weight | Size / line-height | Tracking |
-|---|---|---|---|
-| display | Fraunces 500 | 48px / 1.05 (md: 80px hero) | -0.01em |
-| heading-lg | Fraunces 500 | 32px / 1.15 (md: 48px) | — |
-| heading-xl (video/CTA) | Fraunces 500 | 32px / 1.1 (md: 56px) | — |
-| price / wordmark | Fraunces 500 | 40px / 24px | — |
-| body-lg | Outfit 400 | 20px / 1.6 | 0.01em |
-| body-md | Outfit 400 | 17–18px / 1.5 | — |
-| label | Outfit 600 | 15px / 1.2 | 0.05em |
-| eyebrow | Outfit 700 | 12px, uppercase | 0.18em |
-| caption | Outfit 400 | 15px | — |
+**Accent word rule.** Each headline is bold white Inter except ONE word set
+in Playfair Display Italic at `#B3BCF5` (`--color-accent`). The accent styling
+includes that word's punctuation, so "Unlock your *dreams.*" italicises the
+full stop too. Sub-lines are regular Inter, white at 70% opacity. Section
+headings follow the same rule ("How it *works.*", "Choose your *path.*").
+Body copy never uses the accent face.
 
-Italic accents: one emotionally loaded word per display headline may be set
-in Fraunces italic (e.g. "Unlock Your *Dreams*."). At most one per headline,
-never in section headings or body. Headlines use `text-balance`.
+| Role | Face / weight | Notes |
+|---|---|---|
+| headline | Inter 700, white | one Playfair Italic accent word, `text-balance` |
+| sub-line | Inter 400, white/70 | |
+| eyebrow | Inter 600 to 700, uppercase, letter-spaced, lavender | e.g. DREAM FILMS |
+| body | Inter 400, white or near-white | dimmed alphas only for deliberate de-emphasis |
+| label / button | Inter 600 | |
 
-Feature pills: each feature row carries an eyebrow pill — gold for the
-standout feature ("Watch your dreams back"), indigo/lavender for the rest
-("Understand your dreams").
+Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
+2026-09 rebrand.
 
 ## Spacing & Layout
 

@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+// Inter carries every word on the site. Playfair Display is loaded in italic
+// only: it exists for the single accent word in each headline and nothing else.
+// Both are self-hosted at build time by next/font (no runtime Google request),
+// so no preconnect is needed; display: swap avoids a blocking render.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: ["italic"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -94,7 +99,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${outfit.variable} ${fraunces.variable} antialiased`}
+      className={`${inter.variable} ${playfair.variable} antialiased`}
     >
       <head>
         {jsonLd.map((schema, i) => (

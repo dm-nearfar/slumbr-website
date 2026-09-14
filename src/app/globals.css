@@ -11,8 +11,8 @@
   --color-grey: #9090A0;
   --color-lavender: #E5E9FF;
   --color-footer: #6B6B7B;
-  --font-sans: var(--font-outfit);
-  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
 }
 
 body {
