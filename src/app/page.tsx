@@ -6,6 +6,7 @@ import Accent from "@/components/Accent";
 import FeatureBand from "@/components/FeatureBand";
 import PhoneFrame from "@/components/PhoneFrame";
 import PostCard from "@/components/PostCard";
+import SocialProof from "@/components/SocialProof";
 import StoreBadges from "@/components/StoreBadges";
 import { latestPost } from "@/content/blog/posts";
 import { fadeUp, reveal, stagger } from "@/lib/motion";
@@ -281,6 +282,10 @@ export default function Home() {
           </div>
         </section>
 
+
+        {/* Social proof: gated behind SHOW_SOCIAL_PROOF in the component,
+            renders nothing until real review quotes are in place */}
+        <SocialProof />
 
         {/* Pricing. Every plan fact, price, chip, tagline and button label is
             carried verbatim from the previous markup; only the styling and
