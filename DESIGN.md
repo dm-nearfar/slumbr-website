@@ -1,46 +1,95 @@
-# Slumbr Design System — "Nocturne Cinematic"
+# Slumbr Design System, "Night Sky" (2026-09 store rebrand)
 
-Consolidated from the Stitch export (`stitch_slumbr_landing_page_experience`,
-2026-06). **Exact values below come from the export's `code.html` Tailwind
-config** (the source of truth); brand/style guidance comes from the export's
-design notes. Where the export's own front-matter disagreed with its
-`code.html`, `code.html` wins (see Conflicts at the bottom).
+The site matches the v1.8.2 App Store and Google Play brand: a full-page
+night-sky gradient, a sparse starfield, one crescent moon, soft purple glows
+behind focal elements, and layered mountain silhouettes at the very base.
+This supersedes the 2026-06 "Nocturne Cinematic" system (Stitch export). Where
+the two disagree, this document wins.
 
-## Brand & Style
+House rules that apply to everything here: UK English, no em or en dashes in
+copy, code comments, or commit messages, semantic HTML with alt text that
+describes the app screen rather than the file, visible focus states,
+`prefers-reduced-motion` respected for any animation.
 
-Ethereal, immersive, premium — "the quiet intensity of a lucid dream."
-Glassmorphism mixed with minimalism: deep nocturnal layers, negative space as
-void, light used sparingly through indigo glows and soft lavender accents.
-Borders and typography stay sharp and refined ("Literary Noir").
+## Brand and style
+
+Calm, nocturnal, premium. Purple and lavender only in the marketing layer;
+gold and amber exist solely inside the app screenshots. Body text on the dark
+background is white or near-white; dimmed alphas are for deliberate
+de-emphasis, never the default.
 
 ## Colours
 
+Tokens live in `src/app/globals.css` under `@theme inline`.
+
 | Token | Hex | Role |
 |---|---|---|
-| `navy` (background) | `#0F0E1A` | The void. Page background |
-| `surface` | `#1A1929` | Cards, containers, phone-frame bezels |
-| `border` | `#2A2940` | 1px low-contrast borders everywhere |
-| `indigo` (primary) | `#3D3B8E` | Primary actions, glows, dream-state accents |
-| `lavender` (on-primary) | `#E5E9FF` | Button text, icons, soft highlights — instead of harsh pure white |
-| `gold` (tertiary) | `#D4A843` | Rare warm glint — premium highlights only, <5% of UI |
-| `grey` (on-surface) | `#9090A0` | Body text |
-| white | `#FFFFFF` | Headings only |
+| `indigo-deep` | `#1E1B4B` | Sky at the top of the page, darkest tone, footer ground |
+| `violet` | `#5B21B6` | Sky at the base of the page, Pro card border, primary pill |
+| `glow` | `#8B5CF6` | Soft elliptical glows (about 18% opacity), Pro border glow |
+| `accent` | `#B3BCF5` | The one italic accent word per headline, focus ring |
+| white | `#FFFFFF` | Headlines, body, labels |
+| white/70 | `rgba(255,255,255,0.7)` | Sub-lines |
 
-Glow recipe: primary buttons/active states get a soft outer glow of indigo at
-10–20% opacity extending 24–32px. Ambient page glows: large (600–900px)
-indigo circles at 10–25% opacity with 140–180px blur, `mix-blend-screen`.
+Legacy Nocturne tokens (`surface`, `border`, `indigo`, `gold`, `grey`,
+`lavender`) remain declared while the blog components and legal pages still
+consume them. Each is deleted in the commit that removes its last reference.
+Do not add new consumers. Arbitrary hex classes (`bg-[#3D3B8E]`) on the
+homepage are replaced with the named tokens as each section is rebuilt.
 
-**Atmosphere rule:** all ambient glows, mist, and stars live in ONE page-level
-layer (`PageAtmosphere`, absolute over the whole document, positioned by % of
-page height) so the night scene flows continuously behind every section.
-Sections are transparent content layers — never give a section its own
-background fill, ambient glow, or `overflow-hidden` that could slice a glow.
-Tight object halos (e.g. behind a phone mockup) are part of the component,
-not the atmosphere.
+## Atmosphere model
 
-**Texture:** a tiled SVG fractal-noise film grain (`.grain`, 5% opacity,
-`mix-blend-overlay`) sits on top of the atmosphere layer to take the gloss
-off the gradients. Keep it subtle — it should be felt, not seen.
+The single page-level `PageAtmosphere` layer and the film grain from the
+Nocturne system are gone. The new model has three tiers:
+
+1. **Body-level sky.** `body` carries the gradient (`#1E1B4B` at the top
+   through `#5B21B6` at the bottom, with a warm lavender radial haze that
+   rises only from the page base). Because the body background propagates to
+   the canvas and is sized to the root element, one gradient spans the whole
+   document and every route inherits it. `body::before` is the starfield and
+   `body::after` is the crescent moon, both at `z-index: -1` so they sit
+   behind all content on every page. Nothing else paints a page background.
+2. **Per-section glows.** Each band places its own `.glow` ellipse behind its
+   focal element (a phone, the pricing Pro card). Glows are components'
+   business, positioned and sized by the consumer. `.glow-strong` is reserved
+   for the Dream Films band, the strongest glow on the page.
+3. **Mountain base.** `MountainBase` (`src/components/MountainBase.tsx`) is
+   the only place the layered mountain-valley silhouettes and their warm
+   valley glow appear: under the closing CTA and running behind the footer.
+   It is never used elsewhere.
+
+Sections are transparent content layers. Do not give a section its own
+background fill, and avoid `overflow-hidden` on anything that could slice a
+glow. Pure CSS and SVG only; the only rasters shipped are the optimised app
+screenshots, the archetype card crop, and existing badge and icon assets.
+
+### Starfield
+
+Tiled `radial-gradient` dots (1px to 1.2px, opacity 0.3 to 0.9) across six
+tile sizes with mutually unrelated dimensions so the repeat is unreadable,
+plus two sparse tiles of 4-point sparkles as inline SVG data URIs. Subtle and
+sparse; if you can count the pattern, it is too dense.
+
+### Crescent moon
+
+Offset circle shadow technique on `body::after`: a transparent circle whose
+solid `box-shadow` is offset so only the part outside the circle paints,
+leaving a crescent. Two `drop-shadow` filters give the warm peach-white glow
+(`#FFF2E2`). One small motif near the top of the page, never a raster.
+
+### Glow
+
+`.glow`: absolute, `border-radius: 9999px`, radial gradient from
+`rgba(139,92,246,0.18)` fading to transparent before the edge, then
+`filter: blur(48px)`. Soft edges, never a visible ring. Consumers set inset or
+width and height.
+
+### Mountains
+
+Three SVG paths in `MountainBase` (far `#3B2A7A`, mid `#2A1E5E`, near
+`#1A1442`) with `preserveAspectRatio="none"` so they stretch edge to edge,
+and a warm radial glow (`rgba(255,226,200,0.34)` into lavender) rising from
+the valley floor behind the ridges. Height 240px on mobile, 360px from `md`.
 
 ## Typography
 
@@ -71,68 +120,71 @@ Body copy never uses the accent face.
 Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
 2026-09 rebrand.
 
-## Spacing & Layout
+## Spacing and layout
 
 - Base unit **8px**; gutter **24px**.
 - Container padding: **24px mobile / 64px desktop** (`px-6 md:px-16`).
-- Section gap: **80px** (`py-20`); feature rows separated by 128px (`gap-32`).
-- Content max-widths: nav/features `max-w-7xl`, hero text `max-w-5xl`,
+- Section gap: **80px** (`py-20`).
+- Content max-widths: nav and bands `max-w-7xl`, hero text `max-w-5xl`,
   pricing `max-w-5xl`, CTA `max-w-4xl`.
-- Airy density — "as quiet as a bedroom at night."
+- Airy density. Bands alternate text left / phone right and mirrored.
+
+## Responsive
+
+- Mobile hero headline stacks as two lines: "Unlock your" / "*dreams.*",
+  matching the store screenshot treatment.
+- Bands stack text above phone.
+- How-it-works steps stack vertically with the connector running vertically.
+- Pricing cards stack, Pro first.
 
 ## Radii
 
-| Token | Value | Use |
-|---|---|---|
-| DEFAULT | 0.25rem | small elements |
-| lg | 0.5rem | base UI elements |
-| xl | 0.75rem | store badges |
-| 2xl (inline 16px) | 1rem | buttons-in-cards |
-| pricing cards | 32px | |
-| phone frames / CTA card | 48px | |
-| full | 9999px | pills, chips, nav CTA |
+| Use | Value |
+|---|---|
+| small elements | 0.25rem |
+| base UI elements | 0.5rem |
+| store badges | 0.75rem |
+| buttons in cards | 1rem |
+| pricing and glass cards | 32px |
+| phone frame outer | 3.2rem |
+| pills, chips, nav CTA | 9999px |
 
-## Elevation & Depth
+## Elevation and depth
 
-Depth via backdrop blurs and tonal layering, not drop shadows.
-- Level 0: background `#0F0E1A`.
-- Level 1: cards `#1A1929` + 1px `#2A2940` border.
-- Level 2 (floating): backdrop blur (nav: `bg-[#0F0E1A]/60 backdrop-blur-xl`).
-- Phone frames: `border-8` of surface colour, `ring-1 ring-white/10`,
-  `shadow-2xl shadow-[#3D3B8E]/20`.
+Depth via tonal layering and glows, not drop shadows.
+- Dark glass cards: translucent dark fill (`rgba(30,27,75,0.55)` or similar),
+  1px white/10 border, `backdrop-blur`.
+- Pro card: `#8B5CF6` border with an outer glow.
+- Phone frame: dark titanium rounded frame with a Dynamic Island cutout,
+  screenshot composited inside, soft `.glow` behind. See `PhoneFrame`.
 
 ## Components
 
-- **Primary button**: indigo bg, lavender text, soft indigo glow on hover.
-- **Secondary/ghost**: 1px `#2A2940` border, lavender/white text.
-- **Chips/tags**: pill, `#2A2940` at 50% opacity (gold variant for "standout"
-  badges: `bg-gold/10 border-gold/20 text-gold`).
-- **Icons**: strictly **no emojis**; thin-stroke (1.5px) geometric vectors in
-  lavender.
-- **Starfield**: a few static 2–4px white dots at 20–60% opacity, decorative.
+- **Primary button / nav CTA**: solid purple pill, white text.
+- **Outlined store buttons** (Free card): 1px white/20 border, white text.
+- **Solid trial buttons** (Pro card): solid purple.
+- **Chips**: pill, lavender text on translucent purple (PRO, BEST VALUE,
+  7-DAY FREE TRIAL).
+- **Number chips** (How it works): lavender, subtle glow, joined by a thin
+  lavender connector line.
+- **Icons**: strictly no emojis; thin-stroke (1.5px) geometric vectors.
+- **Store badges**: `StoreBadges`, inline SVG glyphs, standard "Download on
+  the App Store" / "Get it on Google Play" wording.
+- **PhoneFrame**: reusable device frame (`src/components/PhoneFrame.tsx`).
+- **MountainBase**: page-base silhouettes (`src/components/MountainBase.tsx`).
+- **Social proof**: built but gated behind a single boolean set to `false`
+  until real store review quotes exist. Never invent reviews.
 
 ## Motion
 
-- Floating phone mockup: gentle y-axis bob, 6s ease-in-out loop.
-- Entrance: fade-up on scroll (framer-motion `whileInView`).
-- All motion respects `prefers-reduced-motion` (framer-motion
-  `MotionConfig reducedMotion="user"`, CSS `motion-safe:` variants).
+- Entrance: fade-up on scroll (framer-motion `whileInView`), wrapped in
+  `MotionConfig reducedMotion="user"`.
+- Any CSS animation uses `motion-safe:` variants.
 
-## Conflicts & decisions log
+## Assets
 
-1. **Export DESIGN.md vs export code.html**: the export's front-matter listed
-   `primary: #c2c1ff`, `surface: #13121e`, `tertiary: #eec058` (Material-style
-   tonal palette). Its `code.html` instead uses `primary: #3D3B8E`,
-   `surface: #1A1929`, `background: #0F0E1A`. Per project rule, code.html wins.
-2. **Stitch vs existing globals.css**: no conflict — code.html's palette is
-   identical to the pre-redesign site palette (`#0F0E1A / #1A1929 / #2A2940 /
-   #3D3B8E / #D4A843 / #9090A0`). The redesign changes typography (Inter →
-   Playfair Display + Manrope), layout, and depth/glow treatment, not colour.
-3. **Stitch placeholder copy not adopted**: fabricated pricing
-   ("Essence"/"Transcendent", $9.99/mo, "Lucid Dreaming Audio Guide"), footer
-   links ("Journal Guide", "Analysis Methods"), and hero subcopy promising
-   lucid-dream mastery are Stitch filler — real product copy is kept.
-4. **Store badges**: Stitch mocked badges with Material Symbols placeholder
-   glyphs and "Get on the" microcopy; we use proper brand glyphs and standard
-   "Download on the App Store" / "GET IT ON Google Play" wording, restyled to
-   the Stitch white/dark button pair.
+- Screenshots ship as WebP only, from `scripts/encode-store-shots.py`, sized to
+  at most 2x their rendered width (840x1826 for phone screens) at quality 80,
+  under 200 KB each. Source PNGs never enter the repo.
+- Explicit `width` and `height` on every framed screenshot so fonts and images
+  cause no layout shift.

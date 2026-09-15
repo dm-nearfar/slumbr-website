@@ -1,40 +1,150 @@
 @import "tailwindcss";
 
-/* Nocturne Cinematic tokens — see DESIGN.md. Values sourced from the Stitch
-   export's code.html Tailwind config. */
+/* Brand tokens for the 2026-09 store rebrand. See DESIGN.md.
+   The four brand colours are the marketing layer's whole palette: purple and
+   lavender only. Gold exists solely inside the app screenshots. */
 @theme inline {
-  --color-navy: #0F0E1A;
+  --color-indigo-deep: #1E1B4B;
+  --color-violet: #5B21B6;
+  --color-glow: #8B5CF6;
+  --color-accent: #B3BCF5;
+
+  /* Legacy Nocturne tokens (2026-06). Still consumed by the blog components
+     and legal pages; each is deleted in the commit that removes its last
+     reference as those surfaces are rebuilt. Do not add new consumers. */
   --color-surface: #1A1929;
   --color-border: #2A2940;
   --color-indigo: #3D3B8E;
   --color-gold: #D4A843;
   --color-grey: #9090A0;
   --color-lavender: #E5E9FF;
-  --color-footer: #6B6B7B;
+
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
 }
 
-body {
-  background: #0F0E1A;
-  color: #ffffff;
-  font-family: var(--font-sans), system-ui, sans-serif;
-}
-
 html {
+  min-height: 100%;
   scroll-behavior: smooth;
 }
 
-/* Film-grain texture — tiled SVG fractal noise, layered at low opacity over
-   the page atmosphere to take the gloss off the gradients. */
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+/* Night sky. The body background propagates to the canvas and is sized to
+   the root element, so one gradient spans the whole document on every route:
+   deep indigo at the top through violet, with a soft warm lavender haze that
+   rises only from the page base. Built in CSS, no raster. */
+body {
+  position: relative;
+  min-height: 100%;
+  color: #ffffff;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background-color: #1E1B4B;
+  background-image:
+    radial-gradient(
+      ellipse 140% 32% at 50% 100%,
+      rgba(236, 222, 255, 0.4) 0%,
+      rgba(236, 222, 255, 0.14) 40%,
+      rgba(236, 222, 255, 0) 72%
+    ),
+    linear-gradient(
+      180deg,
+      #1E1B4B 0%,
+      #271D68 38%,
+      #45209C 74%,
+      #5B21B6 100%
+    );
+}
+
+/* Starfield. Tiled radial-gradient dots at varying opacity, plus two sparse
+   tiles of 4-point sparkles (inline SVG). Sits behind all page content at
+   z-index -1, above the canvas gradient. Tile sizes are mutually prime-ish so
+   the repetition is not readable. */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='white' fill-opacity='0.85' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3E%3Cpath fill='white' fill-opacity='0.6' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 31px 47px, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.9) 1px, transparent 1.6px),
+    radial-gradient(circle at 203px 118px, rgba(255, 255, 255, 0.55) 0, rgba(255, 255, 255, 0.55) 0.8px, transparent 1.4px),
+    radial-gradient(circle at 412px 259px, rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0.35) 1px, transparent 1.6px),
+    radial-gradient(circle at 96px 331px, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 0.7px, transparent 1.3px),
+    radial-gradient(circle at 547px 73px, rgba(255, 255, 255, 0.45) 0, rgba(255, 255, 255, 0.45) 1.2px, transparent 1.8px),
+    radial-gradient(circle at 318px 508px, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0.3) 0.8px, transparent 1.4px);
+  background-position:
+    380px 210px,
+    900px 760px,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    1180px 1460px,
+    1520px 1180px,
+    610px 790px,
+    730px 640px,
+    880px 950px,
+    560px 1010px,
+    970px 720px,
+    690px 1130px;
   background-repeat: repeat;
+}
+
+/* Crescent moon. Offset circle shadow technique: the element is a transparent
+   circle and only the part of its solid box-shadow that falls outside the
+   circle is painted, which leaves a crescent. The drop-shadow filters add the
+   warm peach-white glow. One small motif near the top of every page. */
+body::after {
+  content: "";
+  position: absolute;
+  top: clamp(92px, 9vw, 132px);
+  right: clamp(28px, 11vw, 176px);
+  z-index: -1;
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  box-shadow: 9px -7px 0 0 #FFF2E2;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 228, 196, 0.6))
+    drop-shadow(0 0 26px rgba(255, 214, 178, 0.28));
+  pointer-events: none;
+}
+
+/* Soft elliptical glow behind focal elements. Consumers position and size
+   it (absolute inset or explicit width and height). The radial gradient
+   already fades to nothing before the edge and the blur softens it further,
+   so there is never a visible ring. .glow-strong is reserved for the Dream
+   Films band, the strongest glow on the page. */
+.glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  background: radial-gradient(
+    closest-side,
+    rgba(139, 92, 246, 0.18) 0%,
+    rgba(139, 92, 246, 0.1) 45%,
+    rgba(139, 92, 246, 0) 100%
+  );
+  filter: blur(48px);
+}
+
+.glow-strong {
+  background: radial-gradient(
+    closest-side,
+    rgba(139, 92, 246, 0.36) 0%,
+    rgba(139, 92, 246, 0.18) 45%,
+    rgba(139, 92, 246, 0) 100%
+  );
+  filter: blur(64px);
 }
 
 /* Visible focus for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #e5e9ff;
+  outline: 2px solid #B3BCF5;
   outline-offset: 3px;
 }
 

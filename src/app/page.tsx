@@ -104,52 +104,6 @@ function Nav() {
   );
 }
 
-/* Single page-level atmosphere layer — all ambient glows and stars live here
-   so nothing is clipped at section boundaries. Positions are % of total page
-   height, composed to deepen at the hero, pool behind the phone mockups, and
-   settle softly at the CTA/footer. */
-function PageAtmosphere() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 overflow-hidden"
-    >
-      {/* Hero — deepest part of the night */}
-      <div className="absolute -top-[2%] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-[#3D3B8E]/25 mix-blend-screen blur-[160px]" />
-      <div className="absolute right-[-12%] top-[3%] h-[600px] w-[600px] rounded-full bg-[#3D3B8E]/15 mix-blend-screen blur-[140px]" />
-      {/* Moonlit pool behind the AI analysis mockup (right) */}
-      <div className="absolute right-[2%] top-[24%] h-[700px] w-[700px] rounded-full bg-[#3D3B8E]/20 mix-blend-screen blur-[160px]" />
-      {/* Pool behind the dream-video mockup (left) */}
-      <div className="absolute left-[-8%] top-[40%] h-[800px] w-[800px] rounded-full bg-[#3D3B8E]/20 mix-blend-screen blur-[180px]" />
-      {/* Faint drift through pricing */}
-      <div className="absolute right-[12%] top-[62%] h-[600px] w-[600px] rounded-full bg-[#3D3B8E]/10 mix-blend-screen blur-[160px]" />
-      {/* Soft settle at the CTA and footer */}
-      <div className="absolute bottom-[1%] left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#3D3B8E]/12 mix-blend-screen blur-[180px]" />
-
-      {/* Stars, scattered down the whole night */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute left-[15%] top-[3%] h-0.5 w-0.5 rounded-full bg-white" />
-        <div className="absolute left-[45%] top-[6%] h-1 w-1 rounded-full bg-white opacity-60" />
-        <div className="absolute right-[20%] top-[9%] h-0.5 w-0.5 rounded-full bg-white opacity-30" />
-        <div className="absolute left-[30%] top-[13%] h-1 w-1 rounded-full bg-white opacity-50" />
-        <div className="absolute right-[10%] top-[2%] h-0.5 w-0.5 rounded-full bg-white" />
-        <div className="absolute left-[8%] top-[28%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
-        <div className="absolute right-[28%] top-[35%] h-1 w-1 rounded-full bg-white opacity-30" />
-        <div className="absolute left-[55%] top-[46%] h-0.5 w-0.5 rounded-full bg-white opacity-40" />
-        <div className="absolute right-[8%] top-[55%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
-        <div className="absolute left-[18%] top-[68%] h-1 w-1 rounded-full bg-white opacity-30" />
-        <div className="absolute right-[40%] top-[78%] h-0.5 w-0.5 rounded-full bg-white opacity-40" />
-        <div className="absolute left-[10%] top-[94%] h-0.5 w-0.5 rounded-full bg-white" />
-        <div className="absolute right-[15%] top-[92%] h-1 w-1 rounded-full bg-white opacity-40" />
-        <div className="absolute left-[40%] top-[98%] h-0.5 w-0.5 rounded-full bg-white opacity-20" />
-      </div>
-
-      {/* Film grain over everything — kills the glossy gradient look */}
-      <div className="grain absolute inset-0 opacity-[0.05] mix-blend-overlay" />
-    </div>
-  );
-}
-
 /* Final mockup treatment — dark bezel, soft indigo halo with a lavender rim,
    deep drop shadow. Real screenshots drop into `src` with no further styling. */
 function PhoneFrame({
@@ -207,7 +161,6 @@ export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative">
-        <PageAtmosphere />
         <Nav />
         <main className="relative">
         {/* Hero */}
