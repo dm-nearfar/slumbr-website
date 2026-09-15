@@ -6,14 +6,16 @@ import { reveal } from "@/lib/motion";
 
 // A feature band: headline and sub-line on one side, a framed phone with a
 // soft glow on the other. Text sits above the phone on mobile. `mirrored`
-// puts the phone on the left from md up. `phoneOverlay` renders inside the
-// phone wrapper for floating elements (the archetype card); `decoration`
-// renders at section level for atmosphere (constellation lines).
+// puts the phone on the left from md up. `body` is an optional supporting
+// paragraph under the sub-line. `phoneOverlay` renders inside the phone
+// wrapper for floating elements (the archetype card); `decoration` renders
+// at section level for atmosphere (constellation lines).
 
 type FeatureBandProps = {
   id?: string;
   headline: React.ReactNode;
   subline: string;
+  body?: string;
   src: string;
   alt: string;
   mirrored?: boolean;
@@ -25,6 +27,7 @@ export default function FeatureBand({
   id,
   headline,
   subline,
+  body,
   src,
   alt,
   mirrored = false,
@@ -46,6 +49,11 @@ export default function FeatureBand({
           <p className="mx-auto max-w-xl text-[19px] leading-[1.6] text-white/70 md:mx-0 md:text-[21px]">
             {subline}
           </p>
+          {body ? (
+            <p className="mx-auto mt-5 max-w-xl text-[17px] leading-[1.7] text-white/70 md:mx-0">
+              {body}
+            </p>
+          ) : null}
         </motion.div>
         <motion.div className="relative flex flex-1 justify-center" {...reveal}>
           <div className="relative w-[280px] md:w-[360px]">

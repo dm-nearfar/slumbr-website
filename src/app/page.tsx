@@ -237,6 +237,7 @@ export default function Home() {
             </>
           }
           subline="The symbols, the themes, and what they say about you."
+          body="Record a dream and Slumbr analyses it in seconds, surfacing the themes, emotions, and symbols woven through it. Over time, recurring patterns your waking mind misses come into focus, and Slumbr matches you to your dream archetype."
           src="/screenshots/shot4-analysis-nans-kitchen.webp"
           alt="Slumbr's Your Dream screen showing an AI analysis of a dream about a grandmother's kitchen"
           decoration={<Constellation />}
