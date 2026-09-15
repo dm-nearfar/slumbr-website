@@ -21,9 +21,9 @@ export default function Privacy() {
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-        <p className="text-white/60 mb-10">Last updated: 3 August 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 3 August 2026</p>
 
-        <div className="text-white/80 leading-relaxed space-y-8">
+        <div className="text-white/85 leading-relaxed space-y-8">
           <p>
             Slumbr (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a mobile app that helps you journal your
             dreams, analyse themes with AI, and optionally generate dream-inspired videos. We value your privacy. This

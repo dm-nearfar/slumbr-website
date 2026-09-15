@@ -46,11 +46,11 @@ export default function FeatureBand({
           <h2 className="mb-5 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[56px]">
             {headline}
           </h2>
-          <p className="mx-auto max-w-xl text-[19px] leading-[1.6] text-white/70 md:mx-0 md:text-[21px]">
+          <p className="mx-auto max-w-xl text-[19px] font-medium leading-[1.6] text-white/85 md:mx-0 md:text-[21px]">
             {subline}
           </p>
           {body ? (
-            <p className="mx-auto mt-5 max-w-xl text-[17px] leading-[1.7] text-white/70 md:mx-0">
+            <p className="mx-auto mt-5 max-w-xl text-[17px] font-medium leading-[1.7] text-white/85 md:mx-0">
               {body}
             </p>
           ) : null}

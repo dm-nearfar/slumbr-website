@@ -75,7 +75,7 @@ export default function Page() {
         <div className="mx-auto max-w-[1040px]">
         <nav
           aria-label="Breadcrumb"
-          className="mb-10 text-[13px] tracking-[0.04em] text-white/60"
+          className="mb-10 text-[13px] tracking-[0.04em] text-white/65"
         >
           <Link href="/" className="transition-colors hover:text-white">
             Home
@@ -89,21 +89,21 @@ export default function Page() {
           <span className="mx-2" aria-hidden="true">
             /
           </span>
-          <span className="text-white/60">{TITLE}</span>
+          <span className="text-white/65">{TITLE}</span>
         </nav>
 
         <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.18em] text-accent">
           Behind the Dream
-          <span className="mx-2 text-white/40" aria-hidden="true">
+          <span className="mx-2 text-white/65" aria-hidden="true">
             ·
           </span>
-          <time dateTime="2026-06-14" className="text-white/60">
+          <time dateTime="2026-06-14" className="text-white/65">
             14 June 2026
           </time>
-          <span className="mx-2 text-white/40" aria-hidden="true">
+          <span className="mx-2 text-white/65" aria-hidden="true">
             ·
           </span>
-          <span className="text-white/60">Slumbr Team</span>
+          <span className="text-white/65">Slumbr Team</span>
         </p>
         </div>
 

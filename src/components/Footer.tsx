@@ -8,7 +8,7 @@ import MountainBase from "./MountainBase";
 // the homepage) and the wordmark and links sit over the nearest, darkest
 // ridge at the very bottom.
 const LINK =
-  "text-[15px] font-semibold text-white/70 transition-colors hover:text-white";
+  "text-[15px] font-semibold text-white/80 transition-colors hover:text-white";
 
 export default function Footer() {
   return (
@@ -22,7 +22,7 @@ export default function Footer() {
               Slumbr
             </span>
           </div>
-          <p className="text-[14px] text-white/50">
+          <p className="text-[14px] text-white/65">
             &copy; 2026 Slumbr LTD. All rights reserved.
           </p>
         </div>

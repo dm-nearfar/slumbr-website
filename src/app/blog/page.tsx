@@ -17,7 +17,7 @@ export default function BlogIndex() {
         <h1 className="mb-3 text-[40px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-[52px]">
           Blog
         </h1>
-        <p className="mb-14 text-[18px] leading-[1.6] text-white/70">
+        <p className="mb-14 text-[18px] font-medium leading-[1.6] text-white/85">
           Behind the Dream. Notes on dreams, AI, and building Slumbr.
         </p>
         <div className="space-y-10">

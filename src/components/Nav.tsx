@@ -5,7 +5,7 @@ import Link from "next/link";
 // sky gradient as a translucent indigo bar. Anchors are root-relative so they
 // resolve from the blog and legal pages as well as the homepage.
 const LINK =
-  "text-[15px] font-semibold tracking-[0.02em] text-white/70 transition-colors hover:text-white";
+  "text-[15px] font-semibold tracking-[0.02em] text-white/80 transition-colors hover:text-white";
 
 export default function Nav() {
   return (

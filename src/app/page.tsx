@@ -134,7 +134,7 @@ export default function Home() {
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mb-10 max-w-2xl text-[19px] leading-[1.6] text-white/70 md:text-[22px]"
+              className="mb-10 max-w-2xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[22px]"
             >
               Record, decode, and relive your dreams.
             </motion.p>
@@ -206,7 +206,7 @@ export default function Home() {
                     <p className="mb-2 text-[22px] font-bold text-white md:text-[24px]">
                       {s.text}
                     </p>
-                    <p className="max-w-[280px] text-balance text-[17px] leading-[1.5] text-white/70">
+                    <p className="max-w-[280px] text-balance text-[17px] font-medium leading-[1.5] text-white/85">
                       {s.subtitle}
                     </p>
                   </div>
@@ -274,7 +274,7 @@ export default function Home() {
               <h2 className="mb-5 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[64px]">
                 Watch your dreams come <Accent>alive.</Accent>
               </h2>
-              <p className="mx-auto max-w-xl text-[19px] leading-[1.6] text-white/70 md:text-[21px]">
+              <p className="mx-auto max-w-xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[21px]">
                 Turn last night&apos;s dream into a short film.
               </p>
             </motion.div>
@@ -307,7 +307,7 @@ export default function Home() {
               <h2 className="mb-4 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[56px]">
                 Choose your <Accent>path.</Accent>
               </h2>
-              <p className="text-[19px] leading-[1.6] text-white/70 md:text-[21px]">
+              <p className="text-[19px] font-medium leading-[1.6] text-white/85 md:text-[21px]">
                 Start free. Go Pro for the full dreamscape.
               </p>
             </motion.div>
@@ -327,7 +327,7 @@ export default function Home() {
                   Free
                 </span>
                 <h3 className="mb-2 text-[40px] font-bold text-white">£0</h3>
-                <p className="mb-8 text-[17px] text-white/70">
+                <p className="mb-8 text-[17px] font-medium text-white/85">
                   Everything you need to start.
                 </p>
                 <ul className="mb-12 space-y-4">
@@ -396,11 +396,11 @@ export default function Home() {
                 </div>
                 <h3 className="relative z-10 mb-2 text-[40px] font-bold text-white">
                   £5.99
-                  <span className="text-[24px] font-semibold text-white/70">
+                  <span className="text-[24px] font-semibold text-white/85">
                     /mo
                   </span>
                 </h3>
-                <p className="relative z-10 mb-8 text-[17px] text-white/70">
+                <p className="relative z-10 mb-8 text-[17px] font-medium text-white/85">
                   or £39.99/yr. For the serious dreamer.
                 </p>
                 <ul className="relative z-10 mb-12 space-y-4">
@@ -487,7 +487,7 @@ export default function Home() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mx-auto mb-10 max-w-xl text-[19px] leading-[1.6] text-white/70 md:text-[21px]"
+              className="mx-auto mb-10 max-w-xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[21px]"
             >
               Free forever. No card required.
             </motion.p>

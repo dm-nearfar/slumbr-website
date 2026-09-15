@@ -30,7 +30,8 @@ Tokens live in `src/app/globals.css` under `@theme inline`.
 | `accent` | `#B3BCF5` | The one italic accent word per headline, focus ring |
 | `cta` | `#5C6BC0` | Interactive fill, sampled with Pillow from the selected "All Dreams" chip on the journal capture so app and site CTAs match: the nav Get the App pill and the Pro trial buttons; hover glow stays `glow` |
 | white | `#FFFFFF` | Headlines, body, labels |
-| white/70 | `rgba(255,255,255,0.7)` | Sub-lines |
+| white/85 | `rgba(255,255,255,0.85)` | Sub-lines and body copy (font-medium) |
+| white/65 | `rgba(255,255,255,0.65)` | De-emphasis floor: captions, timestamps, small print |
 
 The Nocturne tokens (`surface`, `border`, `indigo`, `gold`, `grey`,
 `lavender`) are deleted; nothing references them. Translucent whites
@@ -110,16 +111,21 @@ the valley floor behind the ridges. Height 240px on mobile, 360px from `md`.
 **Accent word rule.** Each headline is bold white Inter except ONE word set
 in Playfair Display Italic at `#B3BCF5` (`--color-accent`). The accent styling
 includes that word's punctuation, so "Unlock your *dreams.*" italicises the
-full stop too. Sub-lines are regular Inter, white at 70% opacity. Section
-headings follow the same rule ("How it *works.*", "Choose your *path.*").
-Body copy never uses the accent face.
+full stop too. Section headings follow the same rule ("How it *works.*",
+"Choose your *path.*"). Body copy never uses the accent face.
+
+**Contrast policy.** White at 70% reads flat on the mid-page violet, so:
+sub-lines and body copy are `white/85` with `font-medium`; de-emphasis
+(captions, timestamps, footer small print, breadcrumbs, separators) floors at
+`white/65`, never lower; nav and footer links are `white/80`, white on hover.
+Headlines, list items and anything already pure white stay white.
 
 | Role | Face / weight | Notes |
 |---|---|---|
 | headline | Inter 700, white | one Playfair Italic accent word, `text-balance` |
-| sub-line | Inter 400, white/70 | |
+| sub-line | Inter 500, white/85 | |
 | eyebrow | Inter 600 to 700, uppercase, letter-spaced, lavender | e.g. DREAM FILMS |
-| body | Inter 400, white or near-white | dimmed alphas only for deliberate de-emphasis |
+| body | Inter 500, white/85 or white | de-emphasis floors at white/65 |
 | label / button | Inter 600 | |
 
 Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the

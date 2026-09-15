@@ -21,9 +21,9 @@ export default function Terms() {
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Terms and Conditions</h1>
-        <p className="text-white/60 mb-10">Last updated: 3 August 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 3 August 2026</p>
 
-        <div className="text-white/80 leading-relaxed space-y-8">
+        <div className="text-white/85 leading-relaxed space-y-8">
           <p>
             These Terms govern your use of Slumbr (&ldquo;the App&rdquo;). By using the App, you agree to these Terms.
           </p>

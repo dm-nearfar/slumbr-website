@@ -48,7 +48,7 @@ const components: Components = {
     if (lone && lone.type === "element" && lone.tagName === "em") {
       return (
         <p
-          className={`${PROSE} -mt-1 mb-12 text-center text-[15px] italic leading-[1.6] text-white/60`}
+          className={`${PROSE} -mt-1 mb-12 text-center text-[15px] italic leading-[1.6] text-white/65`}
         >
           {children}
         </p>

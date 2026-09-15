@@ -85,7 +85,7 @@ export default function SocialProof() {
               <blockquote className="mb-6 text-[17px] leading-[1.6] text-white">
                 {review.quote}
               </blockquote>
-              <p className="mt-auto text-[14px] text-white/60">
+              <p className="mt-auto text-[14px] text-white/65">
                 {review.attribution}
                 <span className="mx-2" aria-hidden="true">
                   ·

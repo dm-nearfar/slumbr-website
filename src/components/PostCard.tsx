@@ -21,17 +21,17 @@ export default function PostCard({ post }: { post: Post }) {
       <div className="p-8">
         <p className="mb-3 text-[12px] font-bold uppercase tracking-[0.18em] text-accent">
           {post.category}
-          <span className="mx-2 text-white/40" aria-hidden="true">
+          <span className="mx-2 text-white/65" aria-hidden="true">
             ·
           </span>
-          <time dateTime={post.date} className="text-white/60">
+          <time dateTime={post.date} className="text-white/65">
             {post.dateLabel}
           </time>
         </p>
         <h3 className="text-[24px] font-bold leading-[1.2] text-white md:text-[28px]">
           {post.title}
         </h3>
-        <p className="mt-3 text-[16px] leading-[1.6] text-white/70">
+        <p className="mt-3 text-[16px] font-medium leading-[1.6] text-white/85">
           {post.description}
         </p>
         <span className="mt-5 inline-block text-[14px] font-semibold text-accent">

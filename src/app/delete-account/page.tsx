@@ -21,7 +21,7 @@ export default function DeleteAccount() {
         </Link>
         <h1 className="text-4xl font-bold mb-10">Delete your Slumbr account</h1>
 
-        <div className="text-white/80 leading-relaxed space-y-8">
+        <div className="text-white/85 leading-relaxed space-y-8">
           <p>
             You can delete your Slumbr account and all associated data at any time. You do not need to
             keep the app installed to make a deletion request.
