@@ -51,10 +51,17 @@ Nocturne system are gone. The new model has four tiers:
    plus a viewport-fixed two-tone gradient (sky tone above, mountain tone
    below) so rubber-banding shows the right tone at either end, and
    `themeColor` is `#1E1B4B`. Both `html` and `body` use `overflow-x: clip`
-   so glow insets can never pan the page sideways. `body::before` is the
-   starfield and `body::after` is the crescent moon, both at `z-index: -1`
-   so they sit behind all content on every page. Nothing else paints a page
-   background.
+   so glow insets can never pan the page sideways. Because `html` paints the
+   canvas, the sky gradient is the body's own background, so `body` carries
+   `isolation: isolate` to be its own stacking context: its negative
+   z-index children then paint between that background and the content.
+   Those children, in DOM paint order, are `body::before` (starfield),
+   `SkyClouds` (first body child) and `body::after` (crescent moon), all at
+   `z-index: -1`, so stars sit under clouds, clouds under the moon, and all
+   three under every piece of content on every page. Everything else (the
+   fixed nav at z-50, the footer's mountain base, section glows, content)
+   lives inside the body and keeps its relative order. Nothing else paints
+   a page background.
 2. **Clouds.** `SkyClouds` (`src/components/SkyClouds.tsx`), mounted once
    from the root layout as an early body child, draws two dark cumulus bands
    and one faint lavender highlight wisp across the top of the sky near the

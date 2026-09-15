@@ -33,9 +33,17 @@ html {
 /* Night sky. The body is as tall as the document on every route, so its
    gradient, painted once (no-repeat) over the mountain tone, spans the whole
    page: deep indigo at the top through violet, with a soft warm lavender
-   haze that rises only from the page base. Built in CSS, no raster. */
+   haze that rises only from the page base. Built in CSS, no raster.
+
+   isolation: isolate makes the body its own stacking context. Since html
+   paints the canvas, the gradient is the body's own background, and a
+   positioned element with z-index auto would paint that background over
+   its negative z-index children. Isolated, the body's negative z children
+   (starfield, clouds, moon, in that DOM paint order) sit between the body's
+   background and its content, which is the intended order. */
 body {
   position: relative;
+  isolation: isolate;
   min-height: 100%;
   overflow-x: clip;
   color: #ffffff;
