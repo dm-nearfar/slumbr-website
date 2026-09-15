@@ -1,19 +1,32 @@
-// Layered mountain-valley silhouettes with a warm glow rising from the valley.
+// Layered mountain-valley silhouettes with a warm glow rising from the valley,
+// after the app's closing plates: soft-shouldered crests that change direction
+// decisively, concave saddles between them, and the three layers descending
+// from both screen edges into a lower central valley where the glow rises.
 // Appears ONLY at the page base: the Footer mounts it so the ridges rise under
 // the closing CTA and run behind the footer content. Pure SVG and CSS, no
 // raster. The parent must be position: relative and tall enough to hold the
 // box (300px, 440px from md); the base pins itself to the parent's bottom
 // edge and stretches edge to edge. Content that sits on top of the mountains
 // needs position: relative and a z-index above 0.
+//
+// Paths are hand-drawn cubic curves on a 1440x420 viewBox. Crests and saddles
+// have horizontal tangents so shoulders stay soft; the handles are short at
+// the crests so the direction change reads as a peak rather than a swell.
+// Each layer's crests are offset from the layer behind so the ridges
+// interleave, and every layer's lowest point sits in the middle third.
 
+// Four crests (x 176, 424, 1016, 1296), valley floor about y 240 at x 700
+// to 810.
 const FAR =
-  "M0 236 C90 190 150 150 240 152 C330 154 380 210 470 206 C560 202 620 132 720 124 C820 116 880 196 970 202 C1060 208 1120 150 1210 140 C1300 130 1380 172 1440 200 L1440 420 L0 420 Z";
+  "M0 152 C70 140 120 118 176 118 C232 118 264 178 304 178 C344 178 376 138 424 138 C486 138 540 208 616 226 C672 239 748 244 812 240 C880 236 940 186 1016 156 C1072 134 1112 192 1160 192 C1208 192 1240 114 1296 114 C1352 114 1400 150 1440 158 L1440 420 L0 420 Z";
 
+// Three crests (x 212, 1004, 1322), valley floor about y 312 at x 700 to 770.
 const MID =
-  "M0 300 C80 262 140 226 230 232 C320 238 370 292 450 300 C530 308 590 262 660 280 C730 298 760 330 800 330 C840 330 890 290 960 278 C1030 266 1090 300 1160 292 C1230 284 1290 232 1350 236 C1400 240 1420 262 1440 276 L1440 420 L0 420 Z";
+  "M0 258 C64 236 140 200 212 200 C270 200 316 262 372 272 C440 284 520 300 620 306 C700 311 770 312 828 300 C904 284 950 224 1004 220 C1058 216 1104 282 1168 282 C1220 282 1266 212 1322 212 C1372 212 1410 240 1440 250 L1440 420 L0 420 Z";
 
+// Two broad crests (x 262, 1160), valley floor y 376 at x 730.
 const NEAR =
-  "M0 358 C70 334 130 316 220 322 C310 328 360 356 440 360 C520 364 570 342 640 346 C700 350 740 372 800 372 C860 372 920 344 990 340 C1060 336 1120 360 1190 356 C1260 352 1320 322 1380 326 C1410 328 1430 340 1440 348 L1440 420 L0 420 Z";
+  "M0 336 C90 322 180 298 262 298 C350 298 430 340 520 356 C600 370 680 376 730 376 C800 376 880 362 960 340 C1040 318 1100 306 1160 306 C1240 306 1320 330 1440 346 L1440 420 L0 420 Z";
 
 export default function MountainBase({ className = "" }: { className?: string }) {
   return (

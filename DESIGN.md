@@ -118,6 +118,15 @@ Three SVG paths in `MountainBase` (far `#3B2A7A`, mid `#2A1E5E`, near
 and a warm radial glow (`rgba(255,226,200,0.34)` into lavender) rising from
 the valley floor behind the ridges. Height 240px on mobile, 360px from `md`.
 
+Construction, after the app's closing plates: ridgelines, not rolling
+waves. Crests are soft-shouldered with decisive direction changes (cubic
+curves with horizontal tangents and short handles at the peak), saddles
+between crests are concave, and all three layers descend from both screen
+edges toward a lower central valley whose floor sits in the middle third,
+where the warm glow rises. FAR carries four crests, MID three, NEAR two
+broad ones, each layer's crests offset from the layer behind so the ridges
+interleave. Neither jagged alpine spikes nor convex swells.
+
 ## Typography
 
 - **Inter** (`--font-inter` / `font-sans`) carries everything: headlines,
