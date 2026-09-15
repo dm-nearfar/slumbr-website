@@ -41,7 +41,7 @@ every marketing surface. Do not reintroduce arbitrary hex classes.
 ## Atmosphere model
 
 The single page-level `PageAtmosphere` layer and the film grain from the
-Nocturne system are gone. The new model has three tiers:
+Nocturne system are gone. The new model has four tiers:
 
 1. **Body-level sky.** `body` carries the gradient (`#1E1B4B` at the top
    through `#5B21B6` at the bottom, with a warm lavender radial haze that
@@ -55,11 +55,18 @@ Nocturne system are gone. The new model has three tiers:
    starfield and `body::after` is the crescent moon, both at `z-index: -1`
    so they sit behind all content on every page. Nothing else paints a page
    background.
-2. **Per-section glows.** Each band places its own `.glow` ellipse behind its
+2. **Clouds.** `SkyClouds` (`src/components/SkyClouds.tsx`), mounted once
+   from the root layout as an early body child, draws two dark cumulus bands
+   and one faint lavender highlight wisp across the top of the sky near the
+   moon, after the app's splash and loader plates. Blurred inline SVG at
+   `z-index: -1`: above the starfield, below the moon and all content, and
+   confined to the top 160 viewBox units so nothing cloudy sits behind the
+   hero headline. Calm and sparse; atmosphere, not weather.
+3. **Per-section glows.** Each band places its own `.glow` ellipse behind its
    focal element (a phone, the pricing Pro card). Glows are components'
    business, positioned and sized by the consumer. `.glow-strong` is reserved
    for the Dream Films band, the strongest glow on the page.
-3. **Mountain base.** `MountainBase` (`src/components/MountainBase.tsx`) is
+4. **Mountain base.** `MountainBase` (`src/components/MountainBase.tsx`) is
    the only place the layered mountain-valley silhouettes and their warm
    valley glow appear. `Footer` mounts it and is as tall as the mountain
    box, so on every route the ridges rise from the sky under whatever
@@ -79,6 +86,15 @@ Tiled `radial-gradient` dots (1px to 1.2px, opacity 0.3 to 0.9) across six
 tile sizes with mutually unrelated dimensions so the repeat is unreadable,
 plus two sparse tiles of 4-point sparkles as inline SVG data URIs. Subtle and
 sparse; if you can count the pattern, it is too dense.
+
+### Clouds
+
+Fill `#14113C` at 42% to 50% (a shade darker than the sky top), one broad
+bank upper right beneath and around the moon, one thin wisp upper left, and
+a `#B3BCF5` sliver at 8% along the bank's upper edge for moonlight. Gently
+lobed top edges from cubic curves, flat bases, `feGaussianBlur`
+`stdDeviation` 8 so there are never hard vector outlines. Container 420px
+tall (560px from `md`), SVG stretched with `preserveAspectRatio="none"`.
 
 ### Crescent moon
 
