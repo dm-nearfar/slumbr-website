@@ -45,9 +45,12 @@ body {
 }
 
 /* Starfield. Tiled radial-gradient dots at varying opacity, plus two sparse
-   tiles of 4-point sparkles (inline SVG). Sits behind all page content at
-   z-index -1, above the canvas gradient. Tile sizes are mutually prime-ish so
-   the repetition is not readable. */
+   tiles of 4-point sparkles (inline SVG). Each sparkle SVG's canvas is the
+   same size as its background-size entry (1180x1460 and 1520x1180), with the
+   sparkle drawn small (about 14px and 10px) at an interior offset, so the
+   tile repeats without scaling. Sits behind all page content at z-index -1,
+   above the canvas gradient. Tile sizes are mutually prime-ish so the
+   repetition is not readable. */
 body::before {
   content: "";
   position: absolute;
@@ -55,8 +58,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='white' fill-opacity='0.85' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3E%3Cpath fill='white' fill-opacity='0.6' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1180' height='1460' viewBox='0 0 1180 1460'%3E%3Cg transform='translate(312 486) scale(0.5833)'%3E%3Cpath fill='white' fill-opacity='0.85' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/g%3E%3Cg transform='translate(884 1102) scale(0.3333)'%3E%3Cpath fill='white' fill-opacity='0.55' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1520' height='1180' viewBox='0 0 1520 1180'%3E%3Cg transform='translate(1046 318) scale(0.4167)'%3E%3Cpath fill='white' fill-opacity='0.6' d='M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z'/%3E%3C/g%3E%3C/svg%3E"),
     radial-gradient(circle at 31px 47px, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.9) 1px, transparent 1.6px),
     radial-gradient(circle at 203px 118px, rgba(255, 255, 255, 0.55) 0, rgba(255, 255, 255, 0.55) 0.8px, transparent 1.4px),
     radial-gradient(circle at 412px 259px, rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0.35) 1px, transparent 1.6px),
