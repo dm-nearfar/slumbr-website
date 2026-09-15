@@ -15,6 +15,12 @@ import Image from "next/image";
 // explicit width and height keep the frame from shifting while the image
 // loads. `sizes` defaults to the band layouts: full-ish width on phones,
 // capped at 420 CSS px on larger screens.
+//
+// The chrome is self-similar: the wrapper is a size container and the ring
+// padding, bezel padding and the three radii are in cqw, calibrated so a
+// 420px render matches the former fixed values (3px ring, 10px bezel,
+// 51.2px / 48px / 38.4px radii). Small renders such as the capture duo on
+// mobile keep the same proportions instead of looking squashed.
 
 type PhoneFrameProps = {
   src: string;
@@ -40,14 +46,14 @@ export default function PhoneFrame({
   className = "",
 }: PhoneFrameProps) {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative @container ${className}`}>
       {glow ? <div aria-hidden className="glow -inset-12" /> : null}
       {/* Titanium ring */}
-      <div className="relative rounded-[3.2rem] bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] p-[3px] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]">
+      <div className="relative rounded-[12.19cqw] bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] p-[0.714cqw] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]">
         {/* Bezel */}
-        <div className="rounded-[3rem] bg-[#0B0B10] p-[10px]">
+        <div className="rounded-[11.43cqw] bg-[#0B0B10] p-[2.381cqw]">
           {/* Screen */}
-          <div className="relative overflow-hidden rounded-[2.4rem] bg-[#0B0B10]">
+          <div className="relative overflow-hidden rounded-[9.143cqw] bg-[#0B0B10]">
             <Image
               src={src}
               alt={alt}
