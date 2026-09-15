@@ -28,7 +28,7 @@ Tokens live in `src/app/globals.css` under `@theme inline`.
 | `violet` | `#5B21B6` | Sky at the base of the page, Pro card border, primary pill |
 | `glow` | `#8B5CF6` | Soft elliptical glows (about 18% opacity), Pro border glow |
 | `accent` | `#B3BCF5` | The one italic accent word per headline, focus ring |
-| `cta` | `#7C3AED` | Interactive fill: the nav Get the App pill and the Pro trial buttons; hover glow stays `glow` |
+| `cta` | `#5C6BC0` | Interactive fill, sampled with Pillow from the selected "All Dreams" chip on the journal capture so app and site CTAs match: the nav Get the App pill and the Pro trial buttons; hover glow stays `glow` |
 | white | `#FFFFFF` | Headlines, body, labels |
 | white/70 | `rgba(255,255,255,0.7)` | Sub-lines |
 
