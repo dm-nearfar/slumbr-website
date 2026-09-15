@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, MotionConfig } from "framer-motion";
+import Accent from "@/components/Accent";
 import PhoneFrame from "@/components/PhoneFrame";
 import PostCard from "@/components/PostCard";
 import StoreBadges from "@/components/StoreBadges";
@@ -62,6 +63,22 @@ function SparkleIcon({ className }: { className?: string }) {
   );
 }
 
+/* A handful of sparkles around the hero headline, on top of the body-level
+   starfield, so the first viewport always reads as a night sky. */
+function HeroStars() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[60%]">
+      <span className="absolute left-[12%] top-[22%] h-1 w-1 rounded-full bg-white opacity-80" />
+      <span className="absolute left-[24%] top-[36%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
+      <span className="absolute left-[38%] top-[16%] h-0.5 w-0.5 rounded-full bg-white opacity-60" />
+      <span className="absolute right-[30%] top-[20%] h-1 w-1 rounded-full bg-white opacity-40" />
+      <span className="absolute right-[18%] top-[42%] h-0.5 w-0.5 rounded-full bg-white opacity-70" />
+      <span className="absolute right-[8%] top-[30%] h-1.5 w-1.5 rounded-full bg-white opacity-30" />
+      <span className="absolute left-[6%] top-[52%] h-0.5 w-0.5 rounded-full bg-white opacity-60" />
+    </div>
+  );
+}
+
 const steps = [
   {
     number: 1,
@@ -85,49 +102,58 @@ export default function Home() {
     <MotionConfig reducedMotion="user">
       <div className="relative">
         <main className="relative">
-        {/* Hero */}
+        {/* Hero. The phone rises from the bottom edge of the first viewport
+            and is cropped by it: the section is one viewport tall with
+            overflow hidden, the phone is pushed to the section's bottom and
+            carries a negative bottom margin. Its glow sits inside the same
+            clip, which is the one deliberate crop of a glow on the site. */}
         <section
           id="top"
-          className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-16 pt-36 text-center md:px-16"
+          className="relative flex min-h-[100svh] flex-col items-center overflow-hidden px-6 pt-36 text-center md:px-16 md:pt-44"
         >
+          <HeroStars />
           <motion.div
-            className="relative z-10 w-full max-w-5xl"
+            className="relative z-10 flex w-full max-w-5xl flex-col items-center"
             initial="hidden"
             animate="visible"
             variants={stagger}
           >
             <motion.h1
               variants={fadeUp}
-              className="font-display mb-6 text-balance text-[48px] font-medium leading-[1.05] tracking-[-0.01em] text-white md:text-[80px]"
+              className="mb-5 text-balance text-[52px] font-bold leading-[1.02] tracking-[-0.02em] text-white md:text-[88px]"
             >
-              Unlock Your <em className="italic">Dreams</em>.
+              <span className="block md:inline">Unlock your </span>
+              <Accent>dreams.</Accent>
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mx-auto mb-12 max-w-2xl text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
+              className="mb-10 max-w-2xl text-[19px] leading-[1.6] text-white/70 md:text-[22px]"
             >
-              Dive deeper into your subconscious. AI-powered analysis
-              reveals what your dreams really mean, then brings them to life
-              as cinematic videos.
+              Record, decode, and relive your dreams.
             </motion.p>
             <motion.div variants={fadeUp} id="download">
               <StoreBadges />
             </motion.div>
+          </motion.div>
+          <motion.div
+            className="relative z-10 mx-auto mt-14 -mb-[150px] w-full max-w-[320px] md:mt-auto md:-mb-[280px] md:max-w-[420px]"
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+          >
+            <div aria-hidden className="glow -inset-x-32 -inset-y-16 md:-inset-x-48 md:-inset-y-24" />
             <motion.div
-              variants={fadeUp}
-              className="relative mx-auto mt-16 w-full max-w-[320px] md:max-w-[400px]"
+              className="relative"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <motion.div
-                className="relative z-20"
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <PhoneFrame
-                  src="/screenshots/hero-app.png"
-                  alt="Slumbr app dream journal screen"
-                  priority
-                />
-              </motion.div>
+              <PhoneFrame
+                src="/screenshots/shot1-journal-home.webp"
+                alt="Slumbr's My Journal screen listing recent dreams such as Rooftop Garden at Midnight and Flying Over The City"
+                sizes="(max-width: 768px) 320px, 420px"
+                priority
+                glow={false}
+              />
             </motion.div>
           </motion.div>
         </section>
