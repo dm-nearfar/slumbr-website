@@ -1,6 +1,6 @@
-// Official App Store / Google Play badge row. Extracted from the homepage hero
-// so the homepage and the blog post CTA render the same badges. `className` is
-// appended to the row container (e.g. for centring/margins in the post).
+// App Store / Google Play badge row, shared by the hero, the closing CTA and
+// the blog post CTA. App Store is the white badge, Google Play is dark glass
+// on the sky gradient. `className` is appended to the row container.
 
 function AppleLogo({ className }: { className?: string }) {
   return (
@@ -42,7 +42,7 @@ export default function StoreBadges({ className = "" }: { className?: string }) 
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Download on the App Store"
-        className="flex items-center gap-3 rounded-xl bg-white px-8 py-3 text-black transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(229,233,255,0.25)] active:scale-95"
+        className="flex items-center gap-3 rounded-xl bg-white px-8 py-3 text-indigo-deep transition-all duration-200 hover:shadow-[0_8px_32px_rgba(179,188,245,0.35)] motion-safe:hover:-translate-y-0.5 active:scale-95"
       >
         <AppleLogo className="h-7 w-7" />
         <span className="text-left leading-tight">
@@ -57,7 +57,7 @@ export default function StoreBadges({ className = "" }: { className?: string }) 
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Get it on Google Play"
-        className="flex items-center gap-3 rounded-xl border border-[#2A2940] bg-[#1A1929] px-8 py-3 text-white transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-[#232238] hover:shadow-[0_8px_32px_rgba(61,59,142,0.45)] active:scale-95"
+        className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-8 py-3 text-white backdrop-blur-md transition-all duration-200 hover:bg-white/15 hover:shadow-[0_8px_32px_rgba(139,92,246,0.45)] motion-safe:hover:-translate-y-0.5 active:scale-95"
       >
         <PlayMark className="h-7 w-7" />
         <span className="text-left leading-tight">
