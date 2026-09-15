@@ -138,6 +138,8 @@ Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
 
 - Mobile hero headline stacks as two lines: "Unlock your" / "*dreams.*",
   matching the store screenshot treatment.
+- The hero is at least one viewport tall and grows with its content so the
+  framed phone is always fully in view; nothing in the hero is clipped.
 - Bands stack text above phone.
 - How-it-works steps stack vertically with the connector running vertically.
 - Pricing cards stack, Pro first.

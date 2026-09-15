@@ -112,14 +112,11 @@ export default function Home() {
     <MotionConfig reducedMotion="user">
       <div className="relative">
         <main className="relative">
-        {/* Hero. The phone rises from the bottom edge of the first viewport
-            and is cropped by it: the section is one viewport tall with
-            overflow hidden, the phone is pushed to the section's bottom and
-            carries a negative bottom margin. Its glow sits inside the same
-            clip, which is the one deliberate crop of a glow on the site. */}
+        {/* Hero. At least one viewport tall, growing as needed so the whole
+            phone is in view with room beneath it before How it works. */}
         <section
           id="top"
-          className="relative flex min-h-[100svh] flex-col items-center overflow-hidden px-6 pt-36 text-center md:px-16 md:pt-44"
+          className="relative flex min-h-[100svh] flex-col items-center px-6 pb-16 pt-36 text-center md:px-16 md:pb-24 md:pt-44"
         >
           <HeroStars />
           <motion.div
@@ -146,7 +143,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="relative z-10 mx-auto mt-auto -mb-[150px] w-full max-w-[320px] pt-14 md:-mb-[280px] md:max-w-[420px] md:pt-16"
+            className="relative z-10 mx-auto mt-14 w-full max-w-[320px] md:mt-16 md:max-w-[420px]"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
