@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, MotionConfig } from "framer-motion";
+import Image from "next/image";
 import Accent from "@/components/Accent";
 import FeatureBand from "@/components/FeatureBand";
 import PhoneFrame from "@/components/PhoneFrame";
@@ -58,6 +59,32 @@ function HeroStars() {
       <span className="absolute right-[8%] top-[30%] h-1.5 w-1.5 rounded-full bg-white opacity-30" />
       <span className="absolute left-[6%] top-[52%] h-0.5 w-0.5 rounded-full bg-white opacity-60" />
     </div>
+  );
+}
+
+/* Faint constellation in the analysis band's upper corner: a few stars joined
+   by hairlines, drawn once as inline SVG. */
+function Constellation() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 240 160"
+      className="pointer-events-none absolute right-6 top-6 w-[180px] opacity-50 md:right-16 md:top-10 md:w-[240px]"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g stroke="#B3BCF5" strokeWidth="0.75" strokeOpacity="0.55" fill="none">
+        <path d="M22 118 L74 64 L128 84 L176 30 L222 52" />
+        <path d="M128 84 L150 132" />
+      </g>
+      <g fill="#FFFFFF">
+        <circle cx="22" cy="118" r="1.6" fillOpacity="0.9" />
+        <circle cx="74" cy="64" r="2.2" fillOpacity="0.95" />
+        <circle cx="128" cy="84" r="1.4" fillOpacity="0.8" />
+        <circle cx="176" cy="30" r="2" fillOpacity="0.9" />
+        <circle cx="222" cy="52" r="1.3" fillOpacity="0.7" />
+        <circle cx="150" cy="132" r="1.5" fillOpacity="0.75" />
+      </g>
+    </svg>
   );
 }
 
@@ -200,42 +227,29 @@ export default function Home() {
           alt="Slumbr's Add Dream screen recording a voice note, with a live waveform and a Tap to Stop Recording button"
         />
 
-        {/* AI Dream Analysis */}
-        <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
-            <motion.div
-              className="flex-1 text-center md:order-1 md:text-left"
-              {...reveal}
-            >
-              <div className="mb-6 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
-                Understand your dreams
-              </div>
-              <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
-                AI Dream Analysis
-              </h2>
-              <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
-                Record a dream and Slumbr analyses it in seconds — surfacing
-                the themes, emotions, and symbols woven through it, and
-                explaining the psychology behind them. Over time, recurring
-                patterns your waking mind misses come into focus.
-              </p>
-              <p className="mt-6 text-[15px] text-[#6B6B7B]">
-                3 analyses a month free — unlimited on Pro.
-              </p>
-            </motion.div>
-            <motion.div
-              className="relative order-last flex flex-1 justify-center md:order-2"
-              {...reveal}
-            >
-              <div className="relative w-[280px] md:w-[320px]">
-                <PhoneFrame
-                  src="/screenshots/ai-analysis.png"
-                  alt="Slumbr app AI dream analysis screen"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        {/* Analysis band, mirrored: phone left, text right */}
+        <FeatureBand
+          mirrored
+          headline={
+            <>
+              Discover what it <Accent>means.</Accent>
+            </>
+          }
+          subline="The symbols, the themes, and what they say about you."
+          src="/screenshots/shot4-analysis-nans-kitchen.webp"
+          alt="Slumbr's Your Dream screen showing an AI analysis of a dream about a grandmother's kitchen"
+          decoration={<Constellation />}
+          phoneOverlay={
+            <Image
+              src="/screenshots/archetype-card.webp"
+              alt="Slumbr's dream archetype card: Navigator, a strong match"
+              width={640}
+              height={172}
+              sizes="(max-width: 768px) 220px, 300px"
+              className="absolute -right-6 bottom-[16%] w-[220px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-16 md:w-[300px]"
+            />
+          }
+        />
 
         {/* Cinematic Dream Videos */}
         <section className="px-6 py-16 md:px-16 md:py-24">
