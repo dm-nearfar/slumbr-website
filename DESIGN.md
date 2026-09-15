@@ -54,8 +54,12 @@ Nocturne system are gone. The new model has three tiers:
    for the Dream Films band, the strongest glow on the page.
 3. **Mountain base.** `MountainBase` (`src/components/MountainBase.tsx`) is
    the only place the layered mountain-valley silhouettes and their warm
-   valley glow appear: under the closing CTA and running behind the footer.
-   It is never used elsewhere.
+   valley glow appear. `Footer` mounts it and is as tall as the mountain
+   box, so on every route the ridges rise from the sky under whatever
+   precedes the footer (the closing CTA on the homepage) and the footer
+   content sits over the nearest, darkest ridge. Sections that immediately
+   precede the footer use `relative z-10` so their content paints above
+   the ridges. It is never used elsewhere.
 
 Sections are transparent content layers. Do not give a section its own
 background fill, and avoid `overflow-hidden` on anything that could slice a
@@ -126,6 +130,8 @@ Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
 - Section gap: **80px** (`py-20`).
 - Content max-widths: nav and bands `max-w-7xl`, hero text `max-w-5xl`,
   pricing `max-w-5xl`, CTA `max-w-4xl`.
+- Homepage order: hero, how it works, capture, analysis, dream films,
+  social proof (gated), pricing, blog teaser, closing CTA, footer.
 - Airy density. Bands alternate text left / phone right and mirrored.
 
 ## Responsive
@@ -170,9 +176,16 @@ Depth via tonal layering and glows, not drop shadows.
 - **Store badges**: `StoreBadges`, inline SVG glyphs, standard "Download on
   the App Store" / "Get it on Google Play" wording.
 - **PhoneFrame**: reusable device frame (`src/components/PhoneFrame.tsx`).
-- **MountainBase**: page-base silhouettes (`src/components/MountainBase.tsx`).
-- **Social proof**: built but gated behind a single boolean set to `false`
-  until real store review quotes exist. Never invent reviews.
+  Its titanium ring and bezel greys are hardware colours, the one place
+  hex classes outside the palette are allowed.
+- **FeatureBand**: text-and-phone band with a mirrored variant
+  (`src/components/FeatureBand.tsx`).
+- **MountainBase**: page-base silhouettes (`src/components/MountainBase.tsx`),
+  mounted by `Footer`.
+- **Nav** and **Footer**: mounted on every route from `src/app/layout.tsx`.
+- **SocialProof** (`src/components/SocialProof.tsx`): built but gated behind
+  `SHOW_SOCIAL_PROOF = false` until the three TODO slots hold real, verbatim
+  App Store and Google Play review quotes. Never invent reviews.
 
 ## Motion
 
