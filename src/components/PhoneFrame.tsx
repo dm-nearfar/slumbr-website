@@ -26,14 +26,7 @@ type PhoneFrameProps = {
   priority?: boolean;
   /** Soft .glow ellipse behind the device. Off when a band supplies its own. */
   glow?: boolean;
-  /** "soft" for a lighter drop shadow, e.g. the rear phone of a duo. */
-  shadow?: "default" | "soft";
   className?: string;
-};
-
-const SHADOW = {
-  default: "shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]",
-  soft: "shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)]",
 };
 
 export default function PhoneFrame({
@@ -44,16 +37,13 @@ export default function PhoneFrame({
   sizes = "(max-width: 768px) 80vw, 420px",
   priority = false,
   glow = true,
-  shadow = "default",
   className = "",
 }: PhoneFrameProps) {
   return (
     <div className={`relative ${className}`}>
       {glow ? <div aria-hidden className="glow -inset-12" /> : null}
       {/* Titanium ring */}
-      <div
-        className={`relative rounded-[3.2rem] bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] p-[3px] ${SHADOW[shadow]}`}
-      >
+      <div className="relative rounded-[3.2rem] bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] p-[3px] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]">
         {/* Bezel */}
         <div className="rounded-[3rem] bg-[#0B0B10] p-[10px]">
           {/* Screen */}

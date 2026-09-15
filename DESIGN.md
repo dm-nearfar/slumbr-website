@@ -210,7 +210,8 @@ Depth via tonal layering and glows, not drop shadows.
   under 200 KB each. Source PNGs never enter the repo.
 - Shipped set, six files: five phone screens (journal home, recording
   waveform, add details, analysis, feed) plus the archetype card crop.
-  Hero: journal home. Capture band: recording in front, add details behind.
+  Hero: journal home. Capture band: the Add Story (recording) and Add
+  Details steps side by side, nothing overlapping.
   Analysis band: analysis with the archetype card overlay. Dream Films: feed.
 - Explicit `width` and `height` on every framed screenshot so fonts and images
   cause no layout shift.

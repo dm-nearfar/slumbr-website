@@ -11,12 +11,11 @@ import { reveal } from "@/lib/motion";
 // wrapper for floating elements (the archetype card); `decoration` renders
 // at section level for atmosphere (constellation lines).
 //
-// Pass `secondSrc` and `secondAlt` for a phone duo: the main phone in front
-// and a second phone behind it at 85% of its width, offset up and to the
-// right with at most 15% of the rear phone's width behind the front phone,
-// a softer shadow and the band's one glow shared. The duo wrapper is sized
-// as a whole (front width plus the rear phone's protrusion) so nothing
-// overflows; on narrow screens it shrinks proportionally.
+// Pass `secondSrc` and `secondAlt` for a phone duo: two equal phones side by
+// side in a flex row, the main phone on the left and the second on the right
+// nudged 24px down for rhythm, nothing obscured on either screen. The pair
+// shares the band's one glow. The wrapper caps the pair's width so it never
+// overflows its container; on narrow screens both phones shrink together.
 
 type FeatureBandProps = {
   id?: string;
@@ -68,29 +67,27 @@ export default function FeatureBand({
         </motion.div>
         <motion.div className="relative flex flex-1 justify-center" {...reveal}>
           {secondSrc && secondAlt ? (
-            /* Duo. Outer width = 1.7225 x front width: front phone 58% at the
-               left and bottom, rear phone 49.3% (85% of the front) pinned to
-               the top right, so the overlap is 7.3% of the outer width, or
-               14.8% of the rear phone's width, at every breakpoint. */
-            <div className="relative w-full max-w-[380px] md:max-w-[620px]">
+            /* Duo: equal halves of the wrapper minus the gap, so each phone
+               is 190px at the 400px mobile maximum and 316px at the 660px
+               maximum from md. */
+            <div className="relative flex w-full max-w-[400px] items-start gap-5 md:max-w-[660px] md:gap-7">
               <div aria-hidden className="glow -inset-x-24 -inset-y-12" />
-              <div className="absolute right-0 top-0 z-0 w-[49.3%]">
-                <PhoneFrame
-                  src={secondSrc}
-                  alt={secondAlt}
-                  sizes="(max-width: 768px) 187px, 306px"
-                  glow={false}
-                  shadow="soft"
-                />
-              </div>
-              <div className="relative z-10 mt-[10%] w-[58%]">
+              <div className="relative min-w-0 flex-1">
                 <PhoneFrame
                   src={src}
                   alt={alt}
-                  sizes="(max-width: 768px) 220px, 360px"
+                  sizes="(max-width: 768px) 190px, 316px"
                   glow={false}
                 />
                 {phoneOverlay}
+              </div>
+              <div className="relative mt-6 min-w-0 flex-1">
+                <PhoneFrame
+                  src={secondSrc}
+                  alt={secondAlt}
+                  sizes="(max-width: 768px) 190px, 316px"
+                  glow={false}
+                />
               </div>
             </div>
           ) : (
