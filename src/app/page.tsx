@@ -174,21 +174,20 @@ export default function Home() {
             >
               How it <Accent>works.</Accent>
             </motion.h2>
-            {/* Steps: chip-left rows with the connector running vertically
-                through the 72px chip column up to lg. From lg, three
-                content-sized columns with 80px chips whose titles never wrap;
-                each column draws its own connector segment through its chip's
-                centre (right half only on the first, left half only on the
-                last), so the line always centres on the chips whatever the
-                columns' widths. */}
+            {/* Steps: chip-left rows up to lg, three content-sized columns
+                with 80px chips and one-line titles from lg. In both layouts
+                each step draws its own connector segment through its chip's
+                centre: vertically through the 72px chip column (first step
+                from chip centre down through the gap, middle step full height
+                through the gap, last step from its top edge to its chip
+                centre only, so nothing runs beside or below step 3's text),
+                and horizontally from lg (right half only on the first, left
+                half only on the last). The line therefore always centres on
+                the chips and ends at the last chip. */}
             <div className="relative mx-auto flex w-full max-w-[380px] flex-col gap-10 lg:max-w-none lg:flex-row lg:items-start lg:justify-between lg:gap-0">
               {/* One wide, soft glow behind the whole step row, weaker than a
                   phone glow */}
               <div aria-hidden className="glow -inset-x-16 -inset-y-10 opacity-80 lg:-inset-x-24" />
-              <div
-                aria-hidden
-                className="absolute bottom-[36px] left-[35px] top-[36px] w-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:hidden"
-              />
               {steps.map((s) => (
                 <motion.div
                   key={s.number}
@@ -198,6 +197,16 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: s.number * 0.15 }}
                 >
+                  <div
+                    aria-hidden
+                    className={`absolute left-[35px] w-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:hidden ${
+                      s.number === 1
+                        ? "-bottom-10 top-[36px]"
+                        : s.number === steps.length
+                          ? "top-0 h-[36px]"
+                          : "-bottom-10 top-0"
+                    }`}
+                  />
                   <div
                     aria-hidden
                     className={`absolute top-[40px] hidden h-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:block ${
