@@ -98,12 +98,12 @@ const steps = [
   {
     number: 2,
     text: "Get instant AI analysis",
-    subtitle: "Themes, emotions, and hidden meanings revealed",
+    subtitle: "Themes, emotions, and hidden meanings revealed.",
   },
   {
     number: 3,
     text: "Watch your dream come to life",
-    subtitle: "A cinematic AI video of your dream world",
+    subtitle: "A cinematic AI video of your dream world.",
   },
 ];
 
