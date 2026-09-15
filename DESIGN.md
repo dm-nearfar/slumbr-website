@@ -28,6 +28,7 @@ Tokens live in `src/app/globals.css` under `@theme inline`.
 | `violet` | `#5B21B6` | Sky at the base of the page, Pro card border, primary pill |
 | `glow` | `#8B5CF6` | Soft elliptical glows (about 18% opacity), Pro border glow |
 | `accent` | `#B3BCF5` | The one italic accent word per headline, focus ring |
+| `cta` | `#7C3AED` | Interactive fill: the nav Get the App pill and the Pro trial buttons; hover glow stays `glow` |
 | white | `#FFFFFF` | Headlines, body, labels |
 | white/70 | `rgba(255,255,255,0.7)` | Sub-lines |
 
@@ -167,9 +168,9 @@ Depth via tonal layering and glows, not drop shadows.
 
 ## Components
 
-- **Primary button / nav CTA**: solid purple pill, white text.
+- **Primary button / nav CTA**: solid `cta` pill, white text, `glow` hover shadow.
 - **Outlined store buttons** (Free card): 1px white/20 border, white text.
-- **Solid trial buttons** (Pro card): solid purple.
+- **Solid trial buttons** (Pro card): solid `cta`.
 - **Chips**: pill, lavender text on translucent purple (PRO, BEST VALUE,
   7-DAY FREE TRIAL).
 - **Number chips** (How it works): lavender, subtle glow, joined by a thin

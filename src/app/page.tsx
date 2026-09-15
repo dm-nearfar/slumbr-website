@@ -416,7 +416,7 @@ export default function Home() {
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl bg-violet py-4 text-center font-semibold text-white transition-all duration-200 hover:shadow-[0_8px_28px_rgba(139,92,246,0.6)] motion-safe:hover:-translate-y-0.5"
+                    className="w-full rounded-2xl bg-cta py-4 text-center font-semibold text-white transition-all duration-200 hover:shadow-[0_8px_28px_rgba(139,92,246,0.6)] motion-safe:hover:-translate-y-0.5"
                   >
                     Start Free Trial on iOS
                   </a>
@@ -424,10 +424,18 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl bg-violet py-4 text-center font-semibold text-white transition-all duration-200 hover:shadow-[0_8px_28px_rgba(139,92,246,0.6)] motion-safe:hover:-translate-y-0.5"
+                    className="w-full rounded-2xl bg-cta py-4 text-center font-semibold text-white transition-all duration-200 hover:shadow-[0_8px_28px_rgba(139,92,246,0.6)] motion-safe:hover:-translate-y-0.5"
                   >
                     Start Free Trial on Android
                   </a>
+                  {/* Invisible twin of the Free card's caption so both button
+                      stacks sit at the same height at every width */}
+                  <p
+                    aria-hidden="true"
+                    className="mt-2 select-none text-center text-[14px] text-white/70 opacity-0"
+                  >
+                    Free forever. No card required.
+                  </p>
                 </div>
               </motion.div>
             </motion.div>

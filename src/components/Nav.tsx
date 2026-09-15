@@ -30,7 +30,7 @@ export default function Nav() {
         </div>
         <Link
           href="/#download"
-          className="rounded-full bg-violet px-6 py-2.5 text-[15px] font-semibold text-white transition-all duration-200 hover:shadow-[0_4px_24px_rgba(139,92,246,0.55)] motion-safe:hover:-translate-y-0.5 active:scale-95"
+          className="rounded-full bg-cta px-6 py-2.5 text-[15px] font-semibold text-white transition-all duration-200 hover:shadow-[0_4px_24px_rgba(139,92,246,0.55)] motion-safe:hover:-translate-y-0.5 active:scale-95"
         >
           Get the App
         </Link>
