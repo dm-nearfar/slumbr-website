@@ -16,11 +16,14 @@ import Image from "next/image";
 // loads. `sizes` defaults to the band layouts: full-ish width on phones,
 // capped at 420 CSS px on larger screens.
 //
-// The chrome is self-similar: the wrapper is a size container and the ring
-// padding, bezel padding and the three radii are in cqw, calibrated so a
-// 420px render matches the former fixed values (3px ring, 10px bezel,
-// 51.2px / 48px / 38.4px radii). Small renders such as the capture duo on
-// mobile keep the same proportions instead of looking squashed.
+// The chrome is self-similar in plain CSS (no container queries, which iOS
+// Safari failed to render here). Ring and bezel paddings are percentages,
+// which resolve against the containing block's WIDTH, and each layer's
+// radius uses the two-value slash form: horizontal as a percentage of the
+// layer's width, vertical as that divided by the layer's fixed aspect ratio,
+// so every corner is circular. Calibrated so a 420px frame reproduces the
+// former fixed chrome exactly (3px ring, 10px bezel, 51.2 / 48 / 38.4px
+// radii); see CHROME for the arithmetic.
 
 type PhoneFrameProps = {
   src: string;
@@ -35,6 +38,19 @@ type PhoneFrameProps = {
   className?: string;
 };
 
+// Calibration at a 420px frame with an 840x1826 screen:
+//   ring padding  3 / 420  = 0.714286% of the wrapper width
+//   bezel padding 10 / 414 = 2.415459% of the ring's content width
+//   layer aspect ratios (height / width) are then fixed:
+//   ring 2.101145, bezel 2.117104, screen 2.173810 (= 1826 / 840)
+//   radii: ring 51.2 / 420 and 51.2 / 882.48, bezel 48 / 414 and 48 / 876.48,
+//   screen 38.4 / 394 and 38.4 / 856.48.
+const CHROME = {
+  ring: { padding: "0.714286%", borderRadius: "12.1905% / 5.8018%" },
+  bezel: { padding: "2.415459%", borderRadius: "11.5942% / 5.4764%" },
+  screen: { borderRadius: "9.7462% / 4.4835%" },
+} as const;
+
 export default function PhoneFrame({
   src,
   alt,
@@ -46,14 +62,17 @@ export default function PhoneFrame({
   className = "",
 }: PhoneFrameProps) {
   return (
-    <div className={`relative @container ${className}`}>
+    <div className={`relative ${className}`}>
       {glow ? <div aria-hidden className="glow -inset-12" /> : null}
       {/* Titanium ring */}
-      <div className="relative rounded-[12.19cqw] bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] p-[0.714cqw] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]">
+      <div
+        className="relative bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]"
+        style={CHROME.ring}
+      >
         {/* Bezel */}
-        <div className="rounded-[11.43cqw] bg-[#0B0B10] p-[2.381cqw]">
+        <div className="bg-[#0B0B10]" style={CHROME.bezel}>
           {/* Screen */}
-          <div className="relative overflow-hidden rounded-[9.143cqw] bg-[#0B0B10]">
+          <div className="relative overflow-hidden bg-[#0B0B10]" style={CHROME.screen}>
             <Image
               src={src}
               alt={alt}

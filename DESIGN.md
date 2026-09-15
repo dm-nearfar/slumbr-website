@@ -166,7 +166,7 @@ Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
 | store badges | 0.75rem |
 | buttons in cards | 1rem |
 | pricing and glass cards | 32px |
-| phone frame outer | 12.19cqw of the frame width (51.2px at 420px); bezel 11.43cqw, screen 9.143cqw |
+| phone frame outer | 12.1905% / 5.8018% of the ring box (51.2px at 420px); bezel 11.5942% / 5.4764%, screen 9.7462% / 4.4835%; percentage paddings 0.714286% and 2.415459% |
 | pills, chips, nav CTA | 9999px |
 
 ## Elevation and depth
