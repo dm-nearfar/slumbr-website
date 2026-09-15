@@ -9,12 +9,15 @@ repo; no source PNG enters git) and writes WebP files into public/screenshots/:
   shot4_analysis_nans_kitchen.png        -> shot4-analysis-nans-kitchen.webp
   shot2_feed_rooftop_garden.png          -> shot2-feed-rooftop-garden.webp
   folder_account_archetype_medallion.png -> archetype-card.webp (card crop only)
+  shot5_add_details.png                  -> add-details-card.webp (mood and theme chips crop)
 
 Phone screens are resized to 840x1826, which is 2x the largest width they
 render at (about 420 CSS px), so retina screens stay crisp without shipping
 the 1206x2622 source. The archetype card is cropped from the account screen
 (the rounded card with the sparkle medallion, "Your dream archetype",
-"Navigator", "A strong match") and downscaled to 640 px wide.
+"Navigator", "A strong match") and downscaled to 640 px wide. The Add Details
+crop takes the Mood chip rows and the Themes label with its first two chip
+rows from the details screen, also at 640 px wide.
 
 Every output starts at WebP quality 80 and steps down in fives, to a floor of
 60, until it is under the 200 KB ceiling. The chosen quality and final size
@@ -51,6 +54,11 @@ MIN_QUALITY = 60
 ARCHETYPE_BOX = (56, 728, 1150, 1022)
 ARCHETYPE_WIDTH = 640
 
+# Mood and theme chips on the 1206x2622 Add Details screenshot: from the
+# "Mood" label through the second row of theme chips.
+ADD_DETAILS_BOX = (32, 1226, 1174, 2368)
+ADD_DETAILS_WIDTH = 640
+
 PHONE_SHOTS = {
     "shot1_journal_home.png": "shot1-journal-home.webp",
     "shot3_recording_waveform.png": "shot3-recording-waveform.webp",
@@ -85,18 +93,17 @@ def encode_phone(name: str, out_name: str) -> None:
         save_under_ceiling(im, OUT / out_name)
 
 
-def encode_archetype() -> None:
-    name = "folder_account_archetype_medallion.png"
+def encode_crop(name: str, box: tuple[int, int, int, int], width: int, out_name: str, label: str) -> None:
     src = SRC / name
     if not src.is_file():
         print(f"skip: {src} not found")
         return
-    print(f"=== {name} (archetype card crop)")
+    print(f"=== {name} ({label})")
     with Image.open(src) as im:
-        im = im.convert("RGB").crop(ARCHETYPE_BOX)
-        ratio = ARCHETYPE_WIDTH / im.width
-        im = im.resize((ARCHETYPE_WIDTH, round(im.height * ratio)), Image.LANCZOS)
-        save_under_ceiling(im, OUT / "archetype-card.webp")
+        im = im.convert("RGB").crop(box)
+        ratio = width / im.width
+        im = im.resize((width, round(im.height * ratio)), Image.LANCZOS)
+        save_under_ceiling(im, OUT / out_name)
 
 
 def main() -> int:
@@ -106,7 +113,20 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     for name, out_name in PHONE_SHOTS.items():
         encode_phone(name, out_name)
-    encode_archetype()
+    encode_crop(
+        "folder_account_archetype_medallion.png",
+        ARCHETYPE_BOX,
+        ARCHETYPE_WIDTH,
+        "archetype-card.webp",
+        "archetype card crop",
+    )
+    encode_crop(
+        "shot5_add_details.png",
+        ADD_DETAILS_BOX,
+        ADD_DETAILS_WIDTH,
+        "add-details-card.webp",
+        "mood and theme chips crop",
+    )
     print(f"done -> {OUT}/")
     return 0
 
