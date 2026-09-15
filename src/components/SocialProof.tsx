@@ -8,7 +8,10 @@ import { fadeUp, reveal, stagger } from "@/lib/motion";
 // GATED. The section renders nothing until SHOW_SOCIAL_PROOF is true, and it
 // must stay false until the three TODO slots below hold real, verbatim App
 // Store and Google Play review quotes with their attribution. Never invent
-// reviews and never paraphrase one.
+// reviews and never paraphrase one. The star row below renders five stars
+// for every card, so each quote must come from a review that is actually
+// five stars; if any chosen review is not, make the stars per-review (a
+// rating field on Review driving Stars) before the flag flips.
 export const SHOW_SOCIAL_PROOF = false;
 
 type Review = {
