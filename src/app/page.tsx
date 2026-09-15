@@ -2,30 +2,12 @@
 
 import { motion, MotionConfig } from "framer-motion";
 import Accent from "@/components/Accent";
+import FeatureBand from "@/components/FeatureBand";
 import PhoneFrame from "@/components/PhoneFrame";
 import PostCard from "@/components/PostCard";
 import StoreBadges from "@/components/StoreBadges";
 import { latestPost } from "@/content/blog/posts";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const reveal = {
-  initial: "hidden" as const,
-  whileInView: "visible" as const,
-  viewport: { once: true, margin: "-80px" },
-  variants: fadeUp,
-};
-
-const stagger = {
-  visible: { transition: { staggerChildren: 0.15 } },
-};
+import { fadeUp, reveal, stagger } from "@/lib/motion";
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -205,6 +187,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Capture band */}
+        <FeatureBand
+          headline={
+            <>
+              Capture dreams before they <Accent>fade.</Accent>
+            </>
+          }
+          subline="Type it, or just speak it. Half-awake works."
+          src="/screenshots/shot3-recording-waveform.webp"
+          alt="Slumbr's Add Dream screen recording a voice note, with a live waveform and a Tap to Stop Recording button"
+        />
 
         {/* AI Dream Analysis */}
         <section className="px-6 py-16 md:px-16 md:py-24">
