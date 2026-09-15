@@ -2,30 +2,14 @@
 
 import { motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
+import Accent from "@/components/Accent";
+import FeatureBand from "@/components/FeatureBand";
+import PhoneFrame from "@/components/PhoneFrame";
 import PostCard from "@/components/PostCard";
+import SocialProof from "@/components/SocialProof";
 import StoreBadges from "@/components/StoreBadges";
 import { latestPost } from "@/content/blog/posts";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const reveal = {
-  initial: "hidden" as const,
-  whileInView: "visible" as const,
-  viewport: { once: true, margin: "-80px" },
-  variants: fadeUp,
-};
-
-const stagger = {
-  visible: { transition: { staggerChildren: 0.15 } },
-};
+import { fadeUp, reveal, stagger } from "@/lib/motion";
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -63,125 +47,45 @@ function SparkleIcon({ className }: { className?: string }) {
   );
 }
 
-function Nav() {
+/* A handful of sparkles around the hero headline, on top of the body-level
+   starfield, so the first viewport always reads as a night sky. */
+function HeroStars() {
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-[#2A2940] bg-[#0F0E1A]/60 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-16">
-        <a href="#top" className="flex items-center gap-3">
-          <Image src="/logo.png" alt="Slumbr logo" width={32} height={32} />
-          <span className="font-display text-[24px] font-medium tracking-tight text-white">
-            Slumbr
-          </span>
-        </a>
-        <div className="hidden items-center gap-8 text-[15px] font-semibold tracking-[0.05em] md:flex">
-          <a
-            href="#how-it-works"
-            className="text-[#9090A0] transition-colors hover:text-white"
-          >
-            How it Works
-          </a>
-          <a
-            href="#pricing"
-            className="text-[#9090A0] transition-colors hover:text-white"
-          >
-            Pricing
-          </a>
-          <Link
-            href="/blog"
-            className="text-[#9090A0] transition-colors hover:text-white"
-          >
-            Blog
-          </Link>
-        </div>
-        <a
-          href="#download"
-          className="rounded-full bg-[#3D3B8E] px-6 py-2.5 text-[15px] font-semibold tracking-[0.05em] text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(61,59,142,0.5)] active:scale-95"
-        >
-          Get the App
-        </a>
-      </div>
-    </nav>
+    <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[60%]">
+      <span className="absolute left-[12%] top-[22%] h-1 w-1 rounded-full bg-white opacity-80" />
+      <span className="absolute left-[24%] top-[36%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
+      <span className="absolute left-[38%] top-[16%] h-0.5 w-0.5 rounded-full bg-white opacity-60" />
+      <span className="absolute right-[30%] top-[20%] h-1 w-1 rounded-full bg-white opacity-40" />
+      <span className="absolute right-[18%] top-[42%] h-0.5 w-0.5 rounded-full bg-white opacity-70" />
+      <span className="absolute right-[8%] top-[30%] h-1.5 w-1.5 rounded-full bg-white opacity-30" />
+      <span className="absolute left-[6%] top-[52%] h-0.5 w-0.5 rounded-full bg-white opacity-60" />
+    </div>
   );
 }
 
-/* Single page-level atmosphere layer — all ambient glows and stars live here
-   so nothing is clipped at section boundaries. Positions are % of total page
-   height, composed to deepen at the hero, pool behind the phone mockups, and
-   settle softly at the CTA/footer. */
-function PageAtmosphere() {
+/* Faint constellation in the analysis band's upper corner: a few stars joined
+   by hairlines, drawn once as inline SVG. */
+function Constellation() {
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 240 160"
+      className="pointer-events-none absolute right-6 top-6 w-[180px] opacity-50 md:right-16 md:top-10 md:w-[240px]"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Hero — deepest part of the night */}
-      <div className="absolute -top-[2%] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-[#3D3B8E]/25 mix-blend-screen blur-[160px]" />
-      <div className="absolute right-[-12%] top-[3%] h-[600px] w-[600px] rounded-full bg-[#3D3B8E]/15 mix-blend-screen blur-[140px]" />
-      {/* Moonlit pool behind the AI analysis mockup (right) */}
-      <div className="absolute right-[2%] top-[24%] h-[700px] w-[700px] rounded-full bg-[#3D3B8E]/20 mix-blend-screen blur-[160px]" />
-      {/* Pool behind the dream-video mockup (left) */}
-      <div className="absolute left-[-8%] top-[40%] h-[800px] w-[800px] rounded-full bg-[#3D3B8E]/20 mix-blend-screen blur-[180px]" />
-      {/* Faint drift through pricing */}
-      <div className="absolute right-[12%] top-[62%] h-[600px] w-[600px] rounded-full bg-[#3D3B8E]/10 mix-blend-screen blur-[160px]" />
-      {/* Soft settle at the CTA and footer */}
-      <div className="absolute bottom-[1%] left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#3D3B8E]/12 mix-blend-screen blur-[180px]" />
-
-      {/* Stars, scattered down the whole night */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute left-[15%] top-[3%] h-0.5 w-0.5 rounded-full bg-white" />
-        <div className="absolute left-[45%] top-[6%] h-1 w-1 rounded-full bg-white opacity-60" />
-        <div className="absolute right-[20%] top-[9%] h-0.5 w-0.5 rounded-full bg-white opacity-30" />
-        <div className="absolute left-[30%] top-[13%] h-1 w-1 rounded-full bg-white opacity-50" />
-        <div className="absolute right-[10%] top-[2%] h-0.5 w-0.5 rounded-full bg-white" />
-        <div className="absolute left-[8%] top-[28%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
-        <div className="absolute right-[28%] top-[35%] h-1 w-1 rounded-full bg-white opacity-30" />
-        <div className="absolute left-[55%] top-[46%] h-0.5 w-0.5 rounded-full bg-white opacity-40" />
-        <div className="absolute right-[8%] top-[55%] h-0.5 w-0.5 rounded-full bg-white opacity-50" />
-        <div className="absolute left-[18%] top-[68%] h-1 w-1 rounded-full bg-white opacity-30" />
-        <div className="absolute right-[40%] top-[78%] h-0.5 w-0.5 rounded-full bg-white opacity-40" />
-        <div className="absolute left-[10%] top-[94%] h-0.5 w-0.5 rounded-full bg-white" />
-        <div className="absolute right-[15%] top-[92%] h-1 w-1 rounded-full bg-white opacity-40" />
-        <div className="absolute left-[40%] top-[98%] h-0.5 w-0.5 rounded-full bg-white opacity-20" />
-      </div>
-
-      {/* Film grain over everything — kills the glossy gradient look */}
-      <div className="grain absolute inset-0 opacity-[0.05] mix-blend-overlay" />
-    </div>
-  );
-}
-
-/* Final mockup treatment — dark bezel, soft indigo halo with a lavender rim,
-   deep drop shadow. Real screenshots drop into `src` with no further styling. */
-function PhoneFrame({
-  src,
-  alt,
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  priority?: boolean;
-}) {
-  return (
-    <div className="relative">
-      <div
-        aria-hidden
-        className="absolute -inset-10 rounded-full bg-[#3D3B8E]/35 blur-[90px]"
-      />
-      <div
-        aria-hidden
-        className="absolute -inset-1 rounded-[52px] bg-[#E5E9FF]/10 blur-[18px]"
-      />
-      <div className="relative overflow-hidden rounded-[48px] border-8 border-[#1A1929] bg-[#1A1929] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10">
-        <Image
-          src={src}
-          alt={alt}
-          width={1206}
-          height={2622}
-          priority={priority}
-          className="h-auto w-full rounded-[40px] object-cover"
-        />
-      </div>
-    </div>
+      <g stroke="#B3BCF5" strokeWidth="0.75" strokeOpacity="0.55" fill="none">
+        <path d="M22 118 L74 64 L128 84 L176 30 L222 52" />
+        <path d="M128 84 L150 132" />
+      </g>
+      <g fill="#FFFFFF">
+        <circle cx="22" cy="118" r="1.6" fillOpacity="0.9" />
+        <circle cx="74" cy="64" r="2.2" fillOpacity="0.95" />
+        <circle cx="128" cy="84" r="1.4" fillOpacity="0.8" />
+        <circle cx="176" cy="30" r="2" fillOpacity="0.9" />
+        <circle cx="222" cy="52" r="1.3" fillOpacity="0.7" />
+        <circle cx="150" cy="132" r="1.5" fillOpacity="0.75" />
+      </g>
+    </svg>
   );
 }
 
@@ -194,12 +98,12 @@ const steps = [
   {
     number: 2,
     text: "Get instant AI analysis",
-    subtitle: "Themes, emotions, and hidden meanings revealed",
+    subtitle: "Themes, emotions, and hidden meanings revealed.",
   },
   {
     number: 3,
     text: "Watch your dream come to life",
-    subtitle: "A cinematic AI video of your dream world",
+    subtitle: "A cinematic AI video of your dream world.",
   },
 ];
 
@@ -207,188 +111,216 @@ export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative">
-        <PageAtmosphere />
-        <Nav />
         <main className="relative">
-        {/* Hero */}
+        {/* Hero. At least one viewport tall, growing as needed so the whole
+            phone is in view with room beneath it before How it works. */}
         <section
           id="top"
-          className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-16 pt-36 text-center md:px-16"
+          className="relative flex min-h-[100svh] flex-col items-center px-6 pb-16 pt-36 text-center md:px-16 md:pb-24 md:pt-44"
         >
+          <HeroStars />
           <motion.div
-            className="relative z-10 w-full max-w-5xl"
+            className="relative z-10 flex w-full max-w-5xl flex-col items-center"
             initial="hidden"
             animate="visible"
             variants={stagger}
           >
             <motion.h1
               variants={fadeUp}
-              className="font-display mb-6 text-balance text-[48px] font-medium leading-[1.05] tracking-[-0.01em] text-white md:text-[80px]"
+              className="mb-5 text-balance text-[52px] font-bold leading-[1.02] tracking-[-0.02em] text-white md:text-[88px]"
             >
-              Unlock Your <em className="italic">Dreams</em>.
+              <span className="block md:inline">Unlock your </span>
+              <Accent>dreams.</Accent>
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mx-auto mb-12 max-w-2xl text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
+              className="mb-10 max-w-2xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[22px]"
             >
-              Dive deeper into your subconscious. AI-powered analysis
-              reveals what your dreams really mean, then brings them to life
-              as cinematic videos.
+              Record, decode, and relive your dreams.
             </motion.p>
             <motion.div variants={fadeUp} id="download">
               <StoreBadges />
             </motion.div>
+          </motion.div>
+          <motion.div
+            className="relative z-10 mx-auto mt-14 w-full max-w-[320px] md:mt-16 md:max-w-[420px]"
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+          >
+            <div aria-hidden className="glow -inset-x-32 -inset-y-16 md:-inset-x-48 md:-inset-y-24" />
             <motion.div
-              variants={fadeUp}
-              className="relative mx-auto mt-16 w-full max-w-[320px] md:max-w-[400px]"
+              className="relative"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <motion.div
-                className="relative z-20"
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <PhoneFrame
-                  src="/screenshots/hero-app.png"
-                  alt="Slumbr app dream journal screen"
-                  priority
-                />
-              </motion.div>
+              <PhoneFrame
+                src="/screenshots/shot1-journal-home.webp"
+                alt="Slumbr's My Journal screen listing recent dreams such as Rooftop Garden at Midnight and Flying Over The City"
+                sizes="(max-width: 768px) 320px, 420px"
+                priority
+                glow={false}
+              />
             </motion.div>
           </motion.div>
         </section>
 
-        {/* AI Dream Analysis */}
-        <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
-            <motion.div
-              className="flex-1 text-center md:order-1 md:text-left"
-              {...reveal}
-            >
-              <div className="mb-6 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
-                Understand your dreams
-              </div>
-              <h2 className="font-display mb-6 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
-                AI Dream Analysis
-              </h2>
-              <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
-                Record a dream and Slumbr analyses it in seconds — surfacing
-                the themes, emotions, and symbols woven through it, and
-                explaining the psychology behind them. Over time, recurring
-                patterns your waking mind misses come into focus.
-              </p>
-              <p className="mt-6 text-[15px] text-[#6B6B7B]">
-                3 analyses a month free — unlimited on Pro.
-              </p>
-            </motion.div>
-            <motion.div
-              className="relative order-last flex flex-1 justify-center md:order-2"
-              {...reveal}
-            >
-              <div className="relative w-[280px] md:w-[320px]">
-                <PhoneFrame
-                  src="/screenshots/ai-analysis.png"
-                  alt="Slumbr app AI dream analysis screen"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Cinematic Dream Videos */}
-        <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
-            <motion.div
-              className="relative order-last flex flex-1 justify-center md:order-1"
-              {...reveal}
-            >
-              <motion.div
-                className="relative w-[320px] md:w-[400px]"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5 }}
-              >
-                <PhoneFrame
-                  src="/screenshots/dream-video.png"
-                  alt="Slumbr app cinematic dream video screen"
-                />
-              </motion.div>
-            </motion.div>
-            <motion.div
-              className="order-first flex-1 text-center md:order-2 md:text-left"
-              {...reveal}
-            >
-              <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
-                Watch your dreams back
-              </div>
-              <h2 className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
-                Cinematic Dream Videos
-              </h2>
-              <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
-                Watch your dreams come alive. Slumbr turns a dream entry into
-                a cinematic, AI-generated video — a surreal moment
-                of your subconscious you can watch, save, and share.
-              </p>
-              <p className="mt-6 text-[15px] text-[#6B6B7B]">
-                Every video is generated from your own dream entry.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* How It Works */}
+        {/* How it works */}
         <section id="how-it-works" className="relative px-6 py-16 md:px-16 md:py-24">
-          <div className="max-w-4xl mx-auto">
+          <div className="mx-auto max-w-6xl">
             <motion.h2
-              className="font-display mb-16 text-center text-[32px] font-medium leading-[1.15] text-white md:text-[48px]"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              className="mb-14 text-center text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:mb-16 md:text-[56px]"
+              {...reveal}
             >
-              How It Works
+              How it <Accent>works.</Accent>
             </motion.h2>
-            <div className="relative flex flex-col md:flex-row items-stretch justify-between gap-12 md:gap-0">
-              {/* Gradient connector line, desktop only */}
-              <div className="hidden md:block absolute top-[28px] left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] h-[3px] bg-gradient-to-r from-[#E5E9FF] via-[#B8BDE8] to-[#D4A843] rounded-full" />
-
+            {/* Steps: chip-left rows up to lg, three content-sized columns
+                with 80px chips and one-line titles from lg. In both layouts
+                each step draws its own connector segment through its chip's
+                centre: vertically through the 72px chip column (first step
+                from chip centre down through the gap, middle step full height
+                through the gap, last step from its top edge to its chip
+                centre only, so nothing runs beside or below step 3's text),
+                and horizontally from lg (right half only on the first, left
+                half only on the last). The line therefore always centres on
+                the chips and ends at the last chip. */}
+            <div className="relative mx-auto flex w-full max-w-[380px] flex-col gap-10 lg:max-w-none lg:flex-row lg:items-start lg:justify-between lg:gap-0">
+              {/* One wide, soft glow behind the whole step row, weaker than a
+                  phone glow */}
+              <div aria-hidden className="glow -inset-x-16 -inset-y-10 opacity-80 lg:-inset-x-24" />
               {steps.map((s) => (
                 <motion.div
                   key={s.number}
-                  className="flex flex-col items-center text-center flex-1 relative z-10"
+                  className="relative z-10 flex flex-1 items-start gap-5 text-left lg:flex-auto lg:flex-col lg:items-center lg:gap-0 lg:text-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: s.number * 0.15 }}
                 >
-                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-sans text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
+                  <div
+                    aria-hidden
+                    className={`absolute left-[35px] w-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:hidden ${
+                      s.number === 1
+                        ? "-bottom-10 top-[36px]"
+                        : s.number === steps.length
+                          ? "top-0 h-[36px]"
+                          : "-bottom-10 top-0"
+                    }`}
+                  />
+                  <div
+                    aria-hidden
+                    className={`absolute top-[40px] hidden h-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:block ${
+                      s.number === 1
+                        ? "left-1/2 right-0"
+                        : s.number === steps.length
+                          ? "left-0 right-1/2"
+                          : "left-0 right-0"
+                    }`}
+                  />
+                  <div className="relative z-10 flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-glow text-[26px] font-bold text-white shadow-[0_0_44px_rgba(139,92,246,0.7)] lg:mb-6 lg:h-[80px] lg:w-[80px] lg:text-[28px]">
                     {s.number}
                   </div>
-                  <p className="mb-2 text-[20px] font-semibold text-white">
-                    {s.text}
-                  </p>
-                  <p className="max-w-[260px] text-balance text-[16px] leading-[1.5] text-[#9090A0]">
-                    {s.subtitle}
-                  </p>
+                  <div className="pt-5 lg:pt-0">
+                    <p className="mb-2 text-[22px] font-bold text-white lg:whitespace-nowrap lg:text-[clamp(19px,1.7vw,24px)]">
+                      {s.text}
+                    </p>
+                    <p className="mx-auto max-w-[280px] text-balance text-[17px] font-medium leading-[1.5] text-white/85">
+                      {s.subtitle}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Pricing */}
+        {/* Capture band */}
+        <FeatureBand
+          headline={
+            <>
+              Capture dreams before they <Accent>fade.</Accent>
+            </>
+          }
+          subline="Type it, or just speak it. Half-awake works."
+          src="/screenshots/shot3-recording-waveform.webp"
+          alt="Slumbr's Add Dream screen recording a voice note, with a live waveform and a Tap to Stop Recording button"
+          secondSrc="/screenshots/shot5-add-details.webp"
+          secondAlt="Slumbr's Add Details step, tagging the dream with mood chips such as Peaceful and Vivid and theme tags such as #Nature and #City"
+        />
+
+        {/* Analysis band, mirrored: phone left, text right */}
+        <FeatureBand
+          mirrored
+          headline={
+            <>
+              Discover what it <Accent>means.</Accent>
+            </>
+          }
+          subline="The symbols, the themes, and what they say about you."
+          body="Record a dream and Slumbr analyses it in seconds, surfacing the themes, emotions, and symbols woven through it. Over time, recurring patterns your waking mind misses come into focus, and Slumbr matches you to your dream archetype."
+          src="/screenshots/shot4-analysis-nans-kitchen.webp"
+          alt="Slumbr's Your Dream screen showing an AI analysis of a dream about a grandmother's kitchen"
+          decoration={<Constellation />}
+          phoneOverlay={
+            <Image
+              src="/screenshots/archetype-card.webp"
+              alt="Slumbr's dream archetype card: Navigator, a strong match"
+              width={640}
+              height={172}
+              sizes="(max-width: 768px) 220px, 300px"
+              className="absolute -right-6 bottom-[16%] w-[220px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-16 md:w-[300px]"
+            />
+          }
+        />
+
+        {/* Dream films band: full width, the most dramatic section, with the
+            strongest glow on the page */}
+        <section className="relative px-6 py-20 md:px-16 md:py-32">
+          <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+            <motion.div className="mb-12 md:mb-16" {...reveal}>
+              <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.28em] text-accent">
+                DREAM FILMS
+              </p>
+              <h2 className="mb-5 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[64px]">
+                Watch your dreams come <Accent>alive.</Accent>
+              </h2>
+              <p className="mx-auto max-w-xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[21px]">
+                Turn last night&apos;s dream into a short film.
+              </p>
+            </motion.div>
+            <motion.div className="relative w-[300px] md:w-[420px]" {...reveal}>
+              <div
+                aria-hidden
+                className="glow glow-strong -inset-x-30 -inset-y-20 md:-inset-x-48 md:-inset-y-32"
+              />
+              <PhoneFrame
+                src="/screenshots/shot2-feed-rooftop-garden.webp"
+                alt="Slumbr's Visualise feed playing a dream film of a rooftop garden at midnight under a full moon"
+                sizes="(max-width: 768px) 300px, 420px"
+                glow={false}
+              />
+            </motion.div>
+          </div>
+        </section>
+
+
+        {/* Social proof: gated behind SHOW_SOCIAL_PROOF in the component,
+            renders nothing until real review quotes are in place */}
+        <SocialProof />
+
+        {/* Pricing. Every plan fact, price, chip, tagline and button label is
+            carried verbatim from the previous markup; only the styling and
+            the "Free forever" line under the Free card are new. */}
         <section id="pricing" className="relative px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto max-w-5xl">
-            <div className="mb-16 text-center">
-              <motion.h2
-                className="font-display mb-4 text-[32px] font-medium leading-[1.15] text-white md:text-[48px]"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                Choose Your Path
-              </motion.h2>
-              <p className="text-[18px] leading-[1.5] text-[#9090A0]">
+            <motion.div className="mb-14 text-center md:mb-16" {...reveal}>
+              <h2 className="mb-4 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[56px]">
+                Choose your <Accent>path.</Accent>
+              </h2>
+              <p className="text-[19px] font-medium leading-[1.6] text-white/85 md:text-[21px]">
                 Start free. Go Pro for the full dreamscape.
               </p>
-            </div>
+            </motion.div>
             <motion.div
               className="grid grid-cols-1 gap-8 md:grid-cols-2"
               initial="hidden"
@@ -396,39 +328,37 @@ export default function Home() {
               viewport={{ once: true }}
               variants={stagger}
             >
-              {/* Free */}
+              {/* Free: dark glass. Second on mobile, first from md. */}
               <motion.div
                 variants={fadeUp}
-                className="flex flex-col items-start rounded-[32px] border border-[#2A2940] bg-[#1A1929] p-10 transition-all duration-500 hover:border-[#3D3B8E]/40"
+                className="order-last flex flex-col items-start rounded-[32px] border border-white/10 bg-indigo-deep/50 p-10 backdrop-blur-xl transition-colors duration-500 hover:border-white/20 md:order-first"
               >
-                <span className="mb-6 rounded-full bg-[#2A2940] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-[#E5E9FF]">
+                <span className="mb-6 rounded-full bg-white/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-white">
                   Free
                 </span>
-                <h3 className="font-sans mb-2 text-[40px] font-medium text-white">
-                  £0
-                </h3>
-                <p className="mb-8 text-[17px] text-[#9090A0]">
+                <h3 className="mb-2 text-[40px] font-bold text-white">£0</h3>
+                <p className="mb-8 text-[17px] font-medium text-white/85">
                   Everything you need to start.
                 </p>
                 <ul className="mb-12 space-y-4">
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     1 free video token on sign-up
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 3
-                    AI dream analyses per month
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
+                    3 AI dream analyses per month
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     Purchase video tokens from £1.49
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     5-second cinematic dream videos
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     Ad-supported
                   </li>
                 </ul>
@@ -437,7 +367,7 @@ export default function Home() {
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-semibold text-white transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-white/5"
+                    className="w-full rounded-2xl border border-white/25 py-4 text-center font-semibold text-white transition-all duration-200 hover:bg-white/10 motion-safe:hover:-translate-y-0.5"
                   >
                     Download Free on iOS
                   </a>
@@ -445,57 +375,60 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl border border-[#2A2940] py-4 text-center font-semibold text-white transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-white/5"
+                    className="w-full rounded-2xl border border-white/25 py-4 text-center font-semibold text-white transition-all duration-200 hover:bg-white/10 motion-safe:hover:-translate-y-0.5"
                   >
                     Download Free on Android
                   </a>
+                  <p className="mt-2 text-center text-[14px] text-white/70">
+                    Free forever. No card required.
+                  </p>
                 </div>
               </motion.div>
 
-              {/* Pro */}
+              {/* Pro: glowing violet border. First on mobile. */}
               <motion.div
                 variants={fadeUp}
-                className="group relative flex flex-col items-start overflow-hidden rounded-[32px] border border-[#3D3B8E] bg-[#1A1929] p-10 shadow-[0_0_40px_rgba(61,59,142,0.1)]"
+                className="group relative flex flex-col items-start overflow-hidden rounded-[32px] border border-glow bg-indigo-deep/60 p-10 shadow-[0_0_48px_rgba(139,92,246,0.35)] backdrop-blur-xl"
               >
                 <div aria-hidden className="absolute right-0 top-0 p-8">
-                  <SparkleIcon className="h-[96px] w-[96px] rotate-12 text-[#3D3B8E]/25 transition-transform duration-1000 group-hover:rotate-45" />
+                  <SparkleIcon className="h-[96px] w-[96px] rotate-12 text-glow/30 transition-transform duration-1000 group-hover:rotate-45" />
                 </div>
                 <div className="relative z-10 mb-6 flex flex-wrap gap-2">
-                  <span className="rounded-full bg-[#3D3B8E]/25 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-[#C2C1FF]">
+                  <span className="rounded-full bg-glow/30 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.15em] text-accent">
                     Pro
                   </span>
-                  <span className="rounded-full border border-[#3D3B8E]/60 bg-[#3D3B8E]/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#C2C1FF]">
+                  <span className="rounded-full border border-glow/60 bg-glow/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
                     Best value
                   </span>
-                  <span className="rounded-full border border-[#3D3B8E]/60 bg-[#3D3B8E]/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#C2C1FF]">
+                  <span className="rounded-full border border-glow/60 bg-glow/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
                     7-day free trial
                   </span>
                 </div>
-                <h3 className="font-sans relative z-10 mb-2 text-[40px] font-medium text-white">
+                <h3 className="relative z-10 mb-2 text-[40px] font-bold text-white">
                   £5.99
-                  <span className="text-[24px] font-medium text-[#9090A0]">
+                  <span className="text-[24px] font-semibold text-white/85">
                     /mo
                   </span>
                 </h3>
-                <p className="relative z-10 mb-8 text-[17px] text-[#9090A0]">
+                <p className="relative z-10 mb-8 text-[17px] font-medium text-white/85">
                   or £39.99/yr. For the serious dreamer.
                 </p>
                 <ul className="relative z-10 mb-12 space-y-4">
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     Up to 10 AI dream analyses per day
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> 2
-                    video tokens with every renewal
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
+                    2 video tokens with every renewal
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" />{" "}
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     10-second cinematic dream videos
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-[#E5E9FF]">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-[#3D3B8E]" /> No
-                    ads
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
+                    No ads
                   </li>
                 </ul>
                 <div className="relative z-10 mt-auto flex w-full flex-col gap-3">
@@ -503,7 +436,7 @@ export default function Home() {
                     href="https://apps.apple.com/gb/app/slumbr-dream-journal-ai/id6744979739"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-semibold text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(61,59,142,0.5)]"
+                    className="w-full rounded-2xl bg-cta py-4 text-center font-semibold text-white transition-all duration-200 hover:shadow-[0_8px_28px_rgba(139,92,246,0.6)] motion-safe:hover:-translate-y-0.5"
                   >
                     Start Free Trial on iOS
                   </a>
@@ -511,120 +444,68 @@ export default function Home() {
                     href="https://play.google.com/store/apps/details?id=com.slumbr.slumbr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-2xl bg-[#3D3B8E] py-4 text-center font-semibold text-[#E5E9FF] transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(61,59,142,0.5)]"
+                    className="w-full rounded-2xl bg-cta py-4 text-center font-semibold text-white transition-all duration-200 hover:shadow-[0_8px_28px_rgba(139,92,246,0.6)] motion-safe:hover:-translate-y-0.5"
                   >
                     Start Free Trial on Android
                   </a>
+                  {/* Invisible twin of the Free card's caption so both button
+                      stacks sit at the same height at every width */}
+                  <p
+                    aria-hidden="true"
+                    className="mt-2 select-none text-center text-[14px] text-white/70 opacity-0"
+                  >
+                    Free forever. No card required.
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[48px] border border-[#2A2940] bg-[#1A1929] p-12 text-center md:p-20">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3D3B8E]/15 via-transparent to-[#3D3B8E]/10"
-            />
-            <motion.div
-              className="relative z-10"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-            >
-              <motion.h2
-                variants={fadeUp}
-                className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]"
-              >
-                What did you <em className="italic">dream</em> last night?
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                className="mx-auto mb-10 max-w-xl text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
-              >
-                Your subconscious has stories to tell. Listen to them tonight.
-              </motion.p>
-              <motion.div variants={fadeUp}>
-                <StoreBadges />
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
 
         {/* From the blog */}
         <section className="relative px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto max-w-3xl">
-            <motion.div className="mb-10 text-center" {...reveal}>
-              <div className="mb-4 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
-                Behind the Dream
-              </div>
-              <h2 className="font-display text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
-                From the Blog
-              </h2>
-            </motion.div>
+            <motion.h2
+              className="mb-10 text-center text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[56px]"
+              {...reveal}
+            >
+              From the <Accent>blog.</Accent>
+            </motion.h2>
             <motion.div {...reveal}>
               <PostCard post={latestPost} />
             </motion.div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="relative w-full px-6 py-16 md:px-16 md:py-20">
-          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 border-t border-[#2A2940] pt-12 md:flex-row">
-            <div className="flex flex-col items-center gap-4 md:items-start">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/logo.png"
-                  alt="Slumbr logo"
-                  width={24}
-                  height={24}
-                  className="opacity-80"
-                />
-                <span className="font-display text-[24px] font-medium text-white">
-                  Slumbr
-                </span>
-              </div>
-              <p className="text-[15px] font-semibold tracking-[0.05em] text-[#6B6B7B]">
-                &copy; 2026 Slumbr LTD. All rights reserved.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 text-[15px] font-semibold tracking-[0.05em]">
-              <Link
-                href="/blog"
-                className="text-[#9090A0] transition-colors hover:text-white"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/privacy-policy"
-                className="text-[#9090A0] transition-colors hover:text-white"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms-and-conditions"
-                className="text-[#9090A0] transition-colors hover:text-white"
-              >
-                Terms &amp; Conditions
-              </Link>
-              <Link
-                href="/delete-account"
-                className="text-[#9090A0] transition-colors hover:text-white"
-              >
-                Delete account
-              </Link>
-              <a
-                href="mailto:contact@slumbr.ai"
-                className="text-[#9090A0] transition-colors hover:text-white"
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-        </footer>
+
+        {/* Closing CTA. Positioned above the footer's mountain base, which
+            rises from the sky directly beneath this section. */}
+        <section className="relative z-10 px-6 pb-8 pt-16 text-center md:pb-10 md:pt-24">
+          <motion.div
+            className="mx-auto max-w-4xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="mb-5 text-balance text-[40px] font-bold leading-[1.05] tracking-[-0.02em] text-white md:text-[72px]"
+            >
+              Your dreams, <Accent>kept.</Accent>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mx-auto mb-10 max-w-xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[21px]"
+            >
+              Free forever. No card required.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <StoreBadges />
+            </motion.div>
+          </motion.div>
+        </section>
         </main>
       </div>
     </MotionConfig>

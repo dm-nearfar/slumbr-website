@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 
 export default function Privacy() {
   return (
-    <main className="min-h-screen flex flex-col items-center px-6 py-24">
+    <main className="min-h-screen flex flex-col items-center px-6 pb-24 pt-32 md:pt-40">
       <div className="max-w-2xl w-full">
         <Link
           href="/"
-          className="text-[#3D3B8E] hover:text-white transition-colors text-sm mb-8 inline-block"
+          className="text-accent hover:text-white transition-colors text-sm mb-8 inline-block"
         >
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-        <p className="text-[#9090A0] mb-10">Last updated: 3 August 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 3 August 2026</p>
 
-        <div className="text-[#C8C8D0] leading-relaxed space-y-8">
+        <div className="text-white/85 leading-relaxed space-y-8">
           <p>
             Slumbr (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a mobile app that helps you journal your
             dreams, analyse themes with AI, and optionally generate dream-inspired videos. We value your privacy. This
@@ -37,7 +37,7 @@ export default function Privacy() {
             </p>
             <p>
               <span className="text-white font-medium">Contact:</span>{" "}
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>
             </p>
@@ -151,7 +151,7 @@ export default function Privacy() {
             <p className="mb-3">
               Depending on your region (UK/EU GDPR), you may have rights to access, correct, delete, restrict, or port
               your data, and to object to certain processing. To exercise rights, contact{" "}
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>.
             </p>
@@ -220,7 +220,7 @@ export default function Privacy() {
               it, to delete it, to opt out of targeted advertising, and not to be discriminated against for exercising
               these rights. You can delete individual entries or your entire account directly in the app, and you can
               exercise any of these rights by emailing{" "}
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>. We will verify requests using your account email and respond within the time required by your
               state&rsquo;s law. If we decline a request, you may appeal by replying to our response.
@@ -253,7 +253,7 @@ export default function Privacy() {
             </ul>
             <p className="mt-3">
               To exercise access or deletion rights over this data, or to withdraw consent to its processing, contact{" "}
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>. Washington residents may appeal a refusal by replying to our response and may contact the Washington
               Attorney General if the appeal is unsuccessful.
@@ -270,7 +270,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-white text-lg font-semibold mb-2">15. Contact</h2>
             <p>
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>. You may also contact the ICO (UK) or your local authority.
             </p>

@@ -1,7 +1,7 @@
 // Renders a dream clip as a muted, autoplaying, looping <video>.
 //
 // Emitted as a static HTML string via dangerouslySetInnerHTML so the `muted` and
-// `playsinline` attributes are guaranteed in the server-rendered markup — React
+// `playsinline` attributes are guaranteed in the server-rendered markup. React
 // can drop `muted` as an attribute during SSR, which breaks cross-browser
 // autoplay. This keeps each clip fully static (no client JS), best for Core Web
 // Vitals. The markup is built from a known poster path, never user input.
@@ -28,7 +28,7 @@ export default function DreamVideo({ poster, label }: DreamVideoProps) {
   const webm = poster.replace(/\.webp$/, ".webm");
   const mp4 = poster.replace(/\.webp$/, ".mp4");
   const html =
-    `<video class="pointer-events-none aspect-video w-full rounded-2xl border border-border bg-surface object-cover"` +
+    `<video class="pointer-events-none aspect-video w-full rounded-2xl border border-white/10 bg-indigo-deep/60 object-cover"` +
     ` autoplay loop muted playsinline preload="metadata" width="1280" height="720"` +
     ` tabindex="-1" disablepictureinpicture disableremoteplayback` +
     ` poster="${escapeAttr(poster)}" aria-label="${escapeAttr(label)}">` +

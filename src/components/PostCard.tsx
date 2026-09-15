@@ -3,13 +3,14 @@ import MediaPlaceholder from "./MediaPlaceholder";
 import type { Post } from "@/content/blog/posts";
 
 // Shared preview card used by the blog index and the homepage teaser, so the
-// post data has a single source (src/content/blog/posts.ts). The thumbnail is a
+// post data has a single source (src/content/blog/posts.ts). Dark glass on
+// the sky gradient with a soft purple glow on hover. The thumbnail is a
 // placeholder frame that upgrades to the real hero once it exists.
 export default function PostCard({ post }: { post: Post }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block overflow-hidden rounded-[24px] border border-[#2A2940] bg-[#1A1929] transition-all duration-300 hover:border-[#3D3B8E]/50"
+      className="group block overflow-hidden rounded-[32px] border border-white/10 bg-indigo-deep/50 backdrop-blur-xl transition-all duration-300 hover:border-glow/60 hover:shadow-[0_0_48px_rgba(139,92,246,0.35)]"
     >
       <MediaPlaceholder
         kind="image"
@@ -18,22 +19,22 @@ export default function PostCard({ post }: { post: Post }) {
         className="rounded-none border-0"
       />
       <div className="p-8">
-        <p className="mb-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
+        <p className="mb-3 text-[12px] font-bold uppercase tracking-[0.18em] text-accent">
           {post.category}
-          <span className="mx-2 text-[#6B6B7B]" aria-hidden="true">
+          <span className="mx-2 text-white/65" aria-hidden="true">
             ·
           </span>
-          <time dateTime={post.date} className="text-[#6B6B7B]">
+          <time dateTime={post.date} className="text-white/65">
             {post.dateLabel}
           </time>
         </p>
-        <h3 className="font-display text-[24px] font-medium leading-[1.2] text-white transition-colors group-hover:text-[#E5E9FF] md:text-[28px]">
+        <h3 className="text-[24px] font-bold leading-[1.2] text-white md:text-[28px]">
           {post.title}
         </h3>
-        <p className="mt-3 text-[16px] leading-[1.6] text-[#9090A0]">
+        <p className="mt-3 text-[16px] font-medium leading-[1.6] text-white/85">
           {post.description}
         </p>
-        <span className="mt-5 inline-block text-[14px] font-semibold tracking-[0.05em] text-[#E5E9FF]">
+        <span className="mt-5 inline-block text-[14px] font-semibold text-accent">
           Read the post →
         </span>
       </div>

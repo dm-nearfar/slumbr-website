@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 
 export default function Terms() {
   return (
-    <main className="min-h-screen flex flex-col items-center px-6 py-24">
+    <main className="min-h-screen flex flex-col items-center px-6 pb-24 pt-32 md:pt-40">
       <div className="max-w-2xl w-full">
         <Link
           href="/"
-          className="text-[#3D3B8E] hover:text-white transition-colors text-sm mb-8 inline-block"
+          className="text-accent hover:text-white transition-colors text-sm mb-8 inline-block"
         >
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Terms and Conditions</h1>
-        <p className="text-[#9090A0] mb-10">Last updated: 3 August 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 3 August 2026</p>
 
-        <div className="text-[#C8C8D0] leading-relaxed space-y-8">
+        <div className="text-white/85 leading-relaxed space-y-8">
           <p>
             These Terms govern your use of Slumbr (&ldquo;the App&rdquo;). By using the App, you agree to these Terms.
           </p>
@@ -32,7 +32,7 @@ export default function Terms() {
             <h2 className="text-white text-lg font-semibold mb-2">1. Who we are</h2>
             <p>
               Slumbr LTD (&ldquo;we&rdquo;, &ldquo;us&rdquo;). Contact:{" "}
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>.
             </p>
@@ -152,7 +152,7 @@ export default function Terms() {
           <section>
             <h2 className="text-white text-lg font-semibold mb-2">14. Contact</h2>
             <p>
-              <a href="mailto:contact@slumbr.ai" className="text-[#D4A843] hover:underline">
+              <a href="mailto:contact@slumbr.ai" className="text-accent hover:underline">
                 contact@slumbr.ai
               </a>
             </p>

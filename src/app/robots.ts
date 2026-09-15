@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 // Allow search + AI search/retrieval + AI training crawlers to maximise
 // discoverability and AI citations; Googlebot is never blocked. Merged from the
-// provided robots.txt — some AI bots treat the absence of an explicit rule as a
+// provided robots.txt. Some AI bots treat the absence of an explicit rule as a
 // soft block, so the key agents are listed explicitly. Bots that ignore
 // robots.txt can only be stopped at the WAF/edge; verify a bot by reverse DNS.
 const ALLOWED_AGENTS = [
