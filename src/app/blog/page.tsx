@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   return (
     <main className="relative">
-      <div className="mx-auto max-w-[760px] px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-[760px] px-6 pb-20 pt-32 md:pb-28 md:pt-40">
         <h1 className="mb-3 font-display text-[40px] leading-[1.1] tracking-[-0.01em] text-white md:text-[52px]">
           Blog
         </h1>

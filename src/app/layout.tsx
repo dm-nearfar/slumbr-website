@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
 import "./globals.css";
 
 // Inter carries every word on the site. Playfair Display is loaded in italic
@@ -110,7 +112,11 @@ export default function RootLayout({
           />
         ))}
       </head>
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

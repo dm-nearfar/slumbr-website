@@ -71,7 +71,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="mx-auto max-w-[1088px] px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-[1088px] px-6 pb-20 pt-32 md:pb-28 md:pt-40">
         <div className="mx-auto max-w-[1040px]">
         <nav
           aria-label="Breadcrumb"

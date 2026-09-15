@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function DeleteAccount() {
   return (
-    <main className="min-h-screen flex flex-col items-center px-6 py-24">
+    <main className="min-h-screen flex flex-col items-center px-6 pb-24 pt-32 md:pt-40">
       <div className="max-w-2xl w-full">
         <Link
           href="/"
