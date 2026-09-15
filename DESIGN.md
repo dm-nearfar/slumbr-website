@@ -45,11 +45,16 @@ Nocturne system are gone. The new model has three tiers:
 
 1. **Body-level sky.** `body` carries the gradient (`#1E1B4B` at the top
    through `#5B21B6` at the bottom, with a warm lavender radial haze that
-   rises only from the page base). Because the body background propagates to
-   the canvas and is sized to the root element, one gradient spans the whole
-   document and every route inherits it. `body::before` is the starfield and
-   `body::after` is the crescent moon, both at `z-index: -1` so they sit
-   behind all content on every page. Nothing else paints a page background.
+   rises only from the page base), painted once over a `#1A1442` fallback.
+   The body is as tall as the document on every route, so one gradient spans
+   the whole page. `html` paints the canvas for overscroll: solid `#1E1B4B`
+   plus a viewport-fixed two-tone gradient (sky tone above, mountain tone
+   below) so rubber-banding shows the right tone at either end, and
+   `themeColor` is `#1E1B4B`. Both `html` and `body` use `overflow-x: clip`
+   so glow insets can never pan the page sideways. `body::before` is the
+   starfield and `body::after` is the crescent moon, both at `z-index: -1`
+   so they sit behind all content on every page. Nothing else paints a page
+   background.
 2. **Per-section glows.** Each band places its own `.glow` ellipse behind its
    focal element (a phone, the pricing Pro card). Glows are components'
    business, positioned and sized by the consumer. `.glow-strong` is reserved

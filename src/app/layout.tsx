@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
@@ -21,6 +21,10 @@ const playfair = Playfair_Display({
   weight: ["400", "500"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#1E1B4B",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://slumbr.ai"),

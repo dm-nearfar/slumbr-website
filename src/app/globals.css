@@ -14,21 +14,34 @@
   --font-display: var(--font-playfair);
 }
 
+/* The root paints the canvas, which is what shows during rubber-band
+   overscroll. A solid sky tone, plus a two-tone gradient fixed to the
+   viewport (sky tone on the top half, mountain tone on the bottom half) so
+   overscroll above the page shows the sky and overscroll below it shows the
+   mountain base, with no colour jump at either end. overflow-x: clip (not
+   hidden) keeps glow insets from ever making the page horizontally pannable
+   without turning the root into a scroll container. */
 html {
   min-height: 100%;
+  overflow-x: clip;
   scroll-behavior: smooth;
+  background-color: #1E1B4B;
+  background-image: linear-gradient(to bottom, #1E1B4B 50%, #1A1442 50%);
+  background-attachment: fixed;
 }
 
-/* Night sky. The body background propagates to the canvas and is sized to
-   the root element, so one gradient spans the whole document on every route:
-   deep indigo at the top through violet, with a soft warm lavender haze that
-   rises only from the page base. Built in CSS, no raster. */
+/* Night sky. The body is as tall as the document on every route, so its
+   gradient, painted once (no-repeat) over the mountain tone, spans the whole
+   page: deep indigo at the top through violet, with a soft warm lavender
+   haze that rises only from the page base. Built in CSS, no raster. */
 body {
   position: relative;
   min-height: 100%;
+  overflow-x: clip;
   color: #ffffff;
   font-family: var(--font-sans), system-ui, sans-serif;
-  background-color: #1E1B4B;
+  background-color: #1A1442;
+  background-repeat: no-repeat;
   background-image:
     radial-gradient(
       ellipse 140% 32% at 50% 100%,
