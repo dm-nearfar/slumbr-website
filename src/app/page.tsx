@@ -428,38 +428,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[48px] border border-[#2A2940] bg-[#1A1929] p-12 text-center md:p-20">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3D3B8E]/15 via-transparent to-[#3D3B8E]/10"
-            />
-            <motion.div
-              className="relative z-10"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-            >
-              <motion.h2
-                variants={fadeUp}
-                className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]"
-              >
-                What did you <em className="italic">dream</em> last night?
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                className="mx-auto mb-10 max-w-xl text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]"
-              >
-                Your subconscious has stories to tell. Listen to them tonight.
-              </motion.p>
-              <motion.div variants={fadeUp}>
-                <StoreBadges />
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
 
         {/* From the blog */}
         <section className="relative px-6 py-16 md:px-16 md:py-24">
@@ -476,6 +444,34 @@ export default function Home() {
           </div>
         </section>
 
+
+        {/* Closing CTA. Positioned above the footer's mountain base, which
+            rises from the sky directly beneath this section. */}
+        <section className="relative z-10 px-6 pb-8 pt-16 text-center md:pb-10 md:pt-24">
+          <motion.div
+            className="mx-auto max-w-4xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="mb-5 text-balance text-[40px] font-bold leading-[1.05] tracking-[-0.02em] text-white md:text-[72px]"
+            >
+              Your dreams, <Accent>kept.</Accent>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mx-auto mb-10 max-w-xl text-[19px] leading-[1.6] text-white/70 md:text-[21px]"
+            >
+              Free forever. No card required.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <StoreBadges />
+            </motion.div>
+          </motion.div>
+        </section>
         </main>
       </div>
     </MotionConfig>

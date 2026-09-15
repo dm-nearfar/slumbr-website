@@ -1,9 +1,10 @@
 // Layered mountain-valley silhouettes with a warm glow rising from the valley.
-// Appears ONLY at the page base: mounted under the closing CTA and running
-// behind the footer (Phase 5 of the 2026-09 rebrand). Pure SVG and CSS, no
-// raster. The parent must be position: relative; the base pins itself to the
-// parent's bottom edge and stretches edge to edge. Content that should sit on
-// top of the mountains needs position: relative and a z-index above 0.
+// Appears ONLY at the page base: the Footer mounts it so the ridges rise under
+// the closing CTA and run behind the footer content. Pure SVG and CSS, no
+// raster. The parent must be position: relative and tall enough to hold the
+// box (300px, 440px from md); the base pins itself to the parent's bottom
+// edge and stretches edge to edge. Content that sits on top of the mountains
+// needs position: relative and a z-index above 0.
 
 const FAR =
   "M0 236 C90 190 150 150 240 152 C330 154 380 210 470 206 C560 202 620 132 720 124 C820 116 880 196 970 202 C1060 208 1120 150 1210 140 C1300 130 1380 172 1440 200 L1440 420 L0 420 Z";
@@ -18,11 +19,11 @@ export default function MountainBase({ className = "" }: { className?: string })
   return (
     <div
       aria-hidden
-      className={`pointer-events-none absolute inset-x-0 bottom-0 z-0 overflow-hidden ${className}`}
+      className={`pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[300px] overflow-hidden md:h-[440px] ${className}`}
     >
       {/* Warm glow rising from the valley floor, behind the ridges */}
       <div
-        className="absolute bottom-[10%] left-1/2 h-[70%] w-[72%] -translate-x-1/2 rounded-full blur-3xl"
+        className="absolute bottom-[14%] left-1/2 h-[64%] w-[72%] -translate-x-1/2 rounded-full blur-3xl"
         style={{
           background:
             "radial-gradient(closest-side, rgba(255, 226, 200, 0.34) 0%, rgba(196, 181, 253, 0.16) 48%, rgba(196, 181, 253, 0) 100%)",
@@ -31,7 +32,7 @@ export default function MountainBase({ className = "" }: { className?: string })
       <svg
         viewBox="0 0 1440 420"
         preserveAspectRatio="none"
-        className="relative block h-[240px] w-full md:h-[360px]"
+        className="absolute inset-x-0 bottom-0 block h-[240px] w-full md:h-[380px]"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path d={FAR} fill="#3B2A7A" />
