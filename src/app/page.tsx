@@ -3,6 +3,7 @@
 import { motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import PhoneFrame from "@/components/PhoneFrame";
 import PostCard from "@/components/PostCard";
 import StoreBadges from "@/components/StoreBadges";
 import { latestPost } from "@/content/blog/posts";
@@ -101,41 +102,6 @@ function Nav() {
         </a>
       </div>
     </nav>
-  );
-}
-
-/* Final mockup treatment — dark bezel, soft indigo halo with a lavender rim,
-   deep drop shadow. Real screenshots drop into `src` with no further styling. */
-function PhoneFrame({
-  src,
-  alt,
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  priority?: boolean;
-}) {
-  return (
-    <div className="relative">
-      <div
-        aria-hidden
-        className="absolute -inset-10 rounded-full bg-[#3D3B8E]/35 blur-[90px]"
-      />
-      <div
-        aria-hidden
-        className="absolute -inset-1 rounded-[52px] bg-[#E5E9FF]/10 blur-[18px]"
-      />
-      <div className="relative overflow-hidden rounded-[48px] border-8 border-[#1A1929] bg-[#1A1929] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10">
-        <Image
-          src={src}
-          alt={alt}
-          width={1206}
-          height={2622}
-          priority={priority}
-          className="h-auto w-full rounded-[40px] object-cover"
-        />
-      </div>
-    </div>
   );
 }
 
