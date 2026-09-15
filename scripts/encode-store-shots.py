@@ -55,8 +55,10 @@ ARCHETYPE_BOX = (56, 728, 1150, 1022)
 ARCHETYPE_WIDTH = 640
 
 # Mood and theme chips on the 1206x2622 Add Details screenshot: from the
-# "Mood" label through the second row of theme chips.
-ADD_DETAILS_BOX = (32, 1226, 1174, 2368)
+# "Mood" label through the second row of theme chips, with about 56 px of the
+# app's own pale background on every side (clamped to the image bounds) so the
+# card has even breathing room inside.
+ADD_DETAILS_BOX = (0, 1170, 1206, 2424)
 ADD_DETAILS_WIDTH = 640
 
 PHONE_SHOTS = {
