@@ -235,16 +235,8 @@ export default function Home() {
           subline="Type it, or just speak it. Half-awake works."
           src="/screenshots/shot3-recording-waveform.webp"
           alt="Slumbr's Add Dream screen recording a voice note, with a live waveform and a Tap to Stop Recording button"
-          phoneOverlay={
-            <Image
-              src="/screenshots/add-details-card.webp"
-              alt="Slumbr's Add Details step, tagging the dream with mood chips such as Peaceful and Vivid and theme tags such as #Nature and #City"
-              width={640}
-              height={640}
-              sizes="(max-width: 768px) 200px, 260px"
-              className="absolute -left-6 bottom-[14%] w-[200px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/20 md:-left-16 md:w-[260px]"
-            />
-          }
+          secondSrc="/screenshots/shot5-add-details.webp"
+          secondAlt="Slumbr's Add Details step, tagging the dream with mood chips such as Peaceful and Vivid and theme tags such as #Nature and #City"
         />
 
         {/* Analysis band, mirrored: phone left, text right */}

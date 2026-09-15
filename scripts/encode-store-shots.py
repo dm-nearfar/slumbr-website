@@ -8,16 +8,14 @@ repo; no source PNG enters git) and writes WebP files into public/screenshots/:
   shot3_recording_waveform.png           -> shot3-recording-waveform.webp
   shot4_analysis_nans_kitchen.png        -> shot4-analysis-nans-kitchen.webp
   shot2_feed_rooftop_garden.png          -> shot2-feed-rooftop-garden.webp
+  shot5_add_details.png                  -> shot5-add-details.webp
   folder_account_archetype_medallion.png -> archetype-card.webp (card crop only)
-  shot5_add_details.png                  -> add-details-card.webp (mood and theme chips crop)
 
 Phone screens are resized to 840x1826, which is 2x the largest width they
 render at (about 420 CSS px), so retina screens stay crisp without shipping
 the 1206x2622 source. The archetype card is cropped from the account screen
 (the rounded card with the sparkle medallion, "Your dream archetype",
-"Navigator", "A strong match") and downscaled to 640 px wide. The Add Details
-crop takes the Mood chip rows and the Themes label with its first two chip
-rows from the details screen, also at 640 px wide.
+"Navigator", "A strong match") and downscaled to 640 px wide.
 
 Every output starts at WebP quality 80 and steps down in fives, to a floor of
 60, until it is under the 200 KB ceiling. The chosen quality and final size
@@ -54,20 +52,12 @@ MIN_QUALITY = 60
 ARCHETYPE_BOX = (56, 728, 1150, 1022)
 ARCHETYPE_WIDTH = 640
 
-# Mood and theme chips on the 1206x2622 Add Details screenshot: from the
-# "Mood" label through the third row of theme chips, with about 56 px of the
-# app's own pale background above and at the sides (clamped to the image
-# bounds). The bottom stops at 2514 because the fourth theme row starts at
-# 2517, so the pad under the third row is 23 px; that is the most breathing
-# room possible without a sliver of the next row entering the card.
-ADD_DETAILS_BOX = (0, 1199, 1206, 2514)
-ADD_DETAILS_WIDTH = 640
-
 PHONE_SHOTS = {
     "shot1_journal_home.png": "shot1-journal-home.webp",
     "shot3_recording_waveform.png": "shot3-recording-waveform.webp",
     "shot4_analysis_nans_kitchen.png": "shot4-analysis-nans-kitchen.webp",
     "shot2_feed_rooftop_garden.png": "shot2-feed-rooftop-garden.webp",
+    "shot5_add_details.png": "shot5-add-details.webp",
 }
 
 
@@ -123,13 +113,6 @@ def main() -> int:
         ARCHETYPE_WIDTH,
         "archetype-card.webp",
         "archetype card crop",
-    )
-    encode_crop(
-        "shot5_add_details.png",
-        ADD_DETAILS_BOX,
-        ADD_DETAILS_WIDTH,
-        "add-details-card.webp",
-        "mood and theme chips crop",
     )
     print(f"done -> {OUT}/")
     return 0

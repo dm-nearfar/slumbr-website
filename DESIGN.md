@@ -208,5 +208,9 @@ Depth via tonal layering and glows, not drop shadows.
 - Screenshots ship as WebP only, from `scripts/encode-store-shots.py`, sized to
   at most 2x their rendered width (840x1826 for phone screens) at quality 80,
   under 200 KB each. Source PNGs never enter the repo.
+- Shipped set, six files: five phone screens (journal home, recording
+  waveform, add details, analysis, feed) plus the archetype card crop.
+  Hero: journal home. Capture band: recording in front, add details behind.
+  Analysis band: analysis with the archetype card overlay. Dream Films: feed.
 - Explicit `width` and `height` on every framed screenshot so fonts and images
   cause no layout shift.
