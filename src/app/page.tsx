@@ -251,42 +251,32 @@ export default function Home() {
           }
         />
 
-        {/* Cinematic Dream Videos */}
-        <section className="px-6 py-16 md:px-16 md:py-24">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
-            <motion.div
-              className="relative order-last flex flex-1 justify-center md:order-1"
-              {...reveal}
-            >
-              <motion.div
-                className="relative w-[320px] md:w-[400px]"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5 }}
-              >
-                <PhoneFrame
-                  src="/screenshots/dream-video.png"
-                  alt="Slumbr app cinematic dream video screen"
-                />
-              </motion.div>
-            </motion.div>
-            <motion.div
-              className="order-first flex-1 text-center md:order-2 md:text-left"
-              {...reveal}
-            >
-              <div className="mb-6 inline-block rounded-full border border-[#D4A843]/20 bg-[#D4A843]/10 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#D4A843]">
-                Watch your dreams back
-              </div>
-              <h2 className="font-display mb-6 text-balance text-[32px] font-medium leading-[1.1] text-white md:text-[56px]">
-                Cinematic Dream Videos
+        {/* Dream films band: full width, the most dramatic section, with the
+            strongest glow on the page */}
+        <section className="relative px-6 py-20 md:px-16 md:py-32">
+          <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+            <motion.div className="mb-12 md:mb-16" {...reveal}>
+              <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.28em] text-accent">
+                DREAM FILMS
+              </p>
+              <h2 className="mb-5 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[64px]">
+                Watch your dreams come <Accent>alive.</Accent>
               </h2>
-              <p className="text-[20px] leading-[1.6] tracking-[0.01em] text-[#9090A0]">
-                Watch your dreams come alive. Slumbr turns a dream entry into
-                a cinematic, AI-generated video — a surreal moment
-                of your subconscious you can watch, save, and share.
+              <p className="mx-auto max-w-xl text-[19px] leading-[1.6] text-white/70 md:text-[21px]">
+                Turn last night&apos;s dream into a short film.
               </p>
-              <p className="mt-6 text-[15px] text-[#6B6B7B]">
-                Every video is generated from your own dream entry.
-              </p>
+            </motion.div>
+            <motion.div className="relative w-[300px] md:w-[420px]" {...reveal}>
+              <div
+                aria-hidden
+                className="glow glow-strong -inset-x-40 -inset-y-20 md:-inset-x-64 md:-inset-y-32"
+              />
+              <PhoneFrame
+                src="/screenshots/shot2-feed-rooftop-garden.webp"
+                alt="Slumbr's Visualise feed playing a dream film of a rooftop garden at midnight under a full moon"
+                sizes="(max-width: 768px) 300px, 420px"
+                glow={false}
+              />
             </motion.div>
           </div>
         </section>
