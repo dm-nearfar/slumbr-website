@@ -129,8 +129,8 @@ body::after {
 .glow-strong {
   background: radial-gradient(
     closest-side,
-    rgba(139, 92, 246, 0.36) 0%,
-    rgba(139, 92, 246, 0.18) 45%,
+    rgba(139, 92, 246, 0.5) 0%,
+    rgba(139, 92, 246, 0.26) 45%,
     rgba(139, 92, 246, 0) 100%
   );
   filter: blur(64px);

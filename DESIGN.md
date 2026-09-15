@@ -86,7 +86,8 @@ leaving a crescent. Two `drop-shadow` filters give the warm peach-white glow
 `.glow`: absolute, `border-radius: 9999px`, radial gradient from
 `rgba(139,92,246,0.18)` fading to transparent before the edge, then
 `filter: blur(48px)`. Soft edges, never a visible ring. Consumers set inset or
-width and height.
+width and height. `.glow-strong` peaks at 0.5 (mid stop 0.26) with a 64px
+blur and is reserved for the Dream Films band.
 
 ### Mountains
 

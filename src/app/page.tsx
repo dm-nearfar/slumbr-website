@@ -271,7 +271,7 @@ export default function Home() {
             <motion.div className="relative w-[300px] md:w-[420px]" {...reveal}>
               <div
                 aria-hidden
-                className="glow glow-strong -inset-x-40 -inset-y-20 md:-inset-x-64 md:-inset-y-32"
+                className="glow glow-strong -inset-x-30 -inset-y-20 md:-inset-x-48 md:-inset-y-32"
               />
               <PhoneFrame
                 src="/screenshots/shot2-feed-rooftop-garden.webp"
