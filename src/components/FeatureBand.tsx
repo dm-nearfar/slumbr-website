@@ -13,10 +13,10 @@ import { reveal } from "@/lib/motion";
 //
 // Pass `secondSrc` and `secondAlt` for a phone duo: the main phone in front
 // and a second phone behind it at 85% of its width, offset up and to the
-// right so roughly a third of it sits behind the front phone, with a softer
-// shadow and the band's one glow shared. The duo wrapper is sized as a whole
-// (front width plus the rear phone's protrusion) so nothing overflows; on
-// narrow screens it shrinks proportionally.
+// right with at most 15% of the rear phone's width behind the front phone,
+// a softer shadow and the band's one glow shared. The duo wrapper is sized
+// as a whole (front width plus the rear phone's protrusion) so nothing
+// overflows; on narrow screens it shrinks proportionally.
 
 type FeatureBandProps = {
   id?: string;
@@ -68,25 +68,26 @@ export default function FeatureBand({
         </motion.div>
         <motion.div className="relative flex flex-1 justify-center" {...reveal}>
           {secondSrc && secondAlt ? (
-            /* Duo. Outer width = 1.53 x front width: front phone 65.4% at the
-               left and bottom, rear phone 55.6% (85% of the front) pinned to
-               the top right, so the overlap is 21% of the outer width. */
-            <div className="relative w-full max-w-[340px] md:max-w-[550px]">
+            /* Duo. Outer width = 1.7225 x front width: front phone 58% at the
+               left and bottom, rear phone 49.3% (85% of the front) pinned to
+               the top right, so the overlap is 7.3% of the outer width, or
+               14.8% of the rear phone's width, at every breakpoint. */
+            <div className="relative w-full max-w-[380px] md:max-w-[620px]">
               <div aria-hidden className="glow -inset-x-24 -inset-y-12" />
-              <div className="absolute right-0 top-0 z-0 w-[55.6%]">
+              <div className="absolute right-0 top-0 z-0 w-[49.3%]">
                 <PhoneFrame
                   src={secondSrc}
                   alt={secondAlt}
-                  sizes="(max-width: 768px) 190px, 306px"
+                  sizes="(max-width: 768px) 187px, 306px"
                   glow={false}
                   shadow="soft"
                 />
               </div>
-              <div className="relative z-10 mt-[10%] w-[65.4%]">
+              <div className="relative z-10 mt-[10%] w-[58%]">
                 <PhoneFrame
                   src={src}
                   alt={alt}
-                  sizes="(max-width: 768px) 222px, 360px"
+                  sizes="(max-width: 768px) 220px, 360px"
                   glow={false}
                 />
                 {phoneOverlay}
