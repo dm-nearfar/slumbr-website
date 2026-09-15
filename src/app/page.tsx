@@ -158,6 +158,54 @@ export default function Home() {
           </motion.div>
         </section>
 
+        {/* How it works */}
+        <section id="how-it-works" className="relative px-6 py-16 md:px-16 md:py-24">
+          <div className="mx-auto max-w-5xl">
+            <motion.h2
+              className="mb-14 text-center text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:mb-16 md:text-[56px]"
+              {...reveal}
+            >
+              How it <Accent>works.</Accent>
+            </motion.h2>
+            {/* Steps: a chip-left row per step on mobile with the connector
+                running vertically through the chip column; three centred
+                columns from md with the connector running between the outer
+                chips. */}
+            <div className="relative mx-auto flex w-full max-w-[380px] flex-col gap-10 md:max-w-none md:flex-row md:items-start md:justify-between md:gap-0">
+              <div
+                aria-hidden
+                className="absolute bottom-[28px] left-[27px] top-[28px] w-px bg-accent/40 md:hidden"
+              />
+              <div
+                aria-hidden
+                className="absolute left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] top-[28px] hidden h-px bg-accent/40 md:block"
+              />
+              {steps.map((s) => (
+                <motion.div
+                  key={s.number}
+                  className="relative z-10 flex flex-1 items-start gap-5 text-left md:flex-col md:items-center md:gap-0 md:text-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: s.number * 0.15 }}
+                >
+                  <div className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-full bg-accent text-[22px] font-bold text-indigo-deep shadow-[0_0_24px_rgba(179,188,245,0.45)] md:mb-6">
+                    {s.number}
+                  </div>
+                  <div className="pt-3 md:pt-0">
+                    <p className="mb-2 text-[20px] font-bold text-white">
+                      {s.text}
+                    </p>
+                    <p className="max-w-[260px] text-balance text-[16px] leading-[1.5] text-white/70">
+                      {s.subtitle}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* AI Dream Analysis */}
         <section className="px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-20">
@@ -235,44 +283,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How It Works */}
-        <section id="how-it-works" className="relative px-6 py-16 md:px-16 md:py-24">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="font-display mb-16 text-center text-[32px] font-medium leading-[1.15] text-white md:text-[48px]"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              How It Works
-            </motion.h2>
-            <div className="relative flex flex-col md:flex-row items-stretch justify-between gap-12 md:gap-0">
-              {/* Gradient connector line, desktop only */}
-              <div className="hidden md:block absolute top-[28px] left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] h-[3px] bg-gradient-to-r from-[#E5E9FF] via-[#B8BDE8] to-[#D4A843] rounded-full" />
-
-              {steps.map((s) => (
-                <motion.div
-                  key={s.number}
-                  className="flex flex-col items-center text-center flex-1 relative z-10"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: s.number * 0.15 }}
-                >
-                  <div className="mb-6 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#E5E9FF] font-sans text-[22px] font-medium text-[#0F0E1A] shadow-[0_0_20px_rgba(229,233,255,0.2)]">
-                    {s.number}
-                  </div>
-                  <p className="mb-2 text-[20px] font-semibold text-white">
-                    {s.text}
-                  </p>
-                  <p className="max-w-[260px] text-balance text-[16px] leading-[1.5] text-[#9090A0]">
-                    {s.subtitle}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Pricing */}
         <section id="pricing" className="relative px-6 py-16 md:px-16 md:py-24">
