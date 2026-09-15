@@ -174,25 +174,25 @@ export default function Home() {
             >
               How it <Accent>works.</Accent>
             </motion.h2>
-            {/* Steps: a chip-left row per step on mobile with the connector
-                running vertically through the chip column. From md, three
-                content-sized columns whose titles never wrap; each column
-                draws its own connector segment through its chip's centre
-                (right half only on the first, left half only on the last), so
-                the line always centres on the chips whatever the columns'
-                widths. */}
-            <div className="relative mx-auto flex w-full max-w-[380px] flex-col gap-10 md:max-w-none md:flex-row md:items-start md:justify-between md:gap-0">
+            {/* Steps: chip-left rows with the connector running vertically
+                through the 72px chip column up to lg. From lg, three
+                content-sized columns with 80px chips whose titles never wrap;
+                each column draws its own connector segment through its chip's
+                centre (right half only on the first, left half only on the
+                last), so the line always centres on the chips whatever the
+                columns' widths. */}
+            <div className="relative mx-auto flex w-full max-w-[380px] flex-col gap-10 lg:max-w-none lg:flex-row lg:items-start lg:justify-between lg:gap-0">
               {/* One wide, soft glow behind the whole step row, weaker than a
                   phone glow */}
-              <div aria-hidden className="glow -inset-x-16 -inset-y-10 opacity-80 md:-inset-x-24" />
+              <div aria-hidden className="glow -inset-x-16 -inset-y-10 opacity-80 lg:-inset-x-24" />
               <div
                 aria-hidden
-                className="absolute bottom-[36px] left-[35px] top-[36px] w-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] md:hidden"
+                className="absolute bottom-[36px] left-[35px] top-[36px] w-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:hidden"
               />
               {steps.map((s) => (
                 <motion.div
                   key={s.number}
-                  className="relative z-10 flex flex-1 items-start gap-5 text-left md:flex-auto md:flex-col md:items-center md:gap-0 md:text-center"
+                  className="relative z-10 flex flex-1 items-start gap-5 text-left lg:flex-auto lg:flex-col lg:items-center lg:gap-0 lg:text-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -200,7 +200,7 @@ export default function Home() {
                 >
                   <div
                     aria-hidden
-                    className={`absolute top-[40px] hidden h-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] md:block ${
+                    className={`absolute top-[40px] hidden h-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] lg:block ${
                       s.number === 1
                         ? "left-1/2 right-0"
                         : s.number === steps.length
@@ -208,14 +208,14 @@ export default function Home() {
                           : "left-0 right-0"
                     }`}
                   />
-                  <div className="relative z-10 flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-glow text-[26px] font-bold text-white shadow-[0_0_44px_rgba(139,92,246,0.7)] md:mb-6 md:h-[80px] md:w-[80px] md:text-[28px]">
+                  <div className="relative z-10 flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-glow text-[26px] font-bold text-white shadow-[0_0_44px_rgba(139,92,246,0.7)] lg:mb-6 lg:h-[80px] lg:w-[80px] lg:text-[28px]">
                     {s.number}
                   </div>
-                  <div className="pt-5 md:pt-0">
-                    <p className="mb-2 text-[22px] font-bold text-white md:whitespace-nowrap md:text-[clamp(19px,1.7vw,24px)]">
+                  <div className="pt-5 lg:pt-0">
+                    <p className="mb-2 text-[22px] font-bold text-white lg:whitespace-nowrap lg:text-[clamp(19px,1.7vw,24px)]">
                       {s.text}
                     </p>
-                    <p className="max-w-[280px] text-balance text-[17px] font-medium leading-[1.5] text-white/85">
+                    <p className="mx-auto max-w-[280px] text-balance text-[17px] font-medium leading-[1.5] text-white/85">
                       {s.subtitle}
                     </p>
                   </div>
