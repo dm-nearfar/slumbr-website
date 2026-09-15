@@ -146,7 +146,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="relative z-10 mx-auto mt-14 -mb-[150px] w-full max-w-[320px] md:mt-auto md:-mb-[280px] md:max-w-[420px]"
+            className="relative z-10 mx-auto mt-auto -mb-[150px] w-full max-w-[320px] pt-14 md:-mb-[280px] md:max-w-[420px] md:pt-16"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
