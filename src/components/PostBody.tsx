@@ -16,14 +16,14 @@ const MEDIA = "mx-auto w-full max-w-[1040px]";
 const components: Components = {
   h1: ({ children }) => (
     <h1
-      className={`${PROSE} mb-6 font-display text-[40px] leading-[1.1] tracking-[-0.01em] text-white md:text-[52px]`}
+      className={`${PROSE} mb-6 text-[40px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-[52px]`}
     >
       {children}
     </h1>
   ),
   h2: ({ children }) => (
     <h2
-      className={`${PROSE} mt-20 mb-6 font-display text-[28px] leading-[1.25] text-white md:text-[36px]`}
+      className={`${PROSE} mt-20 mb-6 text-[28px] font-bold leading-[1.25] text-white md:text-[36px]`}
     >
       {children}
     </h2>
@@ -39,7 +39,7 @@ const components: Components = {
     // ✦ ✦ ✦ divider, preserved exactly and centred.
     if (lone && lone.type === "text" && lone.value.trim() === "✦ ✦ ✦") {
       return (
-        <p className={`${PROSE} my-16 text-center text-[18px] tracking-[0.6em] text-gold/60`}>
+        <p className={`${PROSE} my-16 text-center text-[18px] tracking-[0.6em] text-accent/70`}>
           {children}
         </p>
       );
@@ -48,7 +48,7 @@ const components: Components = {
     if (lone && lone.type === "element" && lone.tagName === "em") {
       return (
         <p
-          className={`${PROSE} -mt-1 mb-12 text-center text-[15px] italic leading-[1.6] text-grey`}
+          className={`${PROSE} -mt-1 mb-12 text-center text-[15px] italic leading-[1.6] text-white/60`}
         >
           {children}
         </p>
@@ -76,7 +76,7 @@ const components: Components = {
     if (isJournalEntry) {
       return (
         <blockquote
-          className={`${PROSE} my-8 rounded-r-lg border-l-2 border-indigo/70 bg-surface/40 py-6 pr-6 pl-7 text-[20px] italic leading-[1.75] text-white/90 md:text-[22px]`}
+          className={`${PROSE} my-8 rounded-r-lg border-l-2 border-glow/70 bg-indigo-deep/40 py-6 pr-6 pl-7 text-[20px] italic leading-[1.75] text-white/90 md:text-[22px]`}
         >
           {children}
         </blockquote>
@@ -91,7 +91,7 @@ const components: Components = {
   a: ({ href, children }) => {
     const url = typeof href === "string" ? href : "#";
     const cn =
-      "text-lavender underline decoration-indigo/60 underline-offset-4 transition-colors hover:decoration-lavender";
+      "text-accent underline decoration-accent/50 underline-offset-4 transition-colors hover:decoration-accent";
     if (url.startsWith("/")) {
       return (
         <Link href={url} className={cn}>
@@ -107,7 +107,7 @@ const components: Components = {
   },
   ul: ({ children }) => (
     <ul
-      className={`${PROSE} mb-7 list-disc space-y-4 pl-6 text-[20px] leading-[1.75] text-white/90 marker:text-indigo md:text-[22px]`}
+      className={`${PROSE} mb-7 list-disc space-y-4 pl-6 text-[20px] leading-[1.75] text-white/90 marker:text-accent md:text-[22px]`}
     >
       {children}
     </ul>

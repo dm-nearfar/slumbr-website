@@ -75,7 +75,7 @@ export default function Page() {
         <div className="mx-auto max-w-[1040px]">
         <nav
           aria-label="Breadcrumb"
-          className="mb-10 text-[13px] tracking-[0.04em] text-grey"
+          className="mb-10 text-[13px] tracking-[0.04em] text-white/60"
         >
           <Link href="/" className="transition-colors hover:text-white">
             Home
@@ -89,21 +89,21 @@ export default function Page() {
           <span className="mx-2" aria-hidden="true">
             /
           </span>
-          <span className="text-grey">{TITLE}</span>
+          <span className="text-white/60">{TITLE}</span>
         </nav>
 
-        <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
+        <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.18em] text-accent">
           Behind the Dream
-          <span className="mx-2 text-grey" aria-hidden="true">
+          <span className="mx-2 text-white/40" aria-hidden="true">
             ·
           </span>
-          <time dateTime="2026-06-14" className="text-grey">
+          <time dateTime="2026-06-14" className="text-white/60">
             14 June 2026
           </time>
-          <span className="mx-2 text-grey" aria-hidden="true">
+          <span className="mx-2 text-white/40" aria-hidden="true">
             ·
           </span>
-          <span className="text-grey">Slumbr Team</span>
+          <span className="text-white/60">Slumbr Team</span>
         </p>
         </div>
 
@@ -115,10 +115,10 @@ export default function Page() {
           <PostBody content={body} />
         </article>
 
-        <div className="mx-auto mt-16 max-w-[1040px] border-t border-border pt-8">
+        <div className="mx-auto mt-16 max-w-[1040px] border-t border-white/10 pt-8">
           <Link
             href="/blog"
-            className="text-[15px] text-lavender underline decoration-indigo/60 underline-offset-4 hover:decoration-lavender"
+            className="text-[15px] text-accent underline decoration-accent/50 underline-offset-4 hover:decoration-accent"
           >
             ← Back to all posts
           </Link>

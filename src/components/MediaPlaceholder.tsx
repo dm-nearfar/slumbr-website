@@ -60,13 +60,13 @@ export default function MediaPlaceholder({
     <div
       role="img"
       aria-label={label}
-      className={`relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface ${className}`}
+      className={`relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-indigo-deep/60 ${className}`}
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-indigo/[0.08]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-glow/10" />
       {kind === "video" ? (
-        <GlyphVideo className="relative h-12 w-12 text-lavender/25" />
+        <GlyphVideo className="relative h-12 w-12 text-accent/40" />
       ) : (
-        <GlyphImage className="relative h-12 w-12 text-lavender/25" />
+        <GlyphImage className="relative h-12 w-12 text-accent/40" />
       )}
       {imageSrc ? (
         <div

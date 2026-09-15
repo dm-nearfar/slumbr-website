@@ -44,7 +44,7 @@ export default function BlogMedia({
       height={900}
       priority={priority}
       sizes="(max-width: 1040px) 100vw, 1040px"
-      className="aspect-video w-full rounded-2xl border border-border bg-surface object-cover"
+      className="aspect-video w-full rounded-2xl border border-white/10 bg-indigo-deep/60 object-cover"
     />
   ) : (
     <MediaPlaceholder kind="image" label={alt} />

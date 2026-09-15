@@ -31,11 +31,10 @@ Tokens live in `src/app/globals.css` under `@theme inline`.
 | white | `#FFFFFF` | Headlines, body, labels |
 | white/70 | `rgba(255,255,255,0.7)` | Sub-lines |
 
-Legacy Nocturne tokens (`surface`, `border`, `indigo`, `gold`, `grey`,
-`lavender`) remain declared while the blog components and legal pages still
-consume them. Each is deleted in the commit that removes its last reference.
-Do not add new consumers. Arbitrary hex classes (`bg-[#3D3B8E]`) on the
-homepage are replaced with the named tokens as each section is rebuilt.
+The Nocturne tokens (`surface`, `border`, `indigo`, `gold`, `grey`,
+`lavender`) are deleted; nothing references them. Translucent whites
+(`white/10` borders, `white/70` sub-lines) and the four brand tokens cover
+every marketing surface. Do not reintroduce arbitrary hex classes.
 
 ## Atmosphere model
 

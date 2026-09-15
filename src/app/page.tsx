@@ -464,14 +464,12 @@ export default function Home() {
         {/* From the blog */}
         <section className="relative px-6 py-16 md:px-16 md:py-24">
           <div className="mx-auto max-w-3xl">
-            <motion.div className="mb-10 text-center" {...reveal}>
-              <div className="mb-4 inline-block rounded-full border border-[#3D3B8E]/40 bg-[#3D3B8E]/15 px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#C2C1FF]">
-                Behind the Dream
-              </div>
-              <h2 className="font-display text-[32px] font-medium leading-[1.15] text-white md:text-[48px]">
-                From the Blog
-              </h2>
-            </motion.div>
+            <motion.h2
+              className="mb-10 text-center text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[56px]"
+              {...reveal}
+            >
+              From the <Accent>blog.</Accent>
+            </motion.h2>
             <motion.div {...reveal}>
               <PostCard post={latestPost} />
             </motion.div>

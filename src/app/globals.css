@@ -9,16 +9,6 @@
   --color-glow: #8B5CF6;
   --color-accent: #B3BCF5;
 
-  /* Legacy Nocturne tokens (2026-06). Still consumed by the blog components
-     and legal pages; each is deleted in the commit that removes its last
-     reference as those surfaces are rebuilt. Do not add new consumers. */
-  --color-surface: #1A1929;
-  --color-border: #2A2940;
-  --color-indigo: #3D3B8E;
-  --color-gold: #D4A843;
-  --color-grey: #9090A0;
-  --color-lavender: #E5E9FF;
-
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
 }
