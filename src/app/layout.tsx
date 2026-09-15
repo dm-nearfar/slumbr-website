@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
-import SkyClouds from "@/components/SkyClouds";
 import "./globals.css";
 
 // Inter carries every word on the site. Playfair Display is loaded in italic
@@ -119,7 +118,6 @@ export default function RootLayout({
         ))}
       </head>
       <body className="flex min-h-screen flex-col">
-        <SkyClouds />
         <Nav />
         {children}
         <Footer />

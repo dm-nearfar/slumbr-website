@@ -39,7 +39,7 @@ html {
    paints the canvas, the gradient is the body's own background, and a
    positioned element with z-index auto would paint that background over
    its negative z-index children. Isolated, the body's negative z children
-   (starfield, clouds, moon, in that DOM paint order) sit between the body's
+   (starfield, then moon, in DOM paint order) sit between the body's
    background and its content, which is the intended order. */
 body {
   position: relative;
