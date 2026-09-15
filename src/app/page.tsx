@@ -179,13 +179,16 @@ export default function Home() {
                 columns from md with the connector running between the outer
                 chips. */}
             <div className="relative mx-auto flex w-full max-w-[380px] flex-col gap-10 md:max-w-none md:flex-row md:items-start md:justify-between md:gap-0">
+              {/* One wide, very soft glow behind the whole step row, weaker
+                  than a phone glow */}
+              <div aria-hidden className="glow -inset-x-16 -inset-y-10 opacity-60 md:-inset-x-24" />
               <div
                 aria-hidden
-                className="absolute bottom-[28px] left-[27px] top-[28px] w-px bg-accent/40 md:hidden"
+                className="absolute bottom-[32px] left-[31px] top-[32px] w-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] md:hidden"
               />
               <div
                 aria-hidden
-                className="absolute left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] top-[28px] hidden h-px bg-accent/40 md:block"
+                className="absolute left-[calc(16.67%+36px)] right-[calc(16.67%+36px)] top-[36px] hidden h-px bg-accent/60 shadow-[0_0_8px_rgba(179,188,245,0.35)] md:block"
               />
               {steps.map((s) => (
                 <motion.div
@@ -196,14 +199,14 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: s.number * 0.15 }}
                 >
-                  <div className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-full bg-accent text-[22px] font-bold text-indigo-deep shadow-[0_0_24px_rgba(179,188,245,0.45)] md:mb-6">
+                  <div className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-glow text-[24px] font-bold text-white shadow-[0_0_36px_rgba(139,92,246,0.6)] md:mb-6 md:h-[72px] md:w-[72px] md:text-[26px]">
                     {s.number}
                   </div>
-                  <div className="pt-3 md:pt-0">
-                    <p className="mb-2 text-[20px] font-bold text-white">
+                  <div className="pt-4 md:pt-0">
+                    <p className="mb-2 text-[22px] font-bold text-white md:text-[24px]">
                       {s.text}
                     </p>
-                    <p className="max-w-[260px] text-balance text-[16px] leading-[1.5] text-white/70">
+                    <p className="max-w-[280px] text-balance text-[17px] leading-[1.5] text-white/70">
                       {s.subtitle}
                     </p>
                   </div>
