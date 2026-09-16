@@ -217,6 +217,15 @@ Depth via tonal layering and glows, not drop shadows.
   with `SHOW_SOCIAL_PROOF = true`, showing three verbatim five-star App Store
   reviews. Quotes are never invented, paraphrased or corrected, and the
   five-star row stays accurate only while every quote is a five-star review.
+  Construction: `indigo-deep/70` glass with `backdrop-blur`, a `white/15`
+  border and a 1px `white/10` inset top highlight; equal-height flex columns
+  per row with the attribution anchored to the bottom (name `white/85`
+  medium, "· App Store" `white/65`). The centre card is the featured quote:
+  `glow` border at 65% with a 0.23 purple shadow (about 65% of the Pro
+  card) and a 16px lift from `lg`. The outer cards take the PostCard hover
+  glow. Stars are 18px `accent` with a faint accent drop-shadow. Each quote
+  sits inside curly double quotation marks added around the untouched
+  string. One soft `.glow` at 80% sits behind the row, as in How it works.
 
 ## Motion
 
