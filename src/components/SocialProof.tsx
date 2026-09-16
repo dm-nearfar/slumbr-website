@@ -4,15 +4,8 @@ import { motion } from "framer-motion";
 import Accent from "./Accent";
 import { fadeUp, reveal, stagger } from "@/lib/motion";
 
-// Social proof: "Loved by dreamers." over three dark glass review cards.
-// GATED. The section renders nothing until SHOW_SOCIAL_PROOF is true, and it
-// must stay false until the three TODO slots below hold real, verbatim App
-// Store and Google Play review quotes with their attribution. Never invent
-// reviews and never paraphrase one. The star row below renders five stars
-// for every card, so each quote must come from a review that is actually
-// five stars; if any chosen review is not, make the stars per-review (a
-// rating field on Review driving Stars) before the flag flips.
-export const SHOW_SOCIAL_PROOF = false;
+// Quotes are verbatim five-star App Store reviews, added 2026-09-15.
+export const SHOW_SOCIAL_PROOF = true;
 
 type Review = {
   quote: string;
@@ -22,18 +15,21 @@ type Review = {
 
 const REVIEWS: Review[] = [
   {
-    quote: "TODO: paste a real App Store review quote verbatim",
-    attribution: "TODO: reviewer display name as shown on the store",
+    quote:
+      "I loved how easy the app is to use and much insight there is to understanding my dreams",
+    attribution: "mel 11 mel",
     source: "App Store",
   },
   {
-    quote: "TODO: paste a real Google Play review quote verbatim",
-    attribution: "TODO: reviewer display name as shown on the store",
-    source: "Google Play",
+    quote:
+      "I've been looking for something like this to track my dreams for ages, before I always used forget to write them down in the morning but now it's part of my daily routine",
+    attribution: "Dnzm__",
+    source: "App Store",
   },
   {
-    quote: "TODO: paste a real App Store or Google Play review quote verbatim",
-    attribution: "TODO: reviewer display name as shown on the store",
+    quote:
+      "It's so powerful to be able to get insight into my dreams, love this app and it's design",
+    attribution: "hish98",
     source: "App Store",
   },
 ];

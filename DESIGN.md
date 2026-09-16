@@ -159,7 +159,7 @@ Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
 - Content max-widths: nav and bands `max-w-7xl`, hero text `max-w-5xl`,
   pricing `max-w-5xl`, CTA `max-w-4xl`.
 - Homepage order: hero, how it works, capture, analysis, dream films,
-  social proof (gated), pricing, blog teaser, closing CTA, footer.
+  social proof, pricing, blog teaser, closing CTA, footer.
 - Airy density. Bands alternate text left / phone right and mirrored.
 
 ## Responsive
@@ -213,9 +213,10 @@ Depth via tonal layering and glows, not drop shadows.
 - **MountainBase**: page-base silhouettes (`src/components/MountainBase.tsx`),
   mounted by `Footer`.
 - **Nav** and **Footer**: mounted on every route from `src/app/layout.tsx`.
-- **SocialProof** (`src/components/SocialProof.tsx`): built but gated behind
-  `SHOW_SOCIAL_PROOF = false` until the three TODO slots hold real, verbatim
-  App Store and Google Play review quotes. Never invent reviews.
+- **SocialProof** (`src/components/SocialProof.tsx`): live since 2026-09-15
+  with `SHOW_SOCIAL_PROOF = true`, showing three verbatim five-star App Store
+  reviews. Quotes are never invented, paraphrased or corrected, and the
+  five-star row stays accurate only while every quote is a five-star review.
 
 ## Motion
 
