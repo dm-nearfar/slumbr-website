@@ -136,7 +136,7 @@ export default function Home() {
               variants={fadeUp}
               className="mb-10 max-w-2xl text-[19px] font-medium leading-[1.6] text-white/85 md:text-[22px]"
             >
-              Record, decode, and relive your dreams.
+              Record, decode and relive your dreams.
             </motion.p>
             <motion.div variants={fadeUp} id="download">
               <StoreBadges />
@@ -256,7 +256,7 @@ export default function Home() {
               Discover what it <Accent>means.</Accent>
             </>
           }
-          subline="The symbols, the themes, and what they say about you."
+          subline="The symbols, the themes and what they say about you."
           body="Record a dream and Slumbr analyses it in seconds, surfacing the themes, emotions, and symbols woven through it. Over time, recurring patterns your waking mind misses come into focus, and Slumbr matches you to your dream archetype."
           src="/screenshots/shot4-analysis-nans-kitchen.webp"
           alt="Slumbr's Your Dream screen showing an AI analysis of a dream about a grandmother's kitchen"
