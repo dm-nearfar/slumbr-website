@@ -11,15 +11,29 @@ import { reveal } from "@/lib/motion";
 // wrapper for floating elements (the archetype card); `decoration` renders
 // at section level for atmosphere (constellation lines).
 //
-// Pass `secondSrc` and `secondAlt` for a phone duo: two equal phones side by
-// side in a flex row, the main phone on the left and the second on the right
-// nudged 24px down for rhythm, nothing obscured on either screen. Each phone
-// carries its own backplate and glow (PhoneFrame); the wrapper is a stacking
-// context (`isolate`) so the light of both paints behind both phones. That
-// light is wider than the phone and is never clipped here, so the text block
-// sits at z-10 to stay in front of it where the two meet. The wrapper caps
-// the pair's width so it never overflows its container; on narrow screens
-// both phones shrink together.
+// Pass `secondSrc` and `secondAlt` for a phone duo. From md the two equal
+// phones sit side by side in a flex row, the main phone on the left and the
+// second on the right nudged 24px down for rhythm, nothing obscured on either
+// screen. Below md there is no room for two readable phones side by side, so
+// they stagger: both 260px wide, the main phone behind at the top-left, the
+// second in front, set 40% of its width to the right and 60% of its height
+// down, so it starts below the main screen's voice card and covers only the
+// empty lower part of that screen. Both share one grid cell, and the front
+// phone's margins place it, so the wrapper takes the stagger's height by
+// itself. Its width is 1.4 phones,
+// 364px, and never more than the window less 26px, so on a screen narrower
+// than 390px both phones shrink together and keep their proportions.
+//
+// Each phone carries its own backplate and glow (PhoneFrame); the wrapper is
+// a stacking context (`isolate`) so the light of both paints behind both
+// phones, and the second phone, later in the DOM, paints in front of the
+// first. That light is wider than the phone and is never clipped here, so
+// the text block sits at z-10 to stay in front of it where the two meet.
+//
+// The stagger's percentages are of the wrapper's width, which is what grid
+// item margins resolve against: a phone is 1 / 1.4 = 71.4286% of it, 40% of a
+// phone is 28.5714%, and 60% of a phone's height (2.101145 times its width)
+// is 90.0491%.
 
 type FeatureBandProps = {
   id?: string;
@@ -71,23 +85,23 @@ export default function FeatureBand({
         </motion.div>
         <motion.div className="relative flex flex-1 justify-center" {...reveal}>
           {secondSrc && secondAlt ? (
-            /* Duo: equal halves of the wrapper minus the gap, so each phone
-               is 190px at the 400px mobile maximum and 316px at the 660px
-               maximum from md. */
-            <div className="relative isolate flex w-full max-w-[400px] items-start gap-5 md:max-w-[660px] md:gap-7">
-              <div className="relative min-w-0 flex-1">
+            /* Duo. Below md a stagger of two 260px phones. From md equal
+               halves of the wrapper minus the gap, 316px each at the 660px
+               maximum. */
+            <div className="relative isolate grid w-[min(364px,calc(100vw-26px))] md:flex md:w-full md:max-w-[660px] md:items-start md:gap-7">
+              <div className="relative col-start-1 row-start-1 w-[71.4286%] md:w-auto md:min-w-0 md:flex-1">
                 <PhoneFrame
                   src={src}
                   alt={alt}
-                  sizes="(max-width: 768px) 190px, 316px"
+                  sizes="(max-width: 768px) 260px, 316px"
                 />
                 {phoneOverlay}
               </div>
-              <div className="relative mt-6 min-w-0 flex-1">
+              <div className="relative col-start-1 row-start-1 ml-[28.5714%] mt-[90.0491%] w-[71.4286%] md:ml-0 md:mt-6 md:w-auto md:min-w-0 md:flex-1">
                 <PhoneFrame
                   src={secondSrc}
                   alt={secondAlt}
-                  sizes="(max-width: 768px) 190px, 316px"
+                  sizes="(max-width: 768px) 260px, 316px"
                 />
               </div>
             </div>
