@@ -21,7 +21,7 @@ export default function Privacy() {
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-        <p className="text-white/65 mb-10">Last updated: 3 August 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 29 September 2026</p>
 
         <div className="text-white/85 leading-relaxed space-y-8">
           <p>
@@ -107,7 +107,11 @@ export default function Privacy() {
               <li>
                 <span className="text-white font-medium">OpenAI</span> for optional voice note transcription and dream
                 analysis. We send only the content needed to fulfil your request. OpenAI processes this content under
-                API terms that do not permit its use for training their models.
+                API terms that do not permit its use for training their models. For Pro subscribers, a reading may
+                also draw on short summaries of your other recent dream entries (such as moods, themes, a brief
+                excerpt and the key insight of an earlier reading) so the analysis can recognise recurring patterns.
+                These are sent to OpenAI under the same terms, only when you request an analysis, and are not stored
+                separately.
               </li>
               <li>
                 <span className="text-white font-medium">PiAPI and Kling (Kuaishou Technology)</span> for optional dream
@@ -131,9 +135,13 @@ export default function Privacy() {
 
           <section>
             <h2 className="text-white text-lg font-semibold mb-2">5. Voice notes &amp; AI features</h2>
-            <p>
+            <p className="mb-3">
               If you record a voice note, we store the audio. If you request transcription or analysis, audio/text may be
               processed by AI services. You control what you submit and can delete entries anytime.
+            </p>
+            <p>
+              When a reading has drawn on your other dreams, the app says so beside the reading. Deleting an entry
+              removes it from all future readings.
             </p>
           </section>
 
@@ -245,7 +253,8 @@ export default function Privacy() {
               <li>We never sell it, never use it for advertising, and never share it with advertising providers.</li>
               <li>
                 It is shared only with the processors needed to fulfil your request, as listed in section 4 (for
-                example, OpenAI for analysis you initiate).
+                example, OpenAI for analysis you initiate, including the summaries of your other entries described
+                in section 4).
               </li>
               <li>
                 You can delete any entry, or your entire account and all associated content, at any time in the app.

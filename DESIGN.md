@@ -195,6 +195,12 @@ Fraunces and Outfit (the 2026-06 Nocturne set) are retired as of the
 - The hero is at least one viewport tall and grows with its content so the
   framed phone is always fully in view; nothing in the hero is clipped.
 - Bands stack text above phone.
+- The capture band's two phones stagger below `md`, where two side by side
+  would be too small to read: both 260px wide, the recording screen behind at
+  the top-left, Add details in front, set 40% of its width to the right and
+  60% of its height down, so it covers the empty lower part of the recording
+  screen and not its voice card. The pair is 364px wide and never wider than
+  the window less 26px, so both shrink together on a screen under 390px.
 - How-it-works steps stack vertically with the connector running vertically.
 - Pricing cards stack, Pro first.
 
@@ -293,7 +299,8 @@ Depth via tonal layering and glows, not drop shadows.
 - Shipped set, six files: five phone screens (journal home, recording
   waveform, add details, analysis, feed) plus the archetype card crop.
   Hero: journal home. Capture band: the Add Story (recording) and Add
-  Details steps side by side, nothing overlapping.
+  Details steps, side by side from `md` with nothing overlapping, staggered
+  below it.
   Analysis band: analysis with the archetype card overlay. Dream Films: feed.
 - Explicit `width` and `height` on every framed screenshot so fonts and images
   cause no layout shift.
