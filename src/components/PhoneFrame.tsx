@@ -1,8 +1,22 @@
 import Image from "next/image";
 
 // Reusable device frame: dark titanium rounded frame with a Dynamic Island
-// cutout, the app screenshot composited inside, and a soft glow behind. All
-// CSS; the only raster is the screenshot itself.
+// cutout, the app screenshot composited inside, and a glow behind. All CSS;
+// the only raster is the screenshot itself.
+//
+// Three layers lift the phone off the night sky, since the night captures
+// are close to the page's own colour:
+//   glow    .glow-phone, glow at 28%, 1.3x the phone's width and 0.9x its
+//           height, centred at 54% of its height, behind the frame
+//   bezel   on the ring, a 1px inset light in accent at 18% along the top
+//           and left edges, and the drop shadow beneath
+//   glass   over the screenshot and under the island cutout, a sheen from
+//           white at 6% in the top-left corner to clear by 45%, and a 1px
+//           inner edge in white at 8% that follows the screen radius
+// The glow sits at a negative z-index so it paints behind this phone AND
+// behind a neighbouring phone in a duo. The wrapper that places the phone
+// must therefore be a stacking context (`isolate`), or the glow sinks to the
+// next one up.
 //
 // Island sizing is set once for every shot. Every 2.0.1 capture (iPhone 16
 // Pro Max, 1320x2868) renders the island in its own status bar: the pill
@@ -34,7 +48,8 @@ type PhoneFrameProps = {
   height?: number;
   sizes?: string;
   priority?: boolean;
-  /** Soft .glow ellipse behind the device. Off when a band supplies its own. */
+  /** The .glow-phone ellipse behind the device. Off only where a band supplies
+      a stronger glow of its own (Dream Films). */
   glow?: boolean;
   className?: string;
 };
@@ -64,10 +79,15 @@ export default function PhoneFrame({
 }: PhoneFrameProps) {
   return (
     <div className={`relative ${className}`}>
-      {glow ? <div aria-hidden className="glow -inset-12" /> : null}
-      {/* Titanium ring */}
+      {glow ? (
+        <div
+          aria-hidden
+          className="glow-phone left-1/2 top-[54%] -z-10 h-[90%] w-[130%] -translate-x-1/2 -translate-y-1/2"
+        />
+      ) : null}
+      {/* Titanium ring, carrying the bezel light and the drop shadow */}
       <div
-        className="relative bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]"
+        className="relative bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] shadow-[inset_1px_1px_0_0_rgba(179,188,245,0.18),0_40px_80px_-24px_rgba(0,0,0,0.7)]"
         style={CHROME.ring}
       >
         {/* Bezel */}
@@ -82,6 +102,11 @@ export default function PhoneFrame({
               sizes={sizes}
               priority={priority}
               className="block h-auto w-full"
+            />
+            {/* Screen glass, under the island cutout */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(to_bottom_right,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_45%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
             />
             {/* Dynamic Island cutout */}
             <div

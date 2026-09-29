@@ -148,7 +148,6 @@ export default function Home() {
             animate="visible"
             variants={fadeUp}
           >
-            <div aria-hidden className="glow -inset-x-32 -inset-y-16 md:-inset-x-48 md:-inset-y-24" />
             <motion.div
               className="relative"
               animate={{ y: [0, -12, 0] }}
@@ -159,7 +158,6 @@ export default function Home() {
                 alt="Slumbr's Journal screen listing recent dreams such as Rooftop Garden at Midnight and Flying Over The City"
                 sizes="(max-width: 768px) 320px, 420px"
                 priority
-                glow={false}
               />
             </motion.div>
           </motion.div>

@@ -62,9 +62,12 @@ Nocturne system are gone. The new model has three tiers:
    lives inside the body and keeps its relative order. Nothing else paints
    a page background.
 2. **Per-section glows.** Each band places its own `.glow` ellipse behind its
-   focal element (a phone, the pricing Pro card). Glows are components'
-   business, positioned and sized by the consumer. `.glow-strong` is reserved
-   for the Dream Films band, the strongest glow on the page.
+   focal element (the step row, the review cards). Glows are components'
+   business, positioned and sized by the consumer. A framed phone carries
+   its own `.glow-phone` through `PhoneFrame`, so the hero and the feature
+   bands place none of their own. `.glow-strong` is reserved for the Dream
+   Films band, the strongest glow on the page, which turns the phone's own
+   glow off.
 3. **Mountain base.** `MountainBase` (`src/components/MountainBase.tsx`) is
    the only place the layered mountain-valley silhouettes and their warm
    valley glow appear. `Footer` mounts it and is as tall as the mountain
@@ -100,6 +103,13 @@ leaving a crescent. Two `drop-shadow` filters give the warm peach-white glow
 `filter: blur(48px)`. Soft edges, never a visible ring. Consumers set inset or
 width and height. `.glow-strong` peaks at 0.5 (mid stop 0.26) with a 64px
 blur and is reserved for the Dream Films band.
+
+`.glow-phone`: the glow behind a framed phone. An even ellipse
+(`border-radius: 50%`) of `rgba(139,92,246,0.28)` with a 64px blur.
+`PhoneFrame` sizes and places it: 1.3x the phone's width, 0.9x its height,
+centred at 54% of the phone's height, at a negative z-index so it paints
+behind the phone and behind a neighbouring phone in a duo. The wrapper that
+places the phone must be a stacking context (`isolate`).
 
 ### Mountains
 
@@ -191,7 +201,13 @@ Depth via tonal layering and glows, not drop shadows.
   1px white/10 border, `backdrop-blur`.
 - Pro card: `#8B5CF6` border with an outer glow.
 - Phone frame: dark titanium rounded frame with a Dynamic Island cutout,
-  screenshot composited inside, soft `.glow` behind. See `PhoneFrame`.
+  screenshot composited inside. Three layers lift it off the sky, since the
+  night screenshots are close to the page's own colour: `.glow-phone`
+  behind; on the ring a 1px inset light in `accent` at 18% along the top and
+  left edges and a drop shadow (`0 40px 80px -24px` black at 70%), the one
+  drop shadow a focal element carries; and over the screen a glass layer, a
+  sheen from white at 6% in the top-left corner to clear by 45% with a 1px
+  inner edge in white at 8%, under the island cutout. See `PhoneFrame`.
 
 ## Components
 

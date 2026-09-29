@@ -157,6 +157,19 @@ body::after {
   filter: blur(64px);
 }
 
+/* The glow behind every framed phone: an even ellipse of glow at 28%, blurred
+   wide, so a night screenshot reads as a lit object in front of the sky.
+   PhoneFrame sizes and places it (1.3x the phone's width, 0.9x its height,
+   centred just below the phone's middle). Brighter at the phone's edge than
+   .glow, weaker than .glow-strong, which stays the strongest on the page. */
+.glow-phone {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.28);
+  filter: blur(64px);
+}
+
 /* Visible focus for keyboard navigation */
 :focus-visible {
   outline: 2px solid #B3BCF5;
