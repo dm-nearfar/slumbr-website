@@ -5,7 +5,7 @@ import PhoneFrame from "./PhoneFrame";
 import { reveal } from "@/lib/motion";
 
 // A feature band: headline and sub-line on one side, a framed phone with its
-// glow on the other. Text sits above the phone on mobile. `mirrored`
+// own light on the other. Text sits above the phone on mobile. `mirrored`
 // puts the phone on the left from md up. `body` is an optional supporting
 // paragraph under the sub-line. `phoneOverlay` renders inside the phone
 // wrapper for floating elements (the archetype card); `decoration` renders
@@ -14,10 +14,12 @@ import { reveal } from "@/lib/motion";
 // Pass `secondSrc` and `secondAlt` for a phone duo: two equal phones side by
 // side in a flex row, the main phone on the left and the second on the right
 // nudged 24px down for rhythm, nothing obscured on either screen. Each phone
-// carries its own glow (PhoneFrame); the wrapper is a stacking context
-// (`isolate`) so both glows paint behind both phones. The wrapper caps the
-// pair's width so it never overflows its container; on narrow screens both
-// phones shrink together.
+// carries its own backplate and glow (PhoneFrame); the wrapper is a stacking
+// context (`isolate`) so the light of both paints behind both phones. That
+// light is wider than the phone and is never clipped here, so the text block
+// sits at z-10 to stay in front of it where the two meet. The wrapper caps
+// the pair's width so it never overflows its container; on narrow screens
+// both phones shrink together.
 
 type FeatureBandProps = {
   id?: string;
@@ -54,7 +56,7 @@ export default function FeatureBand({
           mirrored ? "md:flex-row-reverse" : "md:flex-row"
         }`}
       >
-        <motion.div className="flex-1 text-center md:text-left" {...reveal}>
+        <motion.div className="relative z-10 flex-1 text-center md:text-left" {...reveal}>
           <h2 className="mb-5 text-balance text-[36px] font-bold leading-[1.08] tracking-[-0.02em] text-white md:text-[56px]">
             {headline}
           </h2>

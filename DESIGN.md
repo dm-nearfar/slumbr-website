@@ -64,10 +64,10 @@ Nocturne system are gone. The new model has three tiers:
 2. **Per-section glows.** Each band places its own `.glow` ellipse behind its
    focal element (the step row, the review cards). Glows are components'
    business, positioned and sized by the consumer. A framed phone carries
-   its own `.glow-phone` through `PhoneFrame`, so the hero and the feature
-   bands place none of their own. `.glow-strong` is reserved for the Dream
-   Films band, the strongest glow on the page, which turns the phone's own
-   glow off.
+   its own backplate and glow through `PhoneFrame`, so the hero and the
+   feature bands place none of their own. `.glow-strong` is reserved for the
+   Dream Films band, where it sits under the phone's own light and keeps
+   that band the strongest glow on the page.
 3. **Mountain base.** `MountainBase` (`src/components/MountainBase.tsx`) is
    the only place the layered mountain-valley silhouettes and their warm
    valley glow appear. `Footer` mounts it and is as tall as the mountain
@@ -104,12 +104,28 @@ leaving a crescent. Two `drop-shadow` filters give the warm peach-white glow
 width and height. `.glow-strong` peaks at 0.5 (mid stop 0.26) with a 64px
 blur and is reserved for the Dream Films band.
 
-`.glow-phone`: the glow behind a framed phone. An even ellipse
-(`border-radius: 50%`) of `rgba(139,92,246,0.28)` with a 64px blur.
-`PhoneFrame` sizes and places it: 1.3x the phone's width, 0.9x its height,
-centred at 54% of the phone's height, at a negative z-index so it paints
-behind the phone and behind a neighbouring phone in a duo. The wrapper that
-places the phone must be a stacking context (`isolate`).
+The light behind a framed phone is two layers, placed and sized by
+`PhoneFrame` as percentages of the phone. Neither uses a filter: each is a
+gradient that reaches zero inside its own box, so nothing is painted outside
+an element's bounds and no edge can be cut straight at a layer boundary.
+
+- `.phone-backplate`: the ground that separates a dark screen from a dark
+  page. `accent` at 14% in the centre, easing to clear at 70% of the radius;
+  240% of the phone's width and 140% of its height, centred on the phone.
+- `.phone-glow`: `glow` at 45%, an ellipse 170% of the phone's width and
+  110% of its height, centred at 55% of the phone's height, with the soft
+  edge of a 90px blur at the 420px hero phone (21.4% of the phone's width, so
+  it scales with the phone). Its box is 277.14% by 179.33% of the phone; the
+  ellipse ends at 61.34% of the radius, at half strength, and the gradient's
+  stops are that blur's edge profile.
+
+Both come first in the DOM and the frame sits at `z-index: 1`, with no
+negative z-index, so in a duo the light of both phones paints behind both.
+The wrapper that places a phone must be a stacking context (`isolate` or a
+z-index), text that the light can reach sits at `z-10`, and anything floated
+over a phone (the archetype card) needs a z-index above 1. Nothing between a
+phone and the page root may clip: only `html` and `body` do, with
+`overflow-x: clip`.
 
 ### Mountains
 
@@ -200,14 +216,19 @@ Depth via tonal layering and glows, not drop shadows.
 - Dark glass cards: translucent dark fill (`rgba(30,27,75,0.55)` or similar),
   1px white/10 border, `backdrop-blur`.
 - Pro card: `#8B5CF6` border with an outer glow.
-- Phone frame: dark titanium rounded frame with a Dynamic Island cutout,
-  screenshot composited inside. Three layers lift it off the sky, since the
-  night screenshots are close to the page's own colour: `.glow-phone`
-  behind; on the ring a 1px inset light in `accent` at 18% along the top and
-  left edges and a drop shadow (`0 40px 80px -24px` black at 70%), the one
-  drop shadow a focal element carries; and over the screen a glass layer, a
-  sheen from white at 6% in the top-left corner to clear by 45% with a 1px
-  inner edge in white at 8%, under the island cutout. See `PhoneFrame`.
+- Phone frame: titanium rounded frame with a Dynamic Island cutout,
+  screenshot composited inside. The night screenshots are close to the
+  page's own colour, so the phone carries its own light. Behind it, the
+  backplate and the glow (see Glow). The frame itself is titanium, not
+  black: a linear gradient from `#3B3F4F` at the top-left to `#1B1D26` at
+  the bottom-right across the whole band between the outer edge and the
+  screen, with a 1px rim in white at 28% on the top and left and at 8% on
+  the bottom and right. It carries a core of `accent` at 12% leaking from
+  its edge (a `0 0 80px` shadow, the same as a 40px blur) and a drop shadow
+  (`0 48px 96px -28px` black at 75%), the one drop shadow a focal element
+  carries. Over the screen sits a glass layer: a sheen from white at 6% in
+  the top-left corner to clear by 45%, with a 1px inner edge in white at
+  14%, under the island cutout, which stays `#0B0B10`. See `PhoneFrame`.
 
 ## Components
 

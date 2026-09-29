@@ -157,17 +157,54 @@ body::after {
   filter: blur(64px);
 }
 
-/* The glow behind every framed phone: an even ellipse of glow at 28%, blurred
-   wide, so a night screenshot reads as a lit object in front of the sky.
-   PhoneFrame sizes and places it (1.3x the phone's width, 0.9x its height,
-   centred just below the phone's middle). Brighter at the phone's edge than
-   .glow, weaker than .glow-strong, which stays the strongest on the page. */
-.glow-phone {
+/* The light behind every framed phone (PhoneFrame places and sizes both by
+   percentage of the phone). Neither uses a filter: each is a gradient that
+   reaches zero inside its own box, so nothing is painted outside the
+   element's bounds and no edge can be cut straight.
+
+   .phone-backplate is the ground that separates a dark screen from a dark
+   page: accent at 14% in the centre, easing to clear at 70% of the radius.
+
+   .phone-glow is the violet light. Its stops are the edge profile of an
+   ellipse of glow at 45% blurred by 90px at the 420px hero phone: the ellipse
+   ends at 61.34% of the radius, where the light is at half strength, and the
+   rest of the box holds the soft edge. */
+.phone-backplate {
   position: absolute;
   pointer-events: none;
-  border-radius: 50%;
-  background: rgba(139, 92, 246, 0.28);
-  filter: blur(64px);
+  background: radial-gradient(
+    closest-side,
+    rgba(179, 188, 245, 0.14) 0%,
+    rgba(179, 188, 245, 0.118) 17.5%,
+    rgba(179, 188, 245, 0.07) 35%,
+    rgba(179, 188, 245, 0.022) 52.5%,
+    rgba(179, 188, 245, 0.006) 61.25%,
+    rgba(179, 188, 245, 0) 70%
+  );
+}
+
+.phone-glow {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgba(139, 92, 246, 0.45) 0%,
+    rgba(139, 92, 246, 0.445) 26%,
+    rgba(139, 92, 246, 0.433) 34%,
+    rgba(139, 92, 246, 0.412) 40%,
+    rgba(139, 92, 246, 0.384) 45%,
+    rgba(139, 92, 246, 0.345) 50%,
+    rgba(139, 92, 246, 0.296) 55%,
+    rgba(139, 92, 246, 0.239) 60%,
+    rgba(139, 92, 246, 0.181) 65%,
+    rgba(139, 92, 246, 0.127) 70%,
+    rgba(139, 92, 246, 0.083) 75%,
+    rgba(139, 92, 246, 0.049) 80%,
+    rgba(139, 92, 246, 0.026) 85%,
+    rgba(139, 92, 246, 0.012) 90%,
+    rgba(139, 92, 246, 0.004) 95%,
+    rgba(139, 92, 246, 0) 100%
+  );
 }
 
 /* Visible focus for keyboard navigation */
