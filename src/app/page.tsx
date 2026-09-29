@@ -363,10 +363,6 @@ export default function Home() {
                     <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     5-second cinematic dream videos
                   </li>
-                  <li className="flex items-center gap-3 text-[17px] text-white">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
-                    Ad-supported
-                  </li>
                 </ul>
                 <div className="mt-auto flex w-full flex-col gap-3">
                   <a
@@ -422,6 +418,10 @@ export default function Home() {
                 <ul className="relative z-10 mb-12 space-y-4">
                   <li className="flex items-center gap-3 text-[17px] text-white">
                     <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
+                    Enhanced dream analysis that remembers your previous dreams
+                  </li>
+                  <li className="flex items-center gap-3 text-[17px] text-white">
+                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     Up to 10 AI dream analyses per day
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-white">
@@ -431,10 +431,6 @@ export default function Home() {
                   <li className="flex items-center gap-3 text-[17px] text-white">
                     <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
                     10-second cinematic dream videos
-                  </li>
-                  <li className="flex items-center gap-3 text-[17px] text-white">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
-                    No ads
                   </li>
                 </ul>
                 <div className="relative z-10 mt-auto flex w-full flex-col gap-3">
