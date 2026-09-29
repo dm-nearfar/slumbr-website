@@ -156,7 +156,7 @@ export default function Home() {
             >
               <PhoneFrame
                 src="/screenshots/shot1-journal-home.webp"
-                alt="Slumbr's My Journal screen listing recent dreams such as Rooftop Garden at Midnight and Flying Over The City"
+                alt="Slumbr's Journal screen listing recent dreams such as Rooftop Garden at Midnight and Flying Over The City"
                 sizes="(max-width: 768px) 320px, 420px"
                 priority
                 glow={false}
@@ -259,14 +259,14 @@ export default function Home() {
           subline="The symbols, the themes and what they say about you."
           body="Record a dream and Slumbr analyses it in seconds, surfacing the themes, emotions, and symbols woven through it. Over time, recurring patterns your waking mind misses come into focus, and Slumbr matches you to your dream archetype."
           src="/screenshots/shot4-analysis-nans-kitchen.webp"
-          alt="Slumbr's Your Dream screen showing an AI analysis of a dream about a grandmother's kitchen"
+          alt="Slumbr's Dream unlocked screen showing an AI analysis of a dream about a rooftop garden at midnight"
           decoration={<Constellation />}
           phoneOverlay={
             <Image
               src="/screenshots/archetype-card.webp"
               alt="Slumbr's dream archetype card: Navigator, a strong match"
               width={640}
-              height={172}
+              height={166}
               sizes="(max-width: 768px) 220px, 300px"
               className="absolute -right-6 bottom-[16%] w-[220px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-16 md:w-[300px]"
             />
