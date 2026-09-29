@@ -8,14 +8,17 @@ import Image from "next/image";
 // its own ground and light. Back to front:
 //   backplate  .phone-backplate, accent at 14% in the centre to clear at 70%,
 //              240% of the phone's width and 140% of its height, centred
-//   glow       .phone-glow, glow at 45%: an ellipse 170% of the phone's width
-//              and 110% of its height, centred at 55%, with the soft edge of
+//   glow       .phone-glow, glow at 32%: an ellipse 150% of the phone's width
+//              and 100% of its height, centred at 55%, with the soft edge of
 //              a 90px blur at the 420px hero phone
-//   core       on the ring, accent at 12% leaking 40px (sigma) from the
-//              frame's edge
-//   frame      titanium, #3B3F4F at the top-left to #1B1D26 at the
-//              bottom-right, a 1px rim in white at 28% on the top and left
-//              and at 8% on the bottom and right, and the drop shadow
+//   core       on the frame, accent at 12% leaking 40px (sigma) from its edge
+//   frame      .phone-frame in the finish FINISH names. Natural titanium,
+//              #D2D5DE at the top-left to #9497A6 at the bottom-right, with a
+//              1px rim in white at 60% on the top and left and at 15% on the
+//              bottom and right, and the drop shadow. The dark finish
+//              (#3B3F4F to #1B1D26, rim 28% and 8%) is kept in globals.css
+//   line       a 1px line in #0B0B10 around the screen, so the dark screen
+//              reads as glass set in metal
 //   glass      over the screenshot and under the island cutout, a sheen from
 //              white at 6% in the top-left corner to clear by 45%, and a 1px
 //              inner edge in white at 14% that follows the screen radius
@@ -24,7 +27,7 @@ import Image from "next/image";
 // gradients that reach zero INSIDE their own box, so no light depends on
 // painting outside an element's bounds, which is the part a browser can cut
 // off at a layer edge. The glow's box is larger than its ellipse by the width
-// of the soft edge (277.14% by 179.33% of the phone); the stops in
+// of the soft edge (257.14% by 171.43% of the phone); the stops in
 // globals.css are that blur's profile.
 //
 // Nothing uses a negative z-index either. The layers come first in the DOM
@@ -75,6 +78,10 @@ type PhoneFrameProps = {
 //   ring 2.101145, bezel 2.117104, screen 2.173810 (= 1826 / 840)
 //   radii: ring 51.2 / 420 and 51.2 / 882.48, bezel 48 / 414 and 48 / 876.48,
 //   screen 38.4 / 394 and 38.4 / 856.48.
+// The frame's finish: "phone-frame-natural" or "phone-frame-dark". Both are
+// defined in globals.css; this one line flips every phone on the site.
+const FINISH = "phone-frame-natural";
+
 const CHROME = {
   ring: { padding: "0.714286%", borderRadius: "12.1905% / 5.8018%" },
   bezel: { padding: "2.415459%", borderRadius: "11.5942% / 5.4764%" },
@@ -98,19 +105,19 @@ export default function PhoneFrame({
           <div aria-hidden className="phone-backplate -inset-x-[70%] -inset-y-[20%]" />
           <div
             aria-hidden
-            className="phone-glow -inset-x-[88.57%] -top-[34.665%] -bottom-[44.665%]"
+            className="phone-glow -inset-x-[78.57%] -top-[30.714%] -bottom-[40.714%]"
           />
         </>
       ) : null}
       {/* Titanium frame: rim highlight, core light and drop shadow */}
-      <div
-        className="relative z-[1] bg-[linear-gradient(to_bottom_right,#3B3F4F,#1B1D26)] shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.28),inset_-1px_-1px_0_0_rgba(255,255,255,0.08),0_0_80px_0_rgba(179,188,245,0.12),0_48px_96px_-28px_rgba(0,0,0,0.75)]"
-        style={CHROME.ring}
-      >
+      <div className={`phone-frame ${FINISH} relative z-[1]`} style={CHROME.ring}>
         {/* Bezel: spacing only, the frame's titanium shows through */}
         <div style={CHROME.bezel}>
-          {/* Screen */}
-          <div className="relative overflow-hidden bg-[#0B0B10]" style={CHROME.screen}>
+          {/* Screen, with the 1px line that parts it from the metal */}
+          <div
+            className="relative overflow-hidden bg-[#0B0B10] shadow-[0_0_0_1px_#0B0B10]"
+            style={CHROME.screen}
+          >
             <Image
               src={src}
               alt={alt}

@@ -112,11 +112,11 @@ an element's bounds and no edge can be cut straight at a layer boundary.
 - `.phone-backplate`: the ground that separates a dark screen from a dark
   page. `accent` at 14% in the centre, easing to clear at 70% of the radius;
   240% of the phone's width and 140% of its height, centred on the phone.
-- `.phone-glow`: `glow` at 45%, an ellipse 170% of the phone's width and
-  110% of its height, centred at 55% of the phone's height, with the soft
+- `.phone-glow`: `glow` at 32%, an ellipse 150% of the phone's width and
+  100% of its height, centred at 55% of the phone's height, with the soft
   edge of a 90px blur at the 420px hero phone (21.4% of the phone's width, so
-  it scales with the phone). Its box is 277.14% by 179.33% of the phone; the
-  ellipse ends at 61.34% of the radius, at half strength, and the gradient's
+  it scales with the phone). Its box is 257.14% by 171.43% of the phone; the
+  ellipse ends at 58.33% of the radius, at half strength, and the gradient's
   stops are that blur's edge profile.
 
 Both come first in the DOM and the frame sits at `z-index: 1`, with no
@@ -216,19 +216,33 @@ Depth via tonal layering and glows, not drop shadows.
 - Dark glass cards: translucent dark fill (`rgba(30,27,75,0.55)` or similar),
   1px white/10 border, `backdrop-blur`.
 - Pro card: `#8B5CF6` border with an outer glow.
-- Phone frame: titanium rounded frame with a Dynamic Island cutout,
+- Phone frame: natural titanium rounded frame with a Dynamic Island cutout,
   screenshot composited inside. The night screenshots are close to the
   page's own colour, so the phone carries its own light. Behind it, the
-  backplate and the glow (see Glow). The frame itself is titanium, not
-  black: a linear gradient from `#3B3F4F` at the top-left to `#1B1D26` at
-  the bottom-right across the whole band between the outer edge and the
-  screen, with a 1px rim in white at 28% on the top and left and at 8% on
-  the bottom and right. It carries a core of `accent` at 12% leaking from
-  its edge (a `0 0 80px` shadow, the same as a 40px blur) and a drop shadow
-  (`0 48px 96px -28px` black at 75%), the one drop shadow a focal element
-  carries. Over the screen sits a glass layer: a sheen from white at 6% in
-  the top-left corner to clear by 45%, with a 1px inner edge in white at
-  14%, under the island cutout, which stays `#0B0B10`. See `PhoneFrame`.
+  backplate and the glow (see Glow). The frame is `.phone-frame`, painted
+  from two custom properties that a finish class sets together. The live
+  finish, `.phone-frame-natural`, is a linear gradient from `#D2D5DE` at the
+  top-left to `#9497A6` at the bottom-right across the whole band between
+  the outer edge and the screen, with a 1px rim in white at 60% on the top
+  and left and at 15% on the bottom and right. The dark finish,
+  `.phone-frame-dark` (`#3B3F4F` to `#1B1D26`, rim at 28% and 8%), is kept
+  whole in `globals.css`; `FINISH` in `PhoneFrame.tsx` is the one line that
+  flips every phone. Both finishes carry a core of `accent` at 12% leaking
+  from the frame's edge (a `0 0 80px` shadow, the same as a 40px blur) and a
+  drop shadow (`0 48px 96px -28px` black at 75%), the one drop shadow a
+  focal element carries. A 1px line in `#0B0B10` runs around the screen so
+  the dark screen reads as glass set in metal. Over the screen sits a glass
+  layer: a sheen from white at 6% in the top-left corner to clear by 45%,
+  with a 1px inner edge in white at 14%, under the island cutout, which
+  stays `#0B0B10`. See `PhoneFrame`.
+- Archetype card: floats over the analysis phone, mostly on the screen,
+  which is its own colour, so it carries its own light. A wrapper holds a
+  1px ring in `accent` at 45%, an `accent` halo (`0 0 48px` at 28%) and the
+  drop shadow (`0 24px 60px -16px` black at 65%); the image inside takes
+  `brightness(1.12)`, which the ring and halo do not. 240px wide, 330px from
+  `md`, set 36px and 76px out past the phone's right edge. Its radius is the
+  card's own, 24.2px on the 640px image, written as `3.8% / 14.6%` so the
+  ring hugs the card at both widths.
 
 ## Components
 

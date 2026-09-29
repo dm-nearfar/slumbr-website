@@ -260,14 +260,23 @@ export default function Home() {
           alt="Slumbr's Dream unlocked screen showing an AI analysis of a dream about a rooftop garden at midnight"
           decoration={<Constellation />}
           phoneOverlay={
-            <Image
-              src="/screenshots/archetype-card.webp"
-              alt="Slumbr's dream archetype card: Navigator, a strong match"
-              width={640}
-              height={166}
-              sizes="(max-width: 768px) 220px, 300px"
-              className="absolute -right-6 bottom-[16%] z-[2] w-[220px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-16 md:w-[300px]"
-            />
+            /* The card floats mostly over the screen, which is its own
+               colour, so it carries its own light: a 1px ring in accent, an
+               accent halo on top of the drop shadow, and a lift in
+               brightness. Ring and halo sit on the wrapper so the filter on
+               the image does not brighten them. The radius is the card's
+               own (24.2px on the 640px image), as percentages, so the ring
+               hugs the card at both widths. */
+            <div className="absolute -right-9 bottom-[16%] z-[2] w-[240px] rounded-[3.8%/14.6%] shadow-[0_0_0_1px_rgba(179,188,245,0.45),0_0_48px_rgba(179,188,245,0.28),0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-19 md:w-[330px]">
+              <Image
+                src="/screenshots/archetype-card.webp"
+                alt="Slumbr's dream archetype card: Navigator, a strong match"
+                width={640}
+                height={166}
+                sizes="(max-width: 768px) 240px, 330px"
+                className="block h-auto w-full rounded-[inherit] brightness-[1.12]"
+              />
+            </div>
           }
         />
 

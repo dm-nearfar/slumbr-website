@@ -166,8 +166,8 @@ body::after {
    page: accent at 14% in the centre, easing to clear at 70% of the radius.
 
    .phone-glow is the violet light. Its stops are the edge profile of an
-   ellipse of glow at 45% blurred by 90px at the 420px hero phone: the ellipse
-   ends at 61.34% of the radius, where the light is at half strength, and the
+   ellipse of glow at 32% blurred by 90px at the 420px hero phone: the ellipse
+   ends at 58.33% of the radius, where the light is at half strength, and the
    rest of the box holds the soft edge. */
 .phone-backplate {
   position: absolute;
@@ -188,23 +188,55 @@ body::after {
   pointer-events: none;
   background: radial-gradient(
     closest-side,
-    rgba(139, 92, 246, 0.45) 0%,
-    rgba(139, 92, 246, 0.445) 26%,
-    rgba(139, 92, 246, 0.433) 34%,
-    rgba(139, 92, 246, 0.412) 40%,
-    rgba(139, 92, 246, 0.384) 45%,
-    rgba(139, 92, 246, 0.345) 50%,
-    rgba(139, 92, 246, 0.296) 55%,
-    rgba(139, 92, 246, 0.239) 60%,
-    rgba(139, 92, 246, 0.181) 65%,
-    rgba(139, 92, 246, 0.127) 70%,
-    rgba(139, 92, 246, 0.083) 75%,
-    rgba(139, 92, 246, 0.049) 80%,
-    rgba(139, 92, 246, 0.026) 85%,
-    rgba(139, 92, 246, 0.012) 90%,
-    rgba(139, 92, 246, 0.004) 95%,
+    rgba(139, 92, 246, 0.32) 0%,
+    rgba(139, 92, 246, 0.317) 20%,
+    rgba(139, 92, 246, 0.309) 28%,
+    rgba(139, 92, 246, 0.297) 34%,
+    rgba(139, 92, 246, 0.276) 40%,
+    rgba(139, 92, 246, 0.252) 45%,
+    rgba(139, 92, 246, 0.221) 50%,
+    rgba(139, 92, 246, 0.185) 55%,
+    rgba(139, 92, 246, 0.146) 60%,
+    rgba(139, 92, 246, 0.109) 65%,
+    rgba(139, 92, 246, 0.076) 70%,
+    rgba(139, 92, 246, 0.049) 75%,
+    rgba(139, 92, 246, 0.029) 80%,
+    rgba(139, 92, 246, 0.016) 85%,
+    rgba(139, 92, 246, 0.007) 90%,
+    rgba(139, 92, 246, 0.002) 95%,
     rgba(139, 92, 246, 0) 100%
   );
+}
+
+/* The phone's frame. .phone-frame paints it from two custom properties that a
+   finish class sets together: --phone-frame, the titanium gradient across the
+   whole band between the outer edge and the screen, and --phone-rim, the 1px
+   rim highlight (lit on the top and left, shaded on the bottom and right).
+   Under the rim sit the core, accent at 12% leaking from the frame's edge,
+   and the drop shadow, the same in both finishes.
+
+   Natural titanium is live. The dark finish is kept whole, so flipping back
+   is one line: FINISH in src/components/PhoneFrame.tsx. */
+.phone-frame-natural {
+  --phone-frame: linear-gradient(to bottom right, #D2D5DE, #9497A6);
+  --phone-rim:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+.phone-frame-dark {
+  --phone-frame: linear-gradient(to bottom right, #3B3F4F, #1B1D26);
+  --phone-rim:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.28),
+    inset -1px -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.phone-frame {
+  background: var(--phone-frame);
+  box-shadow:
+    var(--phone-rim),
+    0 0 80px 0 rgba(179, 188, 245, 0.12),
+    0 48px 96px -28px rgba(0, 0, 0, 0.75);
 }
 
 /* Visible focus for keyboard navigation */
