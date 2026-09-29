@@ -12,11 +12,12 @@ import Image from "next/image";
 //              and 100% of its height, centred at 55%, with the soft edge of
 //              a 90px blur at the 420px hero phone
 //   core       on the frame, accent at 12% leaking 40px (sigma) from its edge
-//   frame      .phone-frame in the finish FINISH names. Natural titanium,
-//              #D2D5DE at the top-left to #9497A6 at the bottom-right, with a
-//              1px rim in white at 60% on the top and left and at 15% on the
-//              bottom and right, and the drop shadow. The dark finish
-//              (#3B3F4F to #1B1D26, rim 28% and 8%) is kept in globals.css
+//   frame      .phone-frame in the finish FINISH names. Dark titanium,
+//              #3B3F4F at the top-left to #1B1D26 at the bottom-right, with a
+//              1px rim in white at 40% on the top and left and at 8% on the
+//              bottom and right, and the drop shadow. The natural finish
+//              (#D2D5DE to #9497A6, rim 60% and 15%) is kept in globals.css,
+//              unused
 //   line       a 1px line in #0B0B10 around the screen, so the dark screen
 //              reads as glass set in metal
 //   glass      over the screenshot and under the island cutout, a sheen from
@@ -78,9 +79,9 @@ type PhoneFrameProps = {
 //   ring 2.101145, bezel 2.117104, screen 2.173810 (= 1826 / 840)
 //   radii: ring 51.2 / 420 and 51.2 / 882.48, bezel 48 / 414 and 48 / 876.48,
 //   screen 38.4 / 394 and 38.4 / 856.48.
-// The frame's finish: "phone-frame-natural" or "phone-frame-dark". Both are
+// The frame's finish: "phone-frame-dark" or "phone-frame-natural". Both are
 // defined in globals.css; this one line flips every phone on the site.
-const FINISH = "phone-frame-natural";
+const FINISH = "phone-frame-dark";
 
 const CHROME = {
   ring: { padding: "0.714286%", borderRadius: "12.1905% / 5.8018%" },

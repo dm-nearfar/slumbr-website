@@ -216,18 +216,19 @@ Depth via tonal layering and glows, not drop shadows.
 - Dark glass cards: translucent dark fill (`rgba(30,27,75,0.55)` or similar),
   1px white/10 border, `backdrop-blur`.
 - Pro card: `#8B5CF6` border with an outer glow.
-- Phone frame: natural titanium rounded frame with a Dynamic Island cutout,
+- Phone frame: dark titanium rounded frame with a Dynamic Island cutout,
   screenshot composited inside. The night screenshots are close to the
   page's own colour, so the phone carries its own light. Behind it, the
   backplate and the glow (see Glow). The frame is `.phone-frame`, painted
   from two custom properties that a finish class sets together. The live
-  finish, `.phone-frame-natural`, is a linear gradient from `#D2D5DE` at the
-  top-left to `#9497A6` at the bottom-right across the whole band between
-  the outer edge and the screen, with a 1px rim in white at 60% on the top
-  and left and at 15% on the bottom and right. The dark finish,
-  `.phone-frame-dark` (`#3B3F4F` to `#1B1D26`, rim at 28% and 8%), is kept
-  whole in `globals.css`; `FINISH` in `PhoneFrame.tsx` is the one line that
-  flips every phone. Both finishes carry a core of `accent` at 12% leaking
+  finish, `.phone-frame-dark`, is a linear gradient from `#3B3F4F` at the
+  top-left to `#1B1D26` at the bottom-right across the whole band between
+  the outer edge and the screen, with a 1px rim in white at 40% on the top
+  and left, so the edge still reads against the glow, and at 8% on the
+  bottom and right. A natural titanium finish, `.phone-frame-natural`
+  (`#D2D5DE` to `#9497A6`, rim at 60% and 15%), exists as an unused option,
+  kept whole in `globals.css`; `FINISH` in `PhoneFrame.tsx` is the one line
+  that flips every phone. Both finishes carry a core of `accent` at 12% leaking
   from the frame's edge (a `0 0 80px` shadow, the same as a 40px blur) and a
   drop shadow (`0 48px 96px -28px` black at 75%), the one drop shadow a
   focal element carries. A 1px line in `#0B0B10` runs around the screen so

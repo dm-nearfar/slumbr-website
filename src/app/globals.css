@@ -215,20 +215,22 @@ body::after {
    Under the rim sit the core, accent at 12% leaking from the frame's edge,
    and the drop shadow, the same in both finishes.
 
-   Natural titanium is live. The dark finish is kept whole, so flipping back
-   is one line: FINISH in src/components/PhoneFrame.tsx. */
+   The dark finish is live. Its lit rim is at 40%, so the frame's edge still
+   reads against the glow behind it. The natural finish is kept whole and
+   unused, so flipping to it is one line: FINISH in
+   src/components/PhoneFrame.tsx. */
+.phone-frame-dark {
+  --phone-frame: linear-gradient(to bottom right, #3B3F4F, #1B1D26);
+  --phone-rim:
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
 .phone-frame-natural {
   --phone-frame: linear-gradient(to bottom right, #D2D5DE, #9497A6);
   --phone-rim:
     inset 1px 1px 0 0 rgba(255, 255, 255, 0.6),
     inset -1px -1px 0 0 rgba(255, 255, 255, 0.15);
-}
-
-.phone-frame-dark {
-  --phone-frame: linear-gradient(to bottom right, #3B3F4F, #1B1D26);
-  --phone-rim:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.28),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 .phone-frame {
