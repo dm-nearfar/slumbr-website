@@ -4,12 +4,13 @@ import Image from "next/image";
 // cutout, the app screenshot composited inside, and a soft glow behind. All
 // CSS; the only raster is the screenshot itself.
 //
-// Island sizing is set once for every shot and measured against
-// shot3_recording_waveform, the only capture whose own status bar renders the
-// island (with the orange recording dot). On the 1206px-wide source the pill
-// spans x 414 to 791 and y 50 to 144. The cutout below is 34% of the screen
-// width, 4:1, starting 1.6% down the screen height, so it fully covers that
-// rendered pill on shot3 and lands in the same spot on every other shot.
+// Island sizing is set once for every shot. Every 2.0.1 capture (iPhone 16
+// Pro Max, 1320x2868) renders the island in its own status bar: the pill
+// spans x 472 to 847 and y 42 to 151 on that source. The cutout below is 34%
+// of the screen width, 4:1, starting 1.6% down the screen height, which is
+// x 436 to 884 and y 46 to 158 on the same source, so it covers the rendered
+// pill on both sides and below. The pill's top 4 source pixels sit above the
+// cutout, black on near black, and do not read.
 //
 // Screens ship at 840x1826 (2x of the largest rendered width) and the
 // explicit width and height keep the frame from shifting while the image

@@ -13,9 +13,11 @@ repo; no source PNG enters git) and writes WebP files into public/screenshots/:
 
 Phone screens are resized to 840x1826, which is 2x the largest width they
 render at (about 420 CSS px), so retina screens stay crisp without shipping
-the 1206x2622 source. The archetype card is cropped from the account screen
-(the rounded card with the sparkle medallion, "Your dream archetype",
-"Navigator", "A strong match") and downscaled to 640 px wide.
+the 1320x2868 source (the 2.0.1 captures, iPhone 16 Pro Max; the 1206x2622
+captures of the older set are accepted too). The archetype card is cropped
+from the account screen (the rounded card with the sparkle medallion, "Your
+dream archetype", "Navigator", "A strong match") and downscaled to 640 px
+wide, which gives 640x166 from a 1320x2868 capture.
 
 Every output starts at WebP quality 80 and steps down in fives, to a floor of
 60, until it is under the 200 KB ceiling. The chosen quality and final size
@@ -48,8 +50,16 @@ MAX_BYTES = 200 * 1024
 START_QUALITY = 80
 MIN_QUALITY = 60
 
-# Card bounds on the 1206x2622 account screenshot (left, top, right, bottom).
-ARCHETYPE_BOX = (56, 728, 1150, 1022)
+# Source sizes the script expects: the 2.0.1 captures and the older set.
+KNOWN_SOURCE_SIZES = ((1320, 2868), (1206, 2622))
+
+# Card bounds on the account screenshot (left, top, right, bottom), keyed by
+# the capture's size: the rounded card edge to edge, none of the ground around
+# it. The 1320x2868 box is the one the shipped archetype-card.webp comes from.
+ARCHETYPE_BOXES = {
+    (1320, 2868): (62, 877, 1258, 1187),
+    (1206, 2622): (56, 728, 1150, 1022),
+}
 ARCHETYPE_WIDTH = 640
 
 PHONE_SHOTS = {
@@ -81,19 +91,29 @@ def encode_phone(name: str, out_name: str) -> None:
     print(f"=== {name}")
     with Image.open(src) as im:
         im = im.convert("RGB")
-        if im.size != (1206, 2622):
+        if im.size not in KNOWN_SOURCE_SIZES:
             print(f"  warning: unexpected source size {im.size}, resizing anyway")
         im = im.resize(PHONE_SIZE, Image.LANCZOS)
         save_under_ceiling(im, OUT / out_name)
 
 
-def encode_crop(name: str, box: tuple[int, int, int, int], width: int, out_name: str, label: str) -> None:
+def encode_crop(
+    name: str,
+    boxes: dict[tuple[int, int], tuple[int, int, int, int]],
+    width: int,
+    out_name: str,
+    label: str,
+) -> None:
     src = SRC / name
     if not src.is_file():
         print(f"skip: {src} not found")
         return
     print(f"=== {name} ({label})")
     with Image.open(src) as im:
+        box = boxes.get(im.size)
+        if box is None:
+            print(f"  skip: no crop box measured for source size {im.size}")
+            return
         im = im.convert("RGB").crop(box)
         ratio = width / im.width
         im = im.resize((width, round(im.height * ratio)), Image.LANCZOS)
@@ -109,7 +129,7 @@ def main() -> int:
         encode_phone(name, out_name)
     encode_crop(
         "folder_account_archetype_medallion.png",
-        ARCHETYPE_BOX,
+        ARCHETYPE_BOXES,
         ARCHETYPE_WIDTH,
         "archetype-card.webp",
         "archetype card crop",

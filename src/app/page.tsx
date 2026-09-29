@@ -266,7 +266,7 @@ export default function Home() {
               src="/screenshots/archetype-card.webp"
               alt="Slumbr's dream archetype card: Navigator, a strong match"
               width={640}
-              height={172}
+              height={166}
               sizes="(max-width: 768px) 220px, 300px"
               className="absolute -right-6 bottom-[16%] w-[220px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-16 md:w-[300px]"
             />
