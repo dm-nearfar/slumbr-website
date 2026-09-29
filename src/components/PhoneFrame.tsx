@@ -1,8 +1,41 @@
 import Image from "next/image";
 
-// Reusable device frame: dark titanium rounded frame with a Dynamic Island
-// cutout, the app screenshot composited inside, and a soft glow behind. All
-// CSS; the only raster is the screenshot itself.
+// Reusable device frame: titanium rounded frame with a Dynamic Island cutout,
+// the app screenshot composited inside, and its own light behind. All CSS;
+// the only raster is the screenshot itself.
+//
+// The night captures are close to the page's own colour, so the phone brings
+// its own ground and light. Back to front:
+//   backplate  .phone-backplate, accent at 14% in the centre to clear at 70%,
+//              240% of the phone's width and 140% of its height, centred
+//   glow       .phone-glow, glow at 32%: an ellipse 150% of the phone's width
+//              and 100% of its height, centred at 55%, with the soft edge of
+//              a 90px blur at the 420px hero phone
+//   core       on the frame, accent at 12% leaking 40px (sigma) from its edge
+//   frame      .phone-frame in the finish FINISH names. Dark titanium,
+//              #3B3F4F at the top-left to #1B1D26 at the bottom-right, with a
+//              1px rim in white at 40% on the top and left and at 8% on the
+//              bottom and right, and the drop shadow. The natural finish
+//              (#D2D5DE to #9497A6, rim 60% and 15%) is kept in globals.css,
+//              unused
+//   line       a 1px line in #0B0B10 around the screen, so the dark screen
+//              reads as glass set in metal
+//   glass      over the screenshot and under the island cutout, a sheen from
+//              white at 6% in the top-left corner to clear by 45%, and a 1px
+//              inner edge in white at 14% that follows the screen radius
+//
+// Nothing behind the phone uses a CSS filter. The backplate and the glow are
+// gradients that reach zero INSIDE their own box, so no light depends on
+// painting outside an element's bounds, which is the part a browser can cut
+// off at a layer edge. The glow's box is larger than its ellipse by the width
+// of the soft edge (257.14% by 171.43% of the phone); the stops in
+// globals.css are that blur's profile.
+//
+// Nothing uses a negative z-index either. The layers come first in the DOM
+// and the ring sits at z-index 1, so in a duo both phones' light paints
+// behind both phones. The wrapper that places the phone must be a stacking
+// context (`isolate`, or a z-index) to keep that z-index local, and anything
+// floated over the phone (the archetype card) needs a z-index above 1.
 //
 // Island sizing is set once for every shot. Every 2.0.1 capture (iPhone 16
 // Pro Max, 1320x2868) renders the island in its own status bar: the pill
@@ -34,7 +67,7 @@ type PhoneFrameProps = {
   height?: number;
   sizes?: string;
   priority?: boolean;
-  /** Soft .glow ellipse behind the device. Off when a band supplies its own. */
+  /** The backplate and the glow behind the device. */
   glow?: boolean;
   className?: string;
 };
@@ -46,6 +79,10 @@ type PhoneFrameProps = {
 //   ring 2.101145, bezel 2.117104, screen 2.173810 (= 1826 / 840)
 //   radii: ring 51.2 / 420 and 51.2 / 882.48, bezel 48 / 414 and 48 / 876.48,
 //   screen 38.4 / 394 and 38.4 / 856.48.
+// The frame's finish: "phone-frame-dark" or "phone-frame-natural". Both are
+// defined in globals.css; this one line flips every phone on the site.
+const FINISH = "phone-frame-dark";
+
 const CHROME = {
   ring: { padding: "0.714286%", borderRadius: "12.1905% / 5.8018%" },
   bezel: { padding: "2.415459%", borderRadius: "11.5942% / 5.4764%" },
@@ -64,16 +101,24 @@ export default function PhoneFrame({
 }: PhoneFrameProps) {
   return (
     <div className={`relative ${className}`}>
-      {glow ? <div aria-hidden className="glow -inset-12" /> : null}
-      {/* Titanium ring */}
-      <div
-        className="relative bg-gradient-to-b from-[#6B6B78] via-[#2C2C36] to-[#55555F] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.75)]"
-        style={CHROME.ring}
-      >
-        {/* Bezel */}
-        <div className="bg-[#0B0B10]" style={CHROME.bezel}>
-          {/* Screen */}
-          <div className="relative overflow-hidden bg-[#0B0B10]" style={CHROME.screen}>
+      {glow ? (
+        <>
+          <div aria-hidden className="phone-backplate -inset-x-[70%] -inset-y-[20%]" />
+          <div
+            aria-hidden
+            className="phone-glow -inset-x-[78.57%] -top-[30.714%] -bottom-[40.714%]"
+          />
+        </>
+      ) : null}
+      {/* Titanium frame: rim highlight, core light and drop shadow */}
+      <div className={`phone-frame ${FINISH} relative z-[1]`} style={CHROME.ring}>
+        {/* Bezel: spacing only, the frame's titanium shows through */}
+        <div style={CHROME.bezel}>
+          {/* Screen, with the 1px line that parts it from the metal */}
+          <div
+            className="relative overflow-hidden bg-[#0B0B10] shadow-[0_0_0_1px_#0B0B10]"
+            style={CHROME.screen}
+          >
             <Image
               src={src}
               alt={alt}
@@ -82,6 +127,11 @@ export default function PhoneFrame({
               sizes={sizes}
               priority={priority}
               className="block h-auto w-full"
+            />
+            {/* Screen glass, under the island cutout */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(to_bottom_right,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_45%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]"
             />
             {/* Dynamic Island cutout */}
             <div

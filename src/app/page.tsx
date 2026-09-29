@@ -143,12 +143,11 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="relative z-10 mx-auto mt-14 w-full max-w-[320px] md:mt-16 md:max-w-[420px]"
+            className="relative z-0 mx-auto mt-14 w-full max-w-[320px] md:mt-16 md:max-w-[420px]"
             initial="hidden"
             animate="visible"
             variants={fadeUp}
           >
-            <div aria-hidden className="glow -inset-x-32 -inset-y-16 md:-inset-x-48 md:-inset-y-24" />
             <motion.div
               className="relative"
               animate={{ y: [0, -12, 0] }}
@@ -159,7 +158,6 @@ export default function Home() {
                 alt="Slumbr's Journal screen listing recent dreams such as Rooftop Garden at Midnight and Flying Over The City"
                 sizes="(max-width: 768px) 320px, 420px"
                 priority
-                glow={false}
               />
             </motion.div>
           </motion.div>
@@ -262,14 +260,23 @@ export default function Home() {
           alt="Slumbr's Dream unlocked screen showing an AI analysis of a dream about a rooftop garden at midnight"
           decoration={<Constellation />}
           phoneOverlay={
-            <Image
-              src="/screenshots/archetype-card.webp"
-              alt="Slumbr's dream archetype card: Navigator, a strong match"
-              width={640}
-              height={166}
-              sizes="(max-width: 768px) 220px, 300px"
-              className="absolute -right-6 bottom-[16%] w-[220px] rounded-2xl shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-16 md:w-[300px]"
-            />
+            /* The card floats mostly over the screen, which is its own
+               colour, so it carries its own light: a 1px ring in accent, an
+               accent halo on top of the drop shadow, and a lift in
+               brightness. Ring and halo sit on the wrapper so the filter on
+               the image does not brighten them. The radius is the card's
+               own (24.2px on the 640px image), as percentages, so the ring
+               hugs the card at both widths. */
+            <div className="absolute -right-9 bottom-[16%] z-[2] w-[240px] rounded-[3.8%/14.6%] shadow-[0_0_0_1px_rgba(179,188,245,0.45),0_0_48px_rgba(179,188,245,0.28),0_24px_60px_-16px_rgba(0,0,0,0.65)] md:-right-19 md:w-[330px]">
+              <Image
+                src="/screenshots/archetype-card.webp"
+                alt="Slumbr's dream archetype card: Navigator, a strong match"
+                width={640}
+                height={166}
+                sizes="(max-width: 768px) 240px, 330px"
+                className="block h-auto w-full rounded-[inherit] brightness-[1.12]"
+              />
+            </div>
           }
         />
 
@@ -277,7 +284,7 @@ export default function Home() {
             strongest glow on the page */}
         <section className="relative px-6 py-20 md:px-16 md:py-32">
           <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-            <motion.div className="mb-12 md:mb-16" {...reveal}>
+            <motion.div className="relative z-10 mb-12 md:mb-16" {...reveal}>
               <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.28em] text-accent">
                 DREAM FILMS
               </p>
@@ -288,7 +295,7 @@ export default function Home() {
                 Turn last night&apos;s dream into a short film.
               </p>
             </motion.div>
-            <motion.div className="relative w-[300px] md:w-[420px]" {...reveal}>
+            <motion.div className="relative isolate w-[300px] md:w-[420px]" {...reveal}>
               <div
                 aria-hidden
                 className="glow glow-strong -inset-x-30 -inset-y-20 md:-inset-x-48 md:-inset-y-32"
@@ -297,7 +304,6 @@ export default function Home() {
                 src="/screenshots/shot2-feed-rooftop-garden.webp"
                 alt="Slumbr's Visualise feed playing a dream film of a rooftop garden at midnight under a full moon"
                 sizes="(max-width: 768px) 300px, 420px"
-                glow={false}
               />
             </motion.div>
           </div>
