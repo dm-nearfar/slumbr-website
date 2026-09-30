@@ -21,7 +21,7 @@ export default function Privacy() {
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-        <p className="text-white/65 mb-10">Last updated: 29 September 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 30 September 2026</p>
 
         <div className="text-white/85 leading-relaxed space-y-8">
           <p>
@@ -59,7 +59,8 @@ export default function Privacy() {
             </p>
             <p className="mb-3">
               <span className="text-white font-medium">Purchase data:</span> purchase receipts and product identifiers,
-              via the Apple App Store or Google Play (depending on your device) and RevenueCat.
+              via the Apple App Store or Google Play (depending on your device) and RevenueCat, and your email address,
+              which RevenueCat receives with them.
             </p>
             <p>
               <span className="text-white font-medium">Advertising data (free users):</span> ad impressions via Google
@@ -98,7 +99,7 @@ export default function Privacy() {
               </li>
               <li>
                 <span className="text-white font-medium">RevenueCat</span> for in-app purchases and subscription
-                validation.
+                validation, which receives your purchase receipts, product identifiers and email address.
               </li>
               <li>
                 <span className="text-white font-medium">Apple App Store and Google Play</span> for payments and
