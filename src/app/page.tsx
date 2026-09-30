@@ -426,7 +426,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-white">
                     <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
-                    2 video tokens with every renewal
+                    2 dream videos every month
                   </li>
                   <li className="flex items-center gap-3 text-[17px] text-white">
                     <CheckIcon className="h-5 w-5 shrink-0 text-accent" />
