@@ -21,7 +21,7 @@ export default function Terms() {
           &larr; Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-2">Terms and Conditions</h1>
-        <p className="text-white/65 mb-10">Last updated: 3 August 2026</p>
+        <p className="text-white/65 mb-10">Last updated: 30 September 2026</p>
 
         <div className="text-white/85 leading-relaxed space-y-8">
           <p>
@@ -91,8 +91,8 @@ export default function Terms() {
             </p>
             <p className="mb-3">
               <span className="text-white font-medium">Pro membership:</span> Includes ad removal, expanded dream
-              analysis (up to 10 analyses per day), longer dream videos, and 2 video tokens included with each
-              subscription renewal.
+              analysis (up to 10 analyses per day), longer dream videos, and 2 video tokens each month while your
+              membership is active.
             </p>
             <p className="mb-3">
               <span className="text-white font-medium">Video tokens:</span> Consumable credits used to generate videos.
